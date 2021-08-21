@@ -1,0 +1,25 @@
+.app-nave-menu { 
+  font-size: 1.2rem;
+  padding-bottom: 10px!important;
+}
+::ng-deep .listMenu { 
+  margin: 50px 50px 0px 50px !important; 
+}
+::ng-deep .p-dialog-header {
+  font-family: 'Sarabun';
+}
+.icon {
+  font-size: 16px;
+  font-weight: 100;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  color: #222;
+}
+.txt-menu {
+  font-size: 15px;
+  font-weight: 100;
+  margin-top: -2px;
+  font-family: 'Sarabun';
+  font-weight: 200;
+  color: #222;
+}

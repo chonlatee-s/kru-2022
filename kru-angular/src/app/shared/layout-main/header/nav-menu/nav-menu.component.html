@@ -1,0 +1,39 @@
+<i class="pi pi-th-large app-nave-menu" tooltipStyleClass="tooltip" pTooltip="เมนู" tooltipPosition="top" (click)="listMenu()"></i>
+<p-dialog header="เมนู" styleClass="listMenu" 
+[breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '25vw'}"
+[(visible)]="display" [position]="position" [draggable]="false" [modal]="true" [dismissableMask]="true">
+  <div class="flex flex-column">
+    <div class="flex">
+      <i class="pi pi-comments icon"></i>
+      <span class="txt-menu">ห้องสนทนา</span>
+    </div>
+    <div class="flex">
+      <i class="pi pi-chart-line icon"></i>
+      <span class="txt-menu">สถิติการสอบ</span>
+    </div>
+    <div class="flex">
+      <i class="pi pi-bell icon"></i>
+      <span class="txt-menu">การแจ้งเตือน</span>
+    </div>
+    <div class="flex">
+      <i class="pi pi-send icon"></i>
+      <span class="txt-menu">หางาน</span>
+    </div>
+    <div class="flex">
+      <i class="pi pi-download icon"></i>
+      <span class="txt-menu">ดาวน์โหลดข้อสอบ</span>
+    </div>
+    <div class="flex">
+      <i class="pi pi-android icon"></i>
+      <span class="txt-menu">ดาวน์โหลดแอปพลิเคชัน</span>
+    </div>
+    <div class="flex">
+      <i class="pi pi-briefcase icon"></i>
+      <span class="txt-menu">เรียนออนไลน์</span>
+    </div>
+    <div class="flex">
+      <i class="pi pi-info icon"></i>
+      <span class="txt-menu">เซียมซีเสี่ยงทาย</span>
+    </div>
+  </div>
+</p-dialog>

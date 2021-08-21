@@ -1,0 +1,43 @@
+.container {
+  margin:10px 100px 10px 100px;
+}
+
+.txt-header {
+  font-weight: 500; 
+  font-size: 18px; 
+  margin: 7px 0px 0px 5px; 
+  color: #B7996C;
+}
+.menu { 
+  padding: 10px 12px 0px 12px;
+  font-size: 1.2rem;
+  color: #222;
+}
+.nav-menu { 
+  display: none;
+  font-size: 1.2rem;
+  color: #222;
+  padding-top: 5px;
+}
+.img-profile {
+  padding-left: 25px;
+  margin-top: 2px;
+}
+::ng-deep .tooltip {
+  font-family: 'Sarabun';
+  font-weight: 100;
+  font-size: 12px;
+}
+
+//////////////////////////////// SCREEN ////////////////////////////////
+@media (max-width: 768px)
+{ 
+  .container { margin:10px; }
+  .txt-header { display: none; }
+  .menu { display: none; }
+  .nav-menu { display: block; }
+  .img-profile {
+    padding-left: 0px;
+    margin-top: 2px;
+  }
+}

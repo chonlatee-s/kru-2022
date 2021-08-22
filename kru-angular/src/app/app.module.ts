@@ -15,6 +15,10 @@ import { NavMenuComponent } from './shared/layout-main/header/nav-menu/nav-menu.
 import { DialogModule } from 'primeng/dialog';
 import { ImgProfileComponent } from './shared/layout-main/header/img-profile/img-profile.component';
 import { DividerModule } from 'primeng/divider';
+import { ButtonModule } from 'primeng/button';
+import { MenuComponent } from './shared/layout-main/menu/menu.component';
+import { CompetitorsComponent } from './shared/layout-main/competitors/competitors.component';
+import { FooterComponent } from './shared/layout-main/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { DividerModule } from 'primeng/divider';
     LayoutMainComponent,
     HeaderComponent,
     NavMenuComponent,
-    ImgProfileComponent
+    ImgProfileComponent,
+    MenuComponent,
+    CompetitorsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,8 @@ import { DividerModule } from 'primeng/divider';
     AvatarModule,
     TooltipModule,
     DialogModule,
-    DividerModule
+    DividerModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

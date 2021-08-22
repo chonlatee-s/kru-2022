@@ -1,0 +1,59 @@
+.txt-menu {
+  font-size: 14px;
+  color: #726C6C;
+  margin-bottom: 25px;
+}
+.name {
+  font-size: 12px;
+  margin-left: 10px;
+}
+.score {
+  font-size: 10px;
+  margin-left: 10px;
+  font-weight: 200;
+}
+.circleBase {
+  border-radius: 50%;
+}
+.win1 {
+  margin-top: 4px;
+  margin-right: 5px;
+  width: 7px;
+  height: 7px;
+  background: #FC9C0D;
+}
+.win2 {
+  margin-top: 4px;
+  margin-right: 5px;
+  width: 7px;
+  height: 7px;
+  background: #C4C4C4;
+}
+.win3 {
+  margin-top: 4px;
+  margin-right: 5px;
+  width: 7px;
+  height: 7px;
+  background: #B80606;
+}
+.menu {
+  font-family: 'Sarabun';
+  font-size: 12px;
+  color: #222;
+  margin-right: 5px;
+  margin-bottom: 20px;
+  background: #fff;
+  border: 1px solid #222;
+  margin-bottom: 10px;
+}
+
+::ng-deep .btn .p-button:enabled:hover {
+  color: #fff !important;
+  background: #B7996C !important;
+  border: 1px solid #B7996C !important;
+}
+::ng-deep .btn .p-button:focus {
+  color: #fff;
+  background-color: #B7996C;
+  border: 1px solid #B7996C !important;
+}

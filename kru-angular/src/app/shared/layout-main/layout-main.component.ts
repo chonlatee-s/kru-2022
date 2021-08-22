@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout-main.component.scss']
 })
 export class LayoutMainComponent implements OnInit {
-
+  showMenu: boolean = true;
   constructor() { }
 
   ngOnInit(): void {

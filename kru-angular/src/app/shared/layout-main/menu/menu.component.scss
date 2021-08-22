@@ -1,0 +1,29 @@
+.txt-menu {
+  font-size: 14px;
+  color: #726C6C;
+  margin-bottom: 25px;
+}
+.menu {
+  font-family: 'Sarabun';
+  font-size: 12px;
+  color: #222;
+  background-color: #EEEEEE;
+  border: 0px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+::ng-deep .p-button:enabled:active {
+  color: #fff;
+  background-color: #B7996C;
+  border: 0px;
+}
+::ng-deep .p-button:enabled:hover {
+  color: #fff !important;
+  background: #B7996C !important;
+  border: 0px !important;
+}
+::ng-deep .p-button:focus {
+  color: #fff;
+  background-color: #B7996C;
+  box-shadow: 0 0 0 0rem #f8ece7 !important;
+}

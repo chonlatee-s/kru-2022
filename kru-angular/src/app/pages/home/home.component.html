@@ -1,0 +1,31 @@
+
+  <div class="flex justify-content-center flex-wrap">
+
+    <div class="flex p-2 flex-grow-1 justify-content-center">
+      <img src="../../../assets/img/1.png" alt="" width="310px" height="310px">
+    </div>
+    <div class="flex p-2 flex-grow-1 justify-content-center">
+      <p-carousel [value]="cars" [autoplayInterval]="3000" 
+      [responsiveOptions]="cars"  [showNavigators]="false"
+      [numVisible]="1" [numScroll]="1"
+      >
+        <ng-template let-car pTemplate="item">
+          <div style="width: 155px;">
+            <img src="{{car.txt}}" alt="" width="310px">
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+
+    <!-- <div class="flex">
+      <p-carousel [value]="cars" [autoplayInterval]="3000" [responsiveOptions]="cars" [numVisible]="1" [showNavigators]="true">
+        <ng-template let-car pTemplate="item">
+          <div style="width: 160px;">
+            <img src="{{car.txt}}" alt="" width="340px">
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>  -->
+
+

@@ -1,3 +1,12 @@
+.navbar {
+  overflow: hidden;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
 .container {
   margin:10px 100px 10px 100px;
 }

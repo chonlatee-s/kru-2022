@@ -1,9 +1,16 @@
 .container {
-  margin: 30px 95px 20px 135px;
+  margin: 80px 95px 20px 135px;
+}
+.contents {
+  margin-right: 70px; margin-top: 20px;
 }
 
 @media (max-width: 1024px)
 { 
   .container { margin: 10px; }
   .right { display: none; }
+  .contents {
+    margin-right: 0px;
+    margin-top: 70px;
+  }
 }

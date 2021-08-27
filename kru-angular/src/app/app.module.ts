@@ -43,6 +43,6 @@ import { FooterComponent } from './shared/layout-main/footer/footer.component';
     ButtonModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,16 +1,16 @@
 <app-header></app-header>
-<div class="flex container">
+<div class="flex justify-content-center container">
 
   <!-- Contents -->
-  <div class="flex flex-grow-1">
+  <div class="flex">
     <div class="contents">
-      <router-outlet></router-outlet>
+      <router-outlet (activate)='onActivate($event)'></router-outlet>
     </div>
   </div>
 
   <!-- Right Menu -->
-  <div class="flex flex-column flex-none" *ngIf="showMenu">
-    <div class="right">
+  <div class="flex">
+    <div class="right" *ngIf="showData">
       <div class="flex">
         <app-menu></app-menu>
       </div>

@@ -1,0 +1,69 @@
+.menu-box {
+  background-color: #EEEEEE;
+  width: 400px;
+  text-align: center;
+  border-radius: 15px;
+}
+.txt-box {
+  font-weight: 200;
+  color: #222;
+  font-size: 18px;
+  padding: 50px 50px 10px 50px;
+  text-align: center;
+}
+.btn {
+  margin-bottom: 50px;
+  font-family: 'Sarabun';
+  font-size: 21px;
+  color: #222;
+  margin-right: 5px;
+  margin-bottom: 50px;
+  background: #eee;
+  border: 1px solid #222;
+}
+
+::ng-deep .menu-box .p-button:enabled:hover {
+  color: #fff !important;
+  background: #222 !important;
+  border: 1px solid #222 !important;
+}
+::ng-deep .menu-box .p-button:focus {
+  color: #fff;
+  background-color: #222;
+  border: 1px solid #222 !important;
+}
+
+.menu-box2 {
+  border-radius: 15px;
+  background-color: #F9F7F3;
+  width: 400px;
+  text-align: center;
+}
+.txt-box2 {
+  font-weight: 200;
+  color: #B7996C;
+  font-size: 18px;
+  padding: 50px 50px 10px 50px;
+  text-align: center;
+}
+.btn2 {
+  margin-bottom: 50px;
+  font-family: 'Sarabun';
+  font-size: 21px;
+  color: #B7996C;
+  margin-right: 5px;
+  margin-bottom: 50px;
+  background: #F9F7F3;
+  border: 1px solid #B7996C;
+}
+
+::ng-deep .menu-box2 .p-button:enabled:hover {
+  color: #fff !important;
+  background: #B7996C !important;
+  border: 1px solid #B7996C !important;
+}
+::ng-deep .menu-box2 .p-button:focus {
+  color: #fff;
+  background-color: #B7996C;
+  border: 1px solid #B7996C !important;
+}

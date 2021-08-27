@@ -1,19 +1,21 @@
+.competitors-row {
+  display: none !important;
+}
 .container {
-  margin: 80px 95px 20px 135px;
+  margin: 80px 135px 20px 135px; // t r b l
 }
 .contents {
-  margin-right: 70px;
   margin-top: 15px;
   // background-color: aqua;
   width: 100%;
 }
-
+.right { margin-left: 30px;}
 @media (max-width: 1024px)
 { 
-  .container { margin: 10px; }
-  .right { display: none; }
+  .competitors-row {display: block !important;}
+  .container { margin: 10px !important;}
+  .right { display: none !important; }
   .contents {
-    margin-right: 0px;
-    margin-top: 70px;
+    margin-top: 10px;
   }
 }

@@ -6,12 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() {}
-
-  ngOnInit(): void {
-  }
-
+  showMenuRight: boolean = true
   cars = [
     {
       txt: '../../../assets/img/2.png',
@@ -20,5 +15,10 @@ export class HomeComponent implements OnInit {
       txt: '../../../assets/img/2.png',
     }
   ]
+
+  constructor() {}
+
+  ngOnInit(): void {
+  }
 
 }

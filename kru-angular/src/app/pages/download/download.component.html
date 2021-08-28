@@ -1,0 +1,28 @@
+<app-competitors-top></app-competitors-top>
+<div style="width:100%">
+  <p-table [value]="cars"
+    styleClass="p-datatable-sm"
+    [paginator]="true" 
+    [rows]="rows" 
+    [showCurrentPageReport]="true" 
+    [(first)]="first"
+    currentPageReportTemplate="แสดงข้อมูล {first} - {last} จาก {totalRecords}" 
+    [rowsPerPageOptions]="[5,10]"
+    responsiveLayout="scroll"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+          <th pResizableColumn>ดาวน์โหลดข้อสอบ</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-car>
+        <tr>
+            <td>
+              <div>{{car.topic}}</div>
+              <div class="date">โดย ครูบัญชีชายขอบ</div>
+            </td>
+            <!-- <td><i class="{{car.icon}}" style="font-size: 12px"></i></td> -->
+        </tr>
+    </ng-template>
+  </p-table>
+</div>

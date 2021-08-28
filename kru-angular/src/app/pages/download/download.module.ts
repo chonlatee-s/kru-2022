@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
-
-import {CarouselModule} from 'primeng/carousel';
+import { DownloadRoutingModule } from './download-routing.module';
+import { DownloadComponent } from './download.component';
+import { TableModule } from 'primeng/table';
 import { CompetitorsTopModule } from 'src/app/shared/layout-main/competitors-top/competitors-top.module';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    DownloadComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule,
-    CarouselModule,
+    DownloadRoutingModule,
+    TableModule,
     CompetitorsTopModule
   ]
 })
-export class HomeModule { }
+export class DownloadModule { }

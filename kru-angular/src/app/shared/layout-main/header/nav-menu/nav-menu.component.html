@@ -15,13 +15,17 @@
       <i class="pi pi-bell icon"></i>
       <span class="txt-menu">การแจ้งเตือน</span>
     </div>
-    <div class="flex">
-      <i class="pi pi-send icon"></i>
-      <span class="txt-menu">หางาน</span>
+    <div class="flex" (click)="listMenu()">
+      <a routerLink="/job">
+        <i class="pi pi-send icon"></i>
+        <span class="txt-menu">หางาน</span>
+      </a>
     </div>
-    <div class="flex">
-      <i class="pi pi-download icon"></i>
-      <span class="txt-menu">ดาวน์โหลดข้อสอบ</span>
+    <div class="flex" (click)="listMenu()">
+      <a routerLink="/download">
+        <i class="pi pi-download icon"></i>
+        <span class="txt-menu">ดาวน์โหลดข้อสอบ</span>
+      </a>
     </div>
     <div class="flex">
       <i class="pi pi-android icon"></i>

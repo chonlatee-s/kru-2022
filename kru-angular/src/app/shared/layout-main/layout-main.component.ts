@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-layout-main',
@@ -6,14 +6,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./layout-main.component.scss']
 })
 export class LayoutMainComponent implements OnInit {
-  showData: boolean = true
+  showMenuRight: boolean = true
   constructor() { }
 
   ngOnInit(): void {
     
   }
   onActivate(e: any) {
-    this.showData = e.showMenuRight
+    this.showMenuRight = e.showMenuRight
   }
 
 }

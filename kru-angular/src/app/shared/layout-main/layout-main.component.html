@@ -1,8 +1,8 @@
 <app-header></app-header>
-<div class="flex justify-content-center container">
+<div class="flex container">
 
   <!-- Contents -->
-  <div class="flex">
+  <div class="flex flex-grow-1">
     <div class="contents">
       <router-outlet (activate)='onActivate($event)'></router-outlet>
     </div>
@@ -10,7 +10,7 @@
 
   <!-- Right Menu -->
   <div class="flex">
-    <div class="right" *ngIf="showData">
+    <div class="right" *ngIf="showMenuRight">
       <div class="flex">
         <app-menu></app-menu>
       </div>

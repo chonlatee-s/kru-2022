@@ -8,7 +8,9 @@ const routes: Routes = [
     children: [
       { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
       { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
-      { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestModule) }
+      { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestModule) },
+      { path: 'job', loadChildren: () => import('./pages/job/job.module').then(m => m.JobModule) },
+      { path: 'download', loadChildren: () => import('./pages/download/download.module').then(m => m.DownloadModule) }
     ]
   }
 ];

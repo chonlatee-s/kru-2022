@@ -9,10 +9,10 @@ export class HomeComponent implements OnInit {
   showMenuRight: boolean = true
   cars = [
     {
-      txt: '../../../assets/img/2.png',
+      txt: 'https://live.staticflickr.com/65535/51410449848_68df1609a9_o.png',
     },
     {
-      txt: '../../../assets/img/2.png',
+      txt: 'https://live.staticflickr.com/65535/51410449848_68df1609a9_o.png',
     }
   ]
 

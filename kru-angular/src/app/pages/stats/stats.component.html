@@ -1,11 +1,11 @@
 <app-competitors-top></app-competitors-top>
 <div class="flex flex-row flex-wrap justify-content-center">
-  <div class="flex px-1">
+  <div class="flex">
     <div class="box">
       <p-knob valueTemplate="{{avg}}%" [(ngModel)]="avg" [strokeWidth]="5" valueColor="#E27272"></p-knob>
     </div>
   </div>
-  <div class="flex flex-grow-1 px-1">
+  <div class="flex flex-grow-1">
     <div style="width:100%">
       <p-table [value]="cars" styleClass="p-datatable-sm" responsiveLayout="scroll">
         <ng-template pTemplate="header">

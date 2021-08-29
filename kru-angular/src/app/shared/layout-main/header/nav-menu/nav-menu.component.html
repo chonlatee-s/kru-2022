@@ -5,11 +5,13 @@
   <div class="flex flex-column">
     <div class="flex">
       <i class="pi pi-comments icon"></i>
-      <span class="txt-menu">ห้องสนทนา</span>
+      <span class="txt-menu">พูดคุย</span>
     </div>
-    <div class="flex">
-      <i class="pi pi-chart-line icon"></i>
-      <span class="txt-menu">สถิติการสอบ</span>
+    <div class="flex" (click)="listMenu()">
+      <a routerLink="/stats">
+        <i class="pi pi-chart-line icon"></i>
+        <span class="txt-menu">สถิติการสอบ</span>
+      </a>
     </div>
     <div class="flex">
       <i class="pi pi-bell icon"></i>

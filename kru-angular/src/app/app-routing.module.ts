@@ -10,9 +10,11 @@ const routes: Routes = [
       { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
       { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestModule) },
       { path: 'job', loadChildren: () => import('./pages/job/job.module').then(m => m.JobModule) },
-      { path: 'download', loadChildren: () => import('./pages/download/download.module').then(m => m.DownloadModule) }
+      { path: 'download', loadChildren: () => import('./pages/download/download.module').then(m => m.DownloadModule) },
+      { path: 'stats', loadChildren: () => import('./pages/stats/stats.module').then(m => m.StatsModule) }
     ]
-  }
+  },
+ 
 ];
 
 @NgModule({

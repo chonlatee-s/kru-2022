@@ -1,5 +1,4 @@
 .container {
-  // margin:100px 100px 15px 100px;
   display: none !important;
 }
 ::ng-deep .win1 .p-avatar img {
@@ -38,7 +37,7 @@
 @media (max-width: 1024px)
 { 
   .container { 
-    margin:10px !important;
+    margin: 15px;
     display: block !important;
   }
 }

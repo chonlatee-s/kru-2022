@@ -24,20 +24,13 @@
   font-weight: 200;
 }
 
-.menu {
-  font-family: 'Sarabun';
-  font-size:12px;
-  color: #222 !important;
-  background: #fff !important;
-  border: 1px solid #222 !important;
-  width: 50%;
-  margin-bottom: 20px;
-}
-//////////////////////////////// SCREEN ////////////////////////////////
 @media (max-width: 1024px)
 { 
   .container { 
-    margin: 15px;
+    margin: 5px 5px 20px 5px;
+    padding: 10px;
+    background-color: #EEEEEE;
+    border-radius: 15px;
     display: block !important;
   }
 }

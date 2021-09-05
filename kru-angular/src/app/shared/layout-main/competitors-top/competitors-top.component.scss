@@ -27,18 +27,18 @@
 .menu {
   font-family: 'Sarabun';
   font-size: 12px;
-  color: #fff;
+  color: #eee;
   margin-top: 10px;
-  background: #B7996C;
-  border: 1px solid #B7996C;
+  background: #222;
+  border: 1px solid #222;
   width: 100%;
   text-align: center;
 }
 
 ::ng-deep .menu-boxC .p-button:enabled:hover {
-  color: #fff !important;
-  background: #222 !important;
-  border: 1px solid #222 !important;
+  color: #eee !important;
+  background: #B7996C !important;
+  border: 1px solid #B7996C !important;
 }
 
 @media (max-width: 1024px)

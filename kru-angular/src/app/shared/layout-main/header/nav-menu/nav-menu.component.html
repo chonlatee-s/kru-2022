@@ -35,9 +35,11 @@
         <span class="txt-menu">แอปพลิเคชัน</span>
       </a>
     </div>
-    <div class="flex">
-      <i class="pi pi-briefcase icon"></i>
-      <span class="txt-menu">เรียนออนไลน์</span>
+    <div class="flex" (click)="listMenu()">
+      <a routerLink="/course">
+        <i class="pi pi-briefcase icon"></i>
+        <span class="txt-menu">เรียนออนไลน์</span>
+      </a>
     </div>
     <div class="flex">
       <i class="pi pi-info icon"></i>

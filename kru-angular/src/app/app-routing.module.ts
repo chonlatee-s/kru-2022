@@ -11,9 +11,11 @@ const routes: Routes = [
       { path: 'test', loadChildren: () => import('./pages/test/test.module').then(m => m.TestModule) },
       { path: 'job', loadChildren: () => import('./pages/job/job.module').then(m => m.JobModule) },
       { path: 'download', loadChildren: () => import('./pages/download/download.module').then(m => m.DownloadModule) },
-      { path: 'stats', loadChildren: () => import('./pages/stats/stats.module').then(m => m.StatsModule) }
+      { path: 'stats', loadChildren: () => import('./pages/stats/stats.module').then(m => m.StatsModule) },
+      { path: 'course', loadChildren: () => import('./pages/course/course.module').then(m => m.CourseModule) }
     ]
   },
+  
  
 ];
 

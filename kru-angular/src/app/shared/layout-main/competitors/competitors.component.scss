@@ -48,12 +48,12 @@
 }
 
 ::ng-deep .btn .p-button:enabled:hover {
-  color: #fff !important;
-  background: #B7996C !important;
-  border: 1px solid #B7996C !important;
+  color: #eee !important;
+  background: #222 !important;
+  border: 1px solid #222 !important;
 }
 ::ng-deep .btn .p-button:focus {
-  color: #fff;
-  background-color: #B7996C;
-  border: 1px solid #B7996C !important;
+  color: #eee;
+  background-color: #222;
+  border: 1px solid #222 !important;
 }

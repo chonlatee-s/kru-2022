@@ -34,9 +34,9 @@
   margin-top: 2px;
 }
 ::ng-deep .tooltip {
-  font-family: 'Sarabun';
-  font-weight: 100;
-  font-size: 12px;
+  font-family: 'Sarabun' !important;
+  font-weight: 100 !important;
+  font-size: 10px !important;
 }
 
 //////////////////////////////// SCREEN ////////////////////////////////

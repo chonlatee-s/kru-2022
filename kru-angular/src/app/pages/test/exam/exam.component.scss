@@ -1,0 +1,53 @@
+.box-icon {
+  background-color:#EBF3FF;
+  padding: 5px;
+  font-size: 12px;
+  color: #789CCE;
+  margin: 5px 0px 5px 5px 
+}
+.time {
+  font-size: 16px;
+  margin-top: 4px;
+  color: #E27272;
+}
+.box-clock {
+  background-color:#FFEAEB;
+  padding: 5px;
+  font-size: 12px;
+  color: #E27272;
+  margin: 5px 5px 5px 0px 
+}
+::ng-deep .p-progressbar {
+  border: 0 none;
+  height: 1.5rem;
+  background: #dee2e6;
+  border-radius: 0px; 
+}
+::ng-deep .p-progressbar .p-progressbar-value {
+  border: 0 none;
+  margin: 0;
+  background: #E27272;
+}
+.box-question {
+  background-color: #fff;
+}
+.question {
+  font-size: 14px;
+  font-weight: 300;
+  background-color: #EEEEEE;
+  padding: 15px;
+}
+.choice {
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.txt-mode {
+  font-size: 10px;
+  font-weight: 200;
+}
+.btn-nb {
+  font-size: 18px;
+}

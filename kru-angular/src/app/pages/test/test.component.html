@@ -3,7 +3,7 @@
     <div class="menu-box">
       <p>โหมดฝึกฝน</p> 
       <p class="txt-box">ข้อสอบมี 10 ข้อ เวลาในการทำ 10 นาที ฝึกฝนทักษะด้วยตัวเองก่อนลงสนาม</p>
-      <button pButton type="button" class="p-button-rounded btn">ฝึกทำข้อสอบ</button>
+      <a [routerLink]="['exam/training']"><button pButton type="button" class="p-button-rounded btn">ฝึกทำข้อสอบ</button></a>
     </div>
   </div>
   
@@ -11,7 +11,7 @@
     <div class="menu-box2">
       <p style="color: #B7996C;">โหมดแข่งขัน</p> 
       <p class="txt-box2">ข้อสอบมี 20 ข้อ เวลาในการทำ 20 นาที แข่งขันกับคนอื่น และจัดอันดับคะแนน</p>
-      <button pButton type="button" class="p-button-rounded btn2">เข้าร่วมแข่งขัน</button>
+      <a [routerLink]="['exam/competition']"><button pButton type="button" class="p-button-rounded btn2">เข้าร่วมแข่งขัน</button></a>
     </div>
   </div>
 </div>

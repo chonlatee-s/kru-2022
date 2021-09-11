@@ -6,9 +6,10 @@
 }
 
 ::ng-deep .p-steps .p-steps-item.p-highlight .p-steps-title {
-  font-weight: 600;
+  font-weight: 300;
   color: #789CCE;
   font-family: 'Sarabun';
+  font-size: 14px;
 }
 ::ng-deep .p-steps .p-steps-item.p-highlight .p-steps-number {
   background: #EBF3FF;
@@ -17,9 +18,9 @@
 }
 
 ::ng-deep .p-component {
-  font-size: 1rem;
+  font-size: 14px;
   font-family: 'Sarabun';
-  font-weight: normal;
+  font-weight: 300;
 }
 
 .card-predict {

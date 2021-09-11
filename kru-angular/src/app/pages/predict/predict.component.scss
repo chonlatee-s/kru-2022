@@ -1,0 +1,36 @@
+.card-step {
+  background-color: #fff;
+  margin:5px;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+::ng-deep .p-steps .p-steps-item.p-highlight .p-steps-title {
+  font-weight: 600;
+  color: #789CCE;
+  font-family: 'Sarabun';
+}
+::ng-deep .p-steps .p-steps-item.p-highlight .p-steps-number {
+  background: #EBF3FF;
+  color: #789CCE;
+  font-family: 'Sarabun';
+}
+
+::ng-deep .p-component {
+  font-size: 1rem;
+  font-family: 'Sarabun';
+  font-weight: normal;
+}
+
+.card-predict {
+  font-size: 14px;
+  font-weight: 300;
+  margin:30px 5px 5px 5px;
+  background-color: #EBF3FF;
+  padding: 15px;
+  border-radius: 15px;
+  color: #789CCE;
+}
+.txt-ref {
+  font-size: 10px;
+}

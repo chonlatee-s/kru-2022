@@ -4,8 +4,8 @@
 [(visible)]="display" [position]="position" [draggable]="false" [modal]="true" [dismissableMask]="true">
   <div class="flex flex-column">
     <div class="flex">
-      <i class="pi pi-comments icon"></i>
-      <span class="txt-menu">พูดคุย</span>
+      <i class="pi pi-bell icon"></i>
+      <span class="txt-menu">แจ้งเตือน</span>
     </div>
     <div class="flex" (click)="listMenu()">
       <a routerLink="/stats">
@@ -14,8 +14,8 @@
       </a>
     </div>
     <div class="flex">
-      <i class="pi pi-bell icon"></i>
-      <span class="txt-menu">การแจ้งเตือน</span>
+      <i class="pi pi-comments icon"></i>
+      <span class="txt-menu">พูดคุย</span>
     </div>
     <div class="flex" (click)="listMenu()">
       <a routerLink="/job">
@@ -41,9 +41,11 @@
         <span class="txt-menu">เรียนออนไลน์</span>
       </a>
     </div>
-    <div class="flex">
-      <i class="pi pi-info icon"></i>
-      <span class="txt-menu">เซียมซีเสี่ยงทาย</span>
+    <div class="flex" (click)="listMenu()">
+      <a routerLink="/predict">
+        <i class="pi pi-info icon"></i>
+        <span class="txt-menu">เซียมซีเสี่ยงทาย</span>
+      </a>
     </div>
   </div>
 </p-dialog>

@@ -3,19 +3,17 @@
 [breakpoints]="{'1024px': '100vw', '640px': '100vw'}" [style]="{width: '25vw'}"
 [(visible)]="display" [position]="position" [draggable]="false" [modal]="true" [dismissableMask]="true">
   <div class="flex flex-column">
-    <div class="flex">
-      <i class="pi pi-bell icon"></i>
-      <span class="txt-menu">แจ้งเตือน</span>
-    </div>
     <div class="flex" (click)="listMenu()">
       <a routerLink="/stats">
         <i class="pi pi-chart-line icon"></i>
         <span class="txt-menu">สถิติ</span>
       </a>
     </div>
-    <div class="flex">
-      <i class="pi pi-comments icon"></i>
-      <span class="txt-menu">พูดคุย</span>
+    <div class="flex" (click)="listMenu()">
+      <a routerLink="/forum">
+        <i class="pi pi-comments icon"></i>
+        <span class="txt-menu">พูดคุย</span>
+      </a>
     </div>
     <div class="flex" (click)="listMenu()">
       <a routerLink="/job">

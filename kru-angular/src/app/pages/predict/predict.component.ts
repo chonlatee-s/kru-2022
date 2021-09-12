@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PredictComponent implements OnInit {
   showMenuRight: boolean = true
-  items = [{label:'อธิษฐาน'}, {label:'กำลังทำนาย'}, {label:'ผลการทำนาย'}];
+  items = [{label:'อธิษฐาน'}, {label:'เสี่ยงทาย'}, {label:'สำเร็จ'}];
   constructor() { }
 
   ngOnInit(): void {

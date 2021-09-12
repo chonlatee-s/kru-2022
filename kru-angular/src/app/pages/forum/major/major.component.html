@@ -1,0 +1,69 @@
+<div class="flex flex-column mt-4">
+  <div class="flex mb-2 justify-content-between">
+    <div class="flex mt-2">
+      <div class="flex mr-3">
+        <a routerLink="/forum"><i class="pi pi-users"></i><span class="txt-forum-menu">ห้องทั่วไป</span></a>
+      </div>
+      <div class="flex">
+        <a routerLink="major"><i class="pi pi-star-o"></i><span class="txt-forum-menu">ห้องวิชาเอก</span></a>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="forum-btn-hover">
+        <button pButton type="button" class="forum-btn p-button-rounded">เริ่มพูดคุย</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-grow-1">
+    <div style="width:100%">
+      <p-table [value]="cars"
+        styleClass="p-datatable-sm"
+        [paginator]="true" 
+        [rows]="rows" 
+        [showCurrentPageReport]="true" 
+        [(first)]="first"
+        currentPageReportTemplate="แสดงข้อมูล {first} - {last} จาก {totalRecords}" 
+        [rowsPerPageOptions]="[10,20]"
+        responsiveLayout="scroll"
+      >
+      <ng-template pTemplate="header">
+        <tr>
+            <th pResizableColumn colspan="2">ห้องวิชาเอก</th>
+        </tr>
+      </ng-template>
+        <ng-template pTemplate="body" let-car>
+            <tr>
+                <td>
+                  <div class="flex flex-row">
+                    <div class="flex">
+                      <p-avatar image="{{car.profile}}" shape="circle" size="large"></p-avatar>
+                    </div>
+                    <div class="flex flex-column">
+                      <div class="flex">
+                        <div class="txt-topic">{{car.topic}}</div>
+                      </div>
+                      <div class="flex">
+                        <div class="date">12-12-2564</div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="flex">
+                    <p-avatarGroup label="P">
+                      <p-avatar image="{{car.profile}}" shape="circle"></p-avatar>
+                      <p-avatar image="{{car.profile}}" shape="circle"></p-avatar>
+                      <p-avatar image="{{car.profile}}" shape="circle"></p-avatar>
+                      <p-avatar image="{{car.profile}}" shape="circle"></p-avatar>
+                      <p-avatar label="+5" shape="circle"></p-avatar>
+                    </p-avatarGroup>
+                  </div>
+                  <div class="flex"><span style="font-size: 8px; padding-left: 5px;">20 การตอบกลับ</span></div>
+                </td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

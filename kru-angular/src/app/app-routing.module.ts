@@ -14,7 +14,8 @@ const routes: Routes = [
       { path: 'stats', loadChildren: () => import('./pages/stats/stats.module').then(m => m.StatsModule) },
       { path: 'course', loadChildren: () => import('./pages/course/course.module').then(m => m.CourseModule) },
       { path: 'predict', loadChildren: () => import('./pages/predict/predict.module').then(m => m.PredictModule) },
-      { path: 'forum', loadChildren: () => import('./pages/forum/forum.module').then(m => m.ForumModule) }
+      { path: 'forum', loadChildren: () => import('./pages/forum/forum.module').then(m => m.ForumModule) },
+      { path: 'information', loadChildren: () => import('./pages/information/information.module').then(m => m.InformationModule) }
     ]
   }
 ];

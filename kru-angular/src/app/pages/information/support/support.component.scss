@@ -1,18 +1,27 @@
-.box-info-pink {
+.box-info {
   margin-top: 50px;
   padding: 10px 100px 40px 100px;
-  background-color: #FAF8F8;
+  background-color: #fff;
   border-left: solid;
-  border-color: #E27272;
+  border-color: #789CCE;
   border-width: 5px;
 }
-.txt-hearder-pink {
-  color:#E27272;
+.txt-hearder {
+  color:#789CCE;
   font-size: 24px;
   font-weight: 600;
 }
-.txt-text-pink {
+.txt-text {
   font-size: 14px;
   font-weight: 200;
   color:#222;
+}
+
+@media (max-width: 1024px)
+{ 
+  .box-info { 
+    margin: 10px !important;
+    padding: 10px !important;
+    border-left: none;
+  }
 }

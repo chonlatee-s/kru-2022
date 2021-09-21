@@ -8,10 +8,15 @@ import { ButtonModule } from 'primeng/button';
 import { AvatarGroupModule  } from 'primeng/avatargroup';
 import { MajorsComponent } from './majors/majors.component';
 import { MajorComponent } from './major/major.component';
+import { ChatComponent } from './chat/chat.component';
+import { DividerModule } from 'primeng/divider';
+import { ChipModule } from 'primeng/chip';
+import { SidebarModule } from 'primeng/sidebar';
 @NgModule({
   declarations: [
     MajorsComponent,
-    MajorComponent
+    MajorComponent,
+    ChatComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +24,10 @@ import { MajorComponent } from './major/major.component';
     TableModule,
     AvatarModule,
     ButtonModule,
-    AvatarGroupModule
+    AvatarGroupModule,
+    DividerModule,
+    ChipModule,
+    SidebarModule
   ]
 })
 export class ForumModule { }

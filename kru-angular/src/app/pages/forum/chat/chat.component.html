@@ -1,0 +1,67 @@
+<div class="flex flex-column mt-3">
+  <div class="flex mb-1 justify-content-between">
+    <div class="flex"> 
+      <div class="flex mr-3">
+        <p-avatar image="https://lh3.googleusercontent.com/a-/AOh14GicIT0uW03JgwKA-3KjWtDU1hdAIEpb5aK_zf9G=s96-c" shape="circle" size="large"></p-avatar>
+      </div>
+      <div class="flex flex-column mt-2">
+        <div class="flex txt-name">บรรเจิด เลิศภิรมย์สมฤดี</div>
+        <div class="flex txt-major">เอกคอมพิวเตอร์</div>
+      </div>
+    </div>
+    <div class="flex mt-2 mouse reply" (click)="display = true"><p-chip label="แสดงความคิดเห็น" icon="pi pi-comment"></p-chip></div>
+  </div>
+
+  <div class="flex txt-topic-comment ml-7">
+    ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก
+  </div>
+  <div class="flex txt-date ml-7 mt-1">12-12-2564</div>
+  <p-divider></p-divider>
+
+  <div class="flex flex-column md:ml-7">
+    <div class="flex mb-2"> 
+      <div class="flex mr-3">
+        <p-avatar image="https://lh3.googleusercontent.com/a-/AOh14GicIT0uW03JgwKA-3KjWtDU1hdAIEpb5aK_zf9G=s96-c" shape="circle"></p-avatar>
+      </div>
+      <div class="flex flex-column mt-1">
+        <div class="flex txt-name">บรรเจิด เลิศภิรมย์สมฤดี</div>
+        <div class="flex txt-major">เอกคณิตศาสตร์</div>
+      </div>
+    </div>
+    <div class="flex txt-comment ml-6">
+      ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก
+    </div>
+    <div class="flex txt-date ml-6 mt-1">12-12-2564</div>
+  </div>
+  <p-divider></p-divider>
+  <div class="flex flex-column md:ml-7">
+    <div class="flex mb-2"> 
+      <div class="flex mr-3">
+        <p-avatar image="https://lh5.googleusercontent.com/-PDm4o0WFFp8/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl546ptPfH9jPHnzckB5PU_iIOx1w/s96-c/photo.jpg" shape="circle"></p-avatar>
+      </div>
+      <div class="flex flex-column mt-1">
+        <div class="flex txt-name">แมวเหมียว เจ้าเล่ห์</div>
+        <div class="flex txt-major">เอกคณิตศาสตร์</div>
+      </div>
+    </div>
+    <div class="flex txt-comment ml-6">
+      ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก
+    </div>
+    <div class="flex txt-date ml-6 mt-1">12-12-2564</div>
+  </div>
+
+</div>
+
+<p-sidebar [(visible)]="display" position="bottom">
+  <div class="flex flex-row justify-content-around flex-wrap">
+    <div class="flex">
+      <p-avatar image="https://lh3.googleusercontent.com/a-/AOh14GicIT0uW03JgwKA-3KjWtDU1hdAIEpb5aK_zf9G=s96-c" shape="circle"></p-avatar>
+    </div>
+    <div class="flex mb-2 flex-grow-1">
+      <input type="text" class="comment" placeholder="แสดงความคิดเห็น">
+    </div>
+    <div class="flex box-comment">
+      <button pButton type="button" class="p-button-rounded btn-comment">ส่งความคิดเห็น</button>
+    </div>
+  </div>
+</p-sidebar>

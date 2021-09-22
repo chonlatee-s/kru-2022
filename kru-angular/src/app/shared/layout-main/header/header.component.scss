@@ -6,10 +6,12 @@
   top: 0;
   width: 100%;
   z-index: 1;
+  box-shadow: 0.5px 0.5px 2px #e7e5e5;
+  padding: 0px;
 }
 
 .container {
-  margin:10px 100px 15px 100px;
+  margin:10px 100px 0px 100px;
 }
 
 .txt-header {

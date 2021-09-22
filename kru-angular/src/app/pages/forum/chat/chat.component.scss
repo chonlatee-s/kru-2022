@@ -37,6 +37,8 @@
   border-left-style: hidden;
   border-bottom: 1px solid #ccc;
   font-family: 'Sarabun';
+  font-size: 12px;
+  font-weight: 300;
 }
 .comment:focus {
   outline: none;
@@ -54,4 +56,13 @@
   color: #fff !important;
   background: #222 !important;
   border: 1px solid #222 !important;
+}
+.btn-cancle {
+  color:#222;
+  margin-top: 8px;
+  margin-right: 20px;
+  font-size: 12px;
+}
+.icon-date {
+  font-size: 8px; margin-top: 2px; margin-right: 5px;
 }

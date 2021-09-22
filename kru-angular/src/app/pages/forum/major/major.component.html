@@ -5,10 +5,10 @@
         <a routerLink="/forum"><i class="pi pi-users"></i><span class="txt-forum-menu">ห้องทั่วไป</span></a>
       </div>
       <div class="flex">
-        <a routerLink="major"><i class="pi pi-star-o"></i><span class="txt-forum-menu">ห้องวิชาเอก</span></a>
+        <a routerLink="/forum/major"><i class="pi pi-star-o"></i><span class="txt-forum-menu">ห้องวิชาเอก</span></a>
       </div>
     </div>
-    <div class="flex">
+    <div class="flex" (click)="display = true">
       <div class="forum-btn-hover">
         <button pButton type="button" class="forum-btn p-button-rounded">เริ่มพูดคุย</button>
       </div>
@@ -67,3 +67,18 @@
     </div>
   </div>
 </div>
+
+<p-sidebar [(visible)]="display" position="bottom">
+  <div class="flex flex-row justify-content-around flex-wrap">
+    <div class="flex">
+      <p-avatar image="https://lh3.googleusercontent.com/a-/AOh14GicIT0uW03JgwKA-3KjWtDU1hdAIEpb5aK_zf9G=s96-c" shape="circle"></p-avatar>
+    </div>
+    <div class="flex mb-2 flex-grow-1">
+      <input type="text" class="comment" placeholder="แสดงความคิดเห็น ห้องวิชาเอก">
+    </div>
+  </div>
+  <div class="flex box-comment justify-content-center">
+    <div class="flex"><span class="btn-cancle">ยกเลิก</span></div>
+    <div class="flex"><button pButton type="button" class="p-button-rounded btn-comment">ส่งความคิดเห็น</button></div>
+  </div>
+</p-sidebar>

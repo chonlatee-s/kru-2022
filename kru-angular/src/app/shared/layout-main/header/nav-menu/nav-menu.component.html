@@ -3,47 +3,55 @@
 [breakpoints]="{'1024px': '100vw', '640px': '100vw'}" [style]="{width: '25vw'}"
 [(visible)]="display" [position]="position" [draggable]="false" [modal]="true" [dismissableMask]="true">
   <div class="flex flex-column">
-    <div class="flex" (click)="listMenu()">
-      <a routerLink="/stats">
+
+    <a routerLink="/stats">
+      <div class="flex" (click)="listMenu()">
         <i class="pi pi-chart-line icon"></i>
         <span class="txt-menu">สถิติ</span>
-      </a>
-    </div>
-    <div class="flex" (click)="listMenu()">
-      <a routerLink="/forum">
+      </div>
+    </a>
+
+    <a routerLink="/forum">
+      <div class="flex" (click)="listMenu()">
         <i class="pi pi-comments icon"></i>
         <span class="txt-menu">พูดคุย</span>
-      </a>
-    </div>
-    <div class="flex" (click)="listMenu()">
-      <a routerLink="/job">
+      </div>
+    </a>
+
+    <a routerLink="/job">
+      <div class="flex" (click)="listMenu()">
         <i class="pi pi-send icon"></i>
         <span class="txt-menu">หางาน</span>
-      </a>
-    </div>
-    <div class="flex" (click)="listMenu()">
-      <a routerLink="/download">
+      </div>
+    </a>
+
+    <a routerLink="/download">
+      <div class="flex" (click)="listMenu()">
         <i class="pi pi-download icon"></i>
         <span class="txt-menu">แนวข้อสอบ</span>
-      </a>
-    </div>
-    <div class="flex" (click)="listMenu()">
-      <a href="https://play.google.com/store/apps/details?id=com.kruApp.kruphoochuay" target="_blank">
+      </div>
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=com.kruApp.kruphoochuay" target="_blank">
+      <div class="flex" (click)="listMenu()">
         <i class="pi pi-android icon"></i>
         <span class="txt-menu">แอปพลิเคชัน</span>
-      </a>
-    </div>
-    <div class="flex" (click)="listMenu()">
-      <a routerLink="/course">
+      </div>
+    </a>
+
+    <a routerLink="/course">
+      <div class="flex" (click)="listMenu()">
         <i class="pi pi-briefcase icon"></i>
         <span class="txt-menu">เรียนออนไลน์</span>
-      </a>
-    </div>
-    <div class="flex" (click)="listMenu()">
-      <a routerLink="/predict">
+      </div>
+    </a>
+
+    <a routerLink="/predict">
+      <div class="flex" (click)="listMenu()">
         <i class="pi pi-info icon"></i>
         <span class="txt-menu">เซียมซีเสี่ยงทาย</span>
-      </a>
-    </div>
+      </div>
+    </a>
+
   </div>
 </p-dialog>

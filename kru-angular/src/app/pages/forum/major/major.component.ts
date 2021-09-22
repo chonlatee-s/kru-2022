@@ -11,7 +11,7 @@ interface Car {
   styleUrls: ['./major.component.scss']
 })
 export class MajorComponent implements OnInit {
-
+  display:boolean = false;
   constructor() { }
 
   cars: Car[] = [

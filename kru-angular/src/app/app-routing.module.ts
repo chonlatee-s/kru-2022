@@ -17,7 +17,8 @@ const routes: Routes = [
       { path: 'forum', loadChildren: () => import('./pages/forum/forum.module').then(m => m.ForumModule) },
       { path: 'information', loadChildren: () => import('./pages/information/information.module').then(m => m.InformationModule) }
     ]
-  }
+  },
+  { path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) }
 ];
 
 @NgModule({

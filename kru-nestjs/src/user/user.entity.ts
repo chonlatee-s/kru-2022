@@ -15,4 +15,6 @@ export class UserEntity {
   fullname: string;
   @Column()
   profile: string;
+  @Column()
+  major: string;
 }

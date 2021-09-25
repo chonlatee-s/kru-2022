@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
 import { ButtonModule } from 'primeng/button';
-
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { ButtonModule } from 'primeng/button';
   imports: [
     CommonModule,
     RegisterRoutingModule,
-    ButtonModule
+    ButtonModule,
+    DividerModule
   ]
 })
 export class RegisterModule { }

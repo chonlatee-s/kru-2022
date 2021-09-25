@@ -1,0 +1,14 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "",
+  "database": "kru",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "migrations": ["dist/db/migrations/*.js"],
+  "cli": {
+    "migrationsDir": "src/db/migrations"
+  },
+  "synchronize": false
+}

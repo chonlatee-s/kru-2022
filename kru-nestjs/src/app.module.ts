@@ -6,9 +6,10 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { JobModule } from './job/job.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule],
+  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule],
   controllers: [AppController],
   providers: [
     AppService,

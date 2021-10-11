@@ -8,8 +8,8 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { CreateJobDto } from './dto/dto/create-job.dto';
-import { UpdateJobDto } from './dto/dto/update-job.dto';
+import { CreateJobDto } from './dto/create-job.dto';
+import { UpdateJobDto } from './dto/update-job.dto';
 import { Job } from './interfaces/job.interface';
 import { JobService } from './job.service';
 

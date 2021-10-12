@@ -8,6 +8,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { Public } from 'src/auth/jwt-auth.guard';
 import { DownloadService } from './download.service';
 import { CreateDownloadDto } from './dto/create-download.dto';
 import { UpdateDownloadDto } from './dto/update-download.dto';
@@ -17,6 +18,7 @@ import { Download } from './interfaces/download.interface';
 export class DownloadController {
   constructor(private downloadService: DownloadService) {}
 
+  @Public()
   @Get()
   async findAll() {
     return await this.downloadService.findAll();

@@ -8,6 +8,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { Public } from 'src/auth/jwt-auth.guard';
 import { CreateJobDto } from './dto/create-job.dto';
 import { UpdateJobDto } from './dto/update-job.dto';
 import { Job } from './interfaces/job.interface';
@@ -17,6 +18,7 @@ import { JobService } from './job.service';
 export class JobController {
   constructor(private jobService: JobService) {}
 
+  @Public()
   @Get()
   async findAll() {
     return await this.jobService.findAll();

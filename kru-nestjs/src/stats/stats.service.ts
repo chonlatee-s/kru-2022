@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserService } from 'src/user/user.service';
-import { Column, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { StatsEntity } from './stats.entity';
 
 @Injectable()
@@ -19,13 +19,13 @@ export class StatsService {
   }
 
   async findTop5() {
-    const userStats: any = await this.statsRepository
+    const userStats = await this.statsRepository
       .createQueryBuilder('stats')
       .select(['stats.userId', 'stats.score'])
       .orderBy('stats.score', 'DESC')
       .where('stats.status = :status', { status: 'L' })
       .limit(5)
-      .leftJoinAndSelect('stats.user', 'user.fullname')
+      .leftJoinAndSelect('stats.user', 'user')
       .getMany();
 
     const result = userStats.map((val: any) => {

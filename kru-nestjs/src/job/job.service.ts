@@ -23,8 +23,8 @@ export class JobService {
     return await this.jobRepository.save(data);
   }
 
-  async updateJob(job: Job) {
-    return await this.jobRepository.update({ uuId: job.uuId }, job);
+  async updateJob(data: Job) {
+    return await this.jobRepository.update({ uuId: data.uuId }, data);
   }
 
   async removeJob(id: string) {

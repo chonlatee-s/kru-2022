@@ -23,11 +23,8 @@ export class DownloadService {
     return await this.downloadRepository.save(data);
   }
 
-  async updateDownload(download: Download) {
-    return await this.downloadRepository.update(
-      { uuId: download.uuId },
-      download,
-    );
+  async updateDownload(data: Download) {
+    return await this.downloadRepository.update({ uuId: data.uuId }, data);
   }
 
   async removeDownload(id: string) {

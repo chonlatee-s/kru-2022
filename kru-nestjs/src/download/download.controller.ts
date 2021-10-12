@@ -10,8 +10,6 @@ import {
 } from '@nestjs/common';
 import { Public } from 'src/auth/jwt-auth.guard';
 import { DownloadService } from './download.service';
-import { CreateDownloadDto } from './dto/create-download.dto';
-import { UpdateDownloadDto } from './dto/update-download.dto';
 import { Download } from './interfaces/download.interface';
 
 @Controller('download')
@@ -30,19 +28,16 @@ export class DownloadController {
   }
 
   @Post()
-  async createJob(@Body() data: CreateDownloadDto): Promise<Download> {
+  async createJob(@Body() data: Download): Promise<Download> {
     return await this.downloadService.createDownload(data);
   }
 
   @Put(':id')
-  async update(
-    @Param('id') id: string,
-    @Body() downloadDto: UpdateDownloadDto,
-  ) {
+  async update(@Param('id') id: string, @Body() data: Download) {
     const download = await this.downloadService.findOne(id);
     if (!download) throw new NotFoundException();
-    downloadDto.uuId = download.uuId;
-    return await this.downloadService.updateDownload(downloadDto);
+    data.uuId = download.uuId;
+    return await this.downloadService.updateDownload(data);
   }
 
   @Delete(':id')

@@ -9,8 +9,6 @@ import {
   Put,
 } from '@nestjs/common';
 import { Public } from 'src/auth/jwt-auth.guard';
-import { CreateJobDto } from './dto/create-job.dto';
-import { UpdateJobDto } from './dto/update-job.dto';
 import { Job } from './interfaces/job.interface';
 import { JobService } from './job.service';
 
@@ -30,17 +28,17 @@ export class JobController {
   }
 
   @Post()
-  async createJob(@Body() data: CreateJobDto): Promise<Job> {
+  async createJob(@Body() data: Job): Promise<Job> {
     return await this.jobService.createJob(data);
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() jobDto: UpdateJobDto) {
+  async update(@Param('id') id: string, @Body() data: Job) {
     const job = await this.jobService.findOne(id);
     if (!job) throw new NotFoundException();
     // เอาไอดีที่หาได้มาใส่แทน เพื่อป้องกันการอัปเดทผิดพลาด
-    jobDto.uuId = job.uuId;
-    return await this.jobService.updateJob(jobDto);
+    data.uuId = job.uuId;
+    return await this.jobService.updateJob(data);
   }
 
   @Delete(':id')

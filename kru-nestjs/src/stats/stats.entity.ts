@@ -19,6 +19,8 @@ export class StatsEntity {
   userId: number;
   @Column()
   score: number;
+  @Column({ type: 'char' })
+  status: string;
   @CreateDateColumn()
   createAt: Date;
 

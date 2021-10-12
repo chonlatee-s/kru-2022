@@ -22,7 +22,7 @@ export class ExamController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return await this.examService.findOne(id);
+    return 'do'; //await this.examService.findOne(id);
   }
 
   @Post()
@@ -43,5 +43,15 @@ export class ExamController {
     const job = await this.examService.findOne(id);
     if (!job) throw new NotFoundException();
     return await this.examService.removeExam(id);
+  }
+
+  @Get('test/trainning')
+  async trainning() {
+    return this.examService.randomExam(10);
+  }
+
+  @Get('test/competition')
+  async competition() {
+    return this.examService.randomExam(20);
   }
 }

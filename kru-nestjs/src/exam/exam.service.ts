@@ -30,4 +30,12 @@ export class ExamService {
   async removeExam(id: string) {
     return await this.examRepository.delete({ uuId: id });
   }
+
+  randomExam(qty: number) {
+    return this.examRepository
+      .createQueryBuilder()
+      .orderBy('RAND()')
+      .limit(qty)
+      .getMany();
+  }
 }

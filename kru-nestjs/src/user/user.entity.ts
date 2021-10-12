@@ -1,5 +1,10 @@
-import { Column, Entity, Generated, PrimaryGeneratedColumn } from 'typeorm';
-
+import {
+  Column,
+  Entity,
+  Generated,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 @Entity('user')
 export class UserEntity {
   @PrimaryGeneratedColumn()
@@ -17,4 +22,7 @@ export class UserEntity {
   profile: string;
   @Column()
   major: string;
+
+  // @OneToMany(() => Photo, photo => photo.user)
+  // photos: Photo[];
 }

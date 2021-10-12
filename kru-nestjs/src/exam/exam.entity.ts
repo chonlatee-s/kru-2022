@@ -27,7 +27,7 @@ export class ExamEntity {
   choice4: string;
   @Column()
   answer: string;
-  @Column()
+  @Column({ type: 'text' })
   ref: string;
   @Column()
   type: string;

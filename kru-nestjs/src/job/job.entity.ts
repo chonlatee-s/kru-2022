@@ -15,7 +15,7 @@ export class JobEntity {
   uuId: string;
   @Column()
   topic: string;
-  @Column()
+  @Column({ type: 'text' })
   ref: string;
   @Column()
   dateExpire: Date;

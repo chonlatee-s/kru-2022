@@ -16,7 +16,7 @@ export class StatsEntity {
   @Generated('uuid')
   uuId: string;
   @Column()
-  userId: string;
+  userId: number;
   @Column()
   score: number;
   @CreateDateColumn()

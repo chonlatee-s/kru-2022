@@ -1,3 +1,4 @@
+import { StatsEntity } from 'src/stats/stats.entity';
 import {
   Column,
   Entity,
@@ -23,6 +24,6 @@ export class UserEntity {
   @Column()
   major: string;
 
-  // @OneToMany(() => Photo, photo => photo.user)
-  // photos: Photo[];
+  @OneToMany(() => StatsEntity, (s) => s.user)
+  stats: StatsEntity[];
 }

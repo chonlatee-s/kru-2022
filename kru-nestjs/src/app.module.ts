@@ -9,9 +9,10 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { JobModule } from './job/job.module';
 import { DownloadModule } from './download/download.module';
 import { ExamModule } from './exam/exam.module';
+import { StatsModule } from './stats/stats.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule],
+  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule, StatsModule],
   controllers: [AppController],
   providers: [
     AppService,

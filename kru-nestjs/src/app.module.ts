@@ -8,9 +8,10 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { JobModule } from './job/job.module';
 import { DownloadModule } from './download/download.module';
+import { ExamModule } from './exam/exam.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule],
+  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule],
   controllers: [AppController],
   providers: [
     AppService,

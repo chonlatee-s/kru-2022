@@ -22,7 +22,7 @@ export class ExamController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return 'do'; //await this.examService.findOne(id);
+    return await this.examService.findOne(id);
   }
 
   @Post()
@@ -47,11 +47,16 @@ export class ExamController {
 
   @Get('test/trainning')
   async trainning() {
-    return this.examService.randomExam(10);
+    return await this.examService.randomExam(10);
   }
 
   @Get('test/competition')
   async competition() {
-    return this.examService.randomExam(20);
+    return await this.examService.randomExam(20);
+  }
+
+  @Post('test/answer')
+  async answer(@Body() data: Exam[]) {
+    return await this.examService.answer(data);
   }
 }

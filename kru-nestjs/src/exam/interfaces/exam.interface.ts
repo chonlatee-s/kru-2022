@@ -11,4 +11,5 @@ export interface Exam {
   ref: string;
   type: string;
   createAt?: Date;
+  check?: boolean;
 }

@@ -53,13 +53,13 @@ export class StatsService {
     if (!user) throw new ForbiddenException();
 
     const stats = await this.statsRepository.find({ userId: user.id });
-    if (stats.length < 10) return await this.createNewStats(data);
+    if (stats.length < 10) await this.createNewStats(data);
     else {
       // ขั้นตอนที่ 1 หาตัวที่เก่าที่สุด 1 แถวและลบออก
       await this.findOldOneAndDelete(data.id);
 
       // ขั้นตอนที่ 2 อัปเดตสถานะเป็น O ลงข้อมูลใหม่ให้เป็น L
-      return await this.createNewStats(data);
+      await this.createNewStats(data);
     }
   }
 
@@ -68,7 +68,7 @@ export class StatsService {
     await this.updateStatus(data.id);
 
     data.datas.userId = user.id;
-    return await this.statsRepository.save(data.datas);
+    await this.statsRepository.save(data.datas);
   }
 
   async findOldOneAndDelete(id: string) {

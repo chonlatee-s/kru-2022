@@ -1,11 +1,4 @@
-import {
-  Body,
-  Controller,
-  ForbiddenException,
-  Get,
-  Param,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { StatsCreate } from './interfaces/stats-create.interface';
 import { StatsService } from './stats.service';
 
@@ -24,8 +17,6 @@ export class StatsController {
 
   @Post()
   async createStats(@Body() data: StatsCreate) {
-    const result = await this.statsService.createStats(data);
-    if (result) return true;
-    else throw new ForbiddenException();
+    await this.statsService.createStats(data);
   }
 }

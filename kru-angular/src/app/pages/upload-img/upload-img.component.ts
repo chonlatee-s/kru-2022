@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./upload-img.component.scss']
 })
 export class UploadImgComponent implements OnInit {
+  filenameImg: string = '';
   selectedFile: any = null;
   imgUrl:string = '';
   constructor( private http: HttpClient ) { }
@@ -25,12 +26,15 @@ export class UploadImgComponent implements OnInit {
   }
 
   onUpload() {
-    console.log(this.selectedFile);
     const fd = new FormData();
     fd.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.post('http://localhost:3000/upload-img/upload', fd)
-    .subscribe( (res) =>{
+    fd.append('topic', 'topic1');
+    fd.append('detail', 'detail1');
+    fd.append('ref', 'ref1');
+    this.http.post('http://localhost:3000/course', fd)
+    .subscribe( (res: any) =>{
       console.log(res);
+      this.filenameImg = res.filename;
     })
   }
 

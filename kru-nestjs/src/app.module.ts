@@ -10,9 +10,10 @@ import { JobModule } from './job/job.module';
 import { DownloadModule } from './download/download.module';
 import { ExamModule } from './exam/exam.module';
 import { StatsModule } from './stats/stats.module';
+import { UploadImgModule } from './upload-img/upload-img.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule, StatsModule],
+  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule, StatsModule, UploadImgModule],
   controllers: [AppController],
   providers: [
     AppService,

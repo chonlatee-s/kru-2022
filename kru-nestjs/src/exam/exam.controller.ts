@@ -7,7 +7,14 @@ import {
   Param,
   Post,
   Put,
+  Res,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { createReadStream } from 'fs';
+import { join } from 'path';
+import { Public } from 'src/auth/jwt-auth.guard';
 import { ExamService } from './exam.service';
 import { Exam } from './interfaces/exam.interface';
 
@@ -25,9 +32,22 @@ export class ExamController {
     return await this.examService.findOne(id);
   }
 
+  @UseInterceptors(FileInterceptor('image', { dest: './uploads' }))
   @Post()
-  async createJob(@Body() data: Exam): Promise<Exam> {
-    return await this.examService.createExam(data);
+  async createExam(
+    @Body() data: Exam,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    data.img = file.filename;
+    await this.examService.createExam(data);
+    return file;
+  }
+
+  @Public() // อ่านไฟล์ภาพ
+  @Get('img/:id')
+  async getImgs(@Param('id') id: string, @Res() res) {
+    const file = createReadStream(join(process.cwd(), `uploads/${id}`));
+    return file.pipe(res);
   }
 
   @Put(':id')

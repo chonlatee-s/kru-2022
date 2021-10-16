@@ -7,10 +7,13 @@ import {
   Param,
   Post,
   Put,
+  Res,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { createReadStream } from 'fs';
+import { join } from 'path';
 import { Public } from 'src/auth/jwt-auth.guard';
 import { CourseService } from './course.service';
 import { Course } from './interfaces/course.interface';
@@ -39,6 +42,13 @@ export class CourseController {
     data.img = file.filename;
     await this.courseService.createCourse(data);
     return file;
+  }
+
+  @Public() // อ่านไฟล์ภาพ
+  @Get('img/:id')
+  async getImgs(@Param('id') id: string, @Res() res) {
+    const file = createReadStream(join(process.cwd(), `uploads/${id}`));
+    return file.pipe(res);
   }
 
   @Put(':id')

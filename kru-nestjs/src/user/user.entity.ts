@@ -6,9 +6,8 @@ import {
   CreateDateColumn,
   Entity,
   Generated,
-  JoinColumn,
+  ManyToOne,
   OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -40,10 +39,9 @@ export class UserEntity {
   @OneToMany(() => StatsEntity, (s) => s.user)
   stats: StatsEntity[];
 
-  @OneToOne(() => MajorEntity)
-  @JoinColumn()
+  @ManyToOne(() => MajorEntity, (m) => m.user)
   major: MajorEntity;
 
   @OneToMany(() => ForumEntity, (f) => f.user)
-  forum: MajorEntity[];
+  forum: ForumEntity[];
 }

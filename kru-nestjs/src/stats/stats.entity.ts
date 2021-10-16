@@ -4,8 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   Generated,
-  JoinColumn,
-  OneToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -23,7 +22,6 @@ export class StatsEntity {
   @CreateDateColumn()
   createAt: Date;
 
-  @OneToOne(() => UserEntity)
-  @JoinColumn()
+  @ManyToOne(() => UserEntity, (user) => user.stats)
   user: UserEntity;
 }

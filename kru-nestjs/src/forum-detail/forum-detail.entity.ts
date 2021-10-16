@@ -1,25 +1,25 @@
-import { ForumDetailEntity } from 'src/forum-detail/forum-detail.entity';
-import { UserEntity } from 'src/user/user.entity';
+import { ForumEntity } from 'src/forum/forum.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   Generated,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('forum')
-export class ForumEntity {
+@Entity('detail')
+export class ForumDetailEntity {
   @PrimaryGeneratedColumn()
   id: number;
   @Column({ unique: true })
   @Generated('uuid')
   uuId: string;
   @Column({ type: 'text' })
-  topic: string;
+  answer: string;
+  @Column()
+  forumId: number;
   @Column()
   userId: number;
   @UpdateDateColumn()
@@ -27,9 +27,6 @@ export class ForumEntity {
   @CreateDateColumn()
   createAt: Date;
 
-  @ManyToOne(() => UserEntity, (user) => user.forum)
-  user: UserEntity;
-
-  @OneToMany(() => ForumDetailEntity, (fd) => fd.forum)
-  detail: ForumDetailEntity[];
+  @ManyToOne(() => ForumEntity, (f) => f.detail)
+  forum: ForumEntity;
 }

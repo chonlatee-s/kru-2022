@@ -14,9 +14,10 @@ import { UploadImgModule } from './upload-img/upload-img.module';
 import { CourseModule } from './course/course.module';
 import { MajorModule } from './major/major.module';
 import { ForumModule } from './forum/forum.module';
+import { ForumDetailModule } from './forum-detail/forum-detail.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule, StatsModule, UploadImgModule, CourseModule, MajorModule, ForumModule],
+  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule, StatsModule, UploadImgModule, CourseModule, MajorModule, ForumModule, ForumDetailModule],
   controllers: [AppController],
   providers: [
     AppService,

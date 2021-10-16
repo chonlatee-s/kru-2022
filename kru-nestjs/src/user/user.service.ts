@@ -12,7 +12,7 @@ export class UserService {
   ) {}
 
   async findAll() {
-    return this.userRepository.find();
+    return this.userRepository.find({ relations: ['major'] });
   }
 
   async findOne(email: string) {

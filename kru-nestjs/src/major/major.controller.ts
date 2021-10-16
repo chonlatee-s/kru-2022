@@ -8,7 +8,6 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { Public } from 'src/auth/jwt-auth.guard';
 import { Major } from './interfaces/major.interface';
 import { MajorService } from './major.service';
 
@@ -16,7 +15,6 @@ import { MajorService } from './major.service';
 export class MajorController {
   constructor(private majorService: MajorService) {}
 
-  @Public()
   @Get()
   async findAll() {
     return await this.majorService.findAll();

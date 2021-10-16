@@ -9,17 +9,17 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('stats')
-export class StatsEntity {
+@Entity('forum')
+export class ForumEntity {
   @PrimaryGeneratedColumn()
   id: number;
   @Column({ unique: true })
   @Generated('uuid')
   uuId: string;
   @Column()
-  userId: number;
+  topic: string;
   @Column()
-  score: number;
+  userId: number;
   @CreateDateColumn()
   createAt: Date;
 

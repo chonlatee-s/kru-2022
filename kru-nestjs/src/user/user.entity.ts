@@ -1,3 +1,4 @@
+import { ForumEntity } from 'src/forum/forum.entity';
 import { MajorEntity } from 'src/major/major.entity';
 import { StatsEntity } from 'src/stats/stats.entity';
 import {
@@ -5,6 +6,7 @@ import {
   CreateDateColumn,
   Entity,
   Generated,
+  JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -38,6 +40,10 @@ export class UserEntity {
   @OneToMany(() => StatsEntity, (s) => s.user)
   stats: StatsEntity[];
 
-  @OneToOne(() => MajorEntity, (s) => s.user)
+  @OneToOne(() => MajorEntity)
+  @JoinColumn()
   major: MajorEntity;
+
+  @OneToMany(() => ForumEntity, (f) => f.user)
+  forum: MajorEntity[];
 }

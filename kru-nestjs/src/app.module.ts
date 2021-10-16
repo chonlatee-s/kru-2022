@@ -13,9 +13,10 @@ import { StatsModule } from './stats/stats.module';
 import { UploadImgModule } from './upload-img/upload-img.module';
 import { CourseModule } from './course/course.module';
 import { MajorModule } from './major/major.module';
+import { ForumModule } from './forum/forum.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule, StatsModule, UploadImgModule, CourseModule, MajorModule],
+  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule, StatsModule, UploadImgModule, CourseModule, MajorModule, ForumModule],
   controllers: [AppController],
   providers: [
     AppService,

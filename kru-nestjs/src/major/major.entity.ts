@@ -4,24 +4,22 @@ import {
   CreateDateColumn,
   Entity,
   Generated,
-  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('stats')
-export class StatsEntity {
+@Entity('major')
+export class MajorEntity {
   @PrimaryGeneratedColumn()
   id: number;
   @Column({ unique: true })
   @Generated('uuid')
   uuId: string;
   @Column()
-  userId: number;
-  @Column()
-  score: number;
+  major: string;
   @CreateDateColumn()
   createAt: Date;
 
-  @ManyToOne(() => UserEntity, (u) => u.stats)
-  user: UserEntity;
+  @OneToMany(() => UserEntity, (m) => m.major)
+  user: UserEntity[];
 }

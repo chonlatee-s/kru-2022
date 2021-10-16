@@ -35,4 +35,14 @@ export class UserService {
     }
     throw new ForbiddenException();
   }
+
+  async findTop5() {
+    const userStats = await this.userRepository
+      .createQueryBuilder('user')
+      .select(['user.email', 'user.fullname', 'user.profile', 'user.score'])
+      .orderBy({ 'user.updateAt': 'DESC', 'user.score': 'DESC' })
+      .limit(5)
+      .getMany();
+    return userStats;
+  }
 }

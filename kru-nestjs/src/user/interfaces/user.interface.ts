@@ -5,5 +5,9 @@ export interface User {
   email: string;
   fullname: string;
   profile: string;
-  major: string;
+
+  score?: number;
+  updateAt?: Date;
+  createAt?: Date;
+  majorId?: number;
 }

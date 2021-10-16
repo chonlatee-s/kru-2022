@@ -3,6 +3,5 @@ export interface Stats {
   uuId?: string;
   userId: number;
   score: number;
-  status: string;
   createAt?: Date;
 }

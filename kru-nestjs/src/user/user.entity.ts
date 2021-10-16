@@ -1,10 +1,14 @@
+import { MajorEntity } from 'src/major/major.entity';
 import { StatsEntity } from 'src/stats/stats.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   Generated,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 @Entity('user')
 export class UserEntity {
@@ -21,9 +25,19 @@ export class UserEntity {
   fullname: string;
   @Column()
   profile: string;
+
   @Column()
-  major: string;
+  score: number;
+  @UpdateDateColumn()
+  updateAt: Date;
+  @CreateDateColumn()
+  createAt: Date;
+  @Column()
+  majorId: number;
 
   @OneToMany(() => StatsEntity, (s) => s.user)
   stats: StatsEntity[];
+
+  @OneToOne(() => MajorEntity, (s) => s.user)
+  major: MajorEntity;
 }

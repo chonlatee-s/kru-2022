@@ -26,26 +26,7 @@ export class StatsService {
   }
 
   async findTop5() {
-    const userStats = await this.statsRepository
-      .createQueryBuilder('stats')
-      .select(['stats.userId', 'stats.score'])
-      .orderBy('stats.score', 'DESC')
-      .where('stats.status = :status', { status: 'L' })
-      .limit(5)
-      .leftJoinAndSelect('stats.user', 'user')
-      .getMany();
-
-    const result = userStats.map((val: any) => {
-      return {
-        fullname: val.user.fullname,
-        email: val.user.email,
-        profile: val.user.profile,
-        major: val.user.major,
-        score: val.score,
-      };
-    });
-
-    return result;
+    return await this.userService.findTop5();
   }
 
   async createStats(data: StatsCreate) {
@@ -58,15 +39,13 @@ export class StatsService {
       // ขั้นตอนที่ 1 หาตัวที่เก่าที่สุด 1 แถวและลบออก
       await this.findOldOneAndDelete(data.id);
 
-      // ขั้นตอนที่ 2 อัปเดตสถานะเป็น O ลงข้อมูลใหม่ให้เป็น L
+      // ขั้นตอนที่ 2 เพิ่มข้อมูล
       await this.createNewStats(data);
     }
   }
 
   async createNewStats(data: StatsCreate) {
     const user = await this.userService.findOneById(data.id);
-    await this.updateStatus(data.id);
-
     data.datas.userId = user.id;
     await this.statsRepository.save(data.datas);
   }
@@ -81,10 +60,5 @@ export class StatsService {
       .getOne();
 
     await this.statsRepository.delete({ uuId: stats.uuId });
-  }
-
-  async updateStatus(id: string) {
-    const user = await this.userService.findOneById(id);
-    await this.statsRepository.update({ userId: user.id }, { status: 'O' });
   }
 }

@@ -8,7 +8,6 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { Public } from 'src/auth/jwt-auth.guard';
 import { ForumDetailService } from './forum-detail.service';
 import { ForumDetail } from './interfaces/forum-detail.interface';
 
@@ -16,13 +15,11 @@ import { ForumDetail } from './interfaces/forum-detail.interface';
 export class ForumDetailController {
   constructor(private forumDetailService: ForumDetailService) {}
 
-  @Public()
   @Get()
   async findAll() {
     return await this.forumDetailService.findAll();
   }
 
-  @Public()
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return await this.forumDetailService.findOne(id);

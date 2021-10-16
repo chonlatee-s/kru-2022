@@ -12,15 +12,11 @@ export class ForumDetailService {
   ) {}
 
   async findAll() {
-    return await this.forumDetailRepository.find();
+    return await this.forumDetailRepository.find({ relations: ['forum'] });
   }
 
   async findOne(id: string) {
-    return this.forumDetailRepository
-      .createQueryBuilder('forum')
-      .where('forum.uuId = :uuId', { uuId: id })
-      .leftJoinAndSelect('forum.user', 'user')
-      .getOne();
+    return this.forumDetailRepository.findOne({ uuId: id });
   }
 
   async createForumDetail(data: ForumDetail) {

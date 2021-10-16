@@ -20,6 +20,7 @@ export class ForumService {
       .createQueryBuilder('forum')
       .where('forum.uuId = :uuId', { uuId: id })
       .leftJoinAndSelect('forum.user', 'user')
+      .leftJoinAndSelect('forum.detail', 'detail')
       .getOne();
   }
 

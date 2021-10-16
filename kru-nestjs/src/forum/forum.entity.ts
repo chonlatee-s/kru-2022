@@ -7,6 +7,7 @@ import {
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('forum')
@@ -20,6 +21,8 @@ export class ForumEntity {
   topic: string;
   @Column()
   userId: number;
+  @UpdateDateColumn()
+  updateAt: Date;
   @CreateDateColumn()
   createAt: Date;
 

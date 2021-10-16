@@ -16,7 +16,11 @@ export class ForumService {
   }
 
   async findOne(id: string) {
-    return this.forumRepository.findOne({ uuId: id });
+    return this.forumRepository
+      .createQueryBuilder('forum')
+      .where('forum.uuId = :uuId', { uuId: id })
+      .leftJoinAndSelect('forum.user', 'user')
+      .getOne();
   }
 
   async createForum(data: Forum) {

@@ -39,6 +39,9 @@ export class UserEntity {
   @Column()
   majorId: number;
 
+  @Column({ type: 'char' })
+  type: string;
+
   @OneToMany(() => StatsEntity, (s) => s.user)
   stats: StatsEntity[];
 

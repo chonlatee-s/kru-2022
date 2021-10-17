@@ -30,7 +30,7 @@ export class AuthController {
   @Public()
   @Get('check/:email')
   async find(@Param('email') email: string): Promise<boolean> {
-    const data = await this.userService.findOne(email);
+    const data = await this.userService.checkEmail(email);
     if (data) return true;
     else return false;
   }

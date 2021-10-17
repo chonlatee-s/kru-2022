@@ -29,7 +29,7 @@ export class AuthService extends BaseService<unknown, unknown>{
     const data = await this.http.get<any>(`${this.endpoint}/check/${user.email}`).toPromise();
 
     if(data) {
-      this.login(user.email);
+      this.login(user);
       return null;
     }
     else return user;
@@ -38,12 +38,12 @@ export class AuthService extends BaseService<unknown, unknown>{
 
   async register(profile: Profile) {
     const data = await this.http.post<any>(`${this.endpoint}/register`, profile).toPromise();
-    this.login(data.email);
+    this.login(data);
   }
 
 
-  async login(email: string) {
-    const data = await this.http.post<any>(`${this.endpoint}/login`, {email: email, password:'********'}).toPromise();
+  async login(dataLogin: any) {
+    const data = await this.http.post<any>(`${this.endpoint}/login`, { email: dataLogin.email, password: dataLogin.id }).toPromise();
     if(data){
       localStorage.setItem('token', data.access_token);
       this.router.navigate(['/']);
@@ -56,7 +56,7 @@ export class AuthService extends BaseService<unknown, unknown>{
     return localStorage.getItem('token')
   }
 
-  
+
   signOut(): void {
     this.socialAuthService.signOut();
   }

@@ -15,7 +15,11 @@ export class UserService {
     return this.userRepository.find({ relations: ['major'] });
   }
 
-  async findOne(email: string) {
+  async findOne(email: string, password: string) {
+    return this.userRepository.findOne({ email: email, generateId: password });
+  }
+
+  async checkEmail(email: string) {
     return this.userRepository.findOne({ email: email });
   }
 

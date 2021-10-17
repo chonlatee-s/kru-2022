@@ -1,5 +1,5 @@
 <p-avatar
-image="https://lh3.googleusercontent.com/a-/AOh14GjhzhUxIxameWuPyEnIYOi6TzoePDZvv9T5GrP9=s96-c" 
+image="{{ userProfile.profile }}" 
 shape="circle" tooltipStyleClass="tooltip" pTooltip="บัญชี" tooltipPosition="top" (click)="listMenu()" class="pointer"></p-avatar>
 
 <p-dialog header="บัญชีของคุณ" styleClass="listMenu" 
@@ -8,10 +8,10 @@ shape="circle" tooltipStyleClass="tooltip" pTooltip="บัญชี" tooltipPos
 <div class="flex flex-column">
   <div class="flex">
     <i class="pi pi-user icon"></i>
-    <span class="txt-menu">บรรเจิด เลิศภิรมย์สมฤดี</span>
+    <span class="txt-menu">{{ userProfile.fullname }}</span>
   </div>
   <p-divider></p-divider>
-  <div class="flex">
+  <div class="flex pointer" (click)="logout()">
     <i class="pi pi-sign-out icon"></i>
     <span class="txt-menu">ออกจากระบบ</span>
   </div>

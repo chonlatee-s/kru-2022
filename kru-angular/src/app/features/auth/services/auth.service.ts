@@ -39,6 +39,8 @@ export class AuthService extends BaseService<unknown, unknown>{
 
   async register(profile: Profile) {
     const data = await this.http.post<any>(`${this.endpoint}/register`, profile).toPromise();
+ 
+    data.id = data.generateId;
     this.login(data);
   }
 

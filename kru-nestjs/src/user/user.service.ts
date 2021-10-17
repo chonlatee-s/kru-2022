@@ -37,6 +37,8 @@ export class UserService {
 
     // ถ้าไม่มี user คนนี้ให้ลงทะเบียน
     if (!checkUser) {
+      data.type = 'U';
+
       await this.userRepository.save(data);
       return this.userRepository.findOne({ email: data.email });
     }

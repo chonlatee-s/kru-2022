@@ -7,7 +7,7 @@
   </div>
   <div class="flex flex-grow-1">
     <div style="width:100%">
-      <p-table [value]="cars" styleClass="p-datatable-sm" responsiveLayout="scroll">
+      <p-table [value]="stats" styleClass="p-datatable-sm" responsiveLayout="scroll">
         <ng-template pTemplate="header">
           <tr> 
             <th pResizableColumn>สถิติ 10 ครั้ง</th>
@@ -18,7 +18,7 @@
         <ng-template pTemplate="body" let-car>
             <tr>
                 <td> {{car.count}} </td>
-                <td> {{car.date}} </td>
+                <td> {{car.createAt}} </td>
                 <td> {{car.score}} </td>
             </tr>
         </ng-template>

@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
       generateId: this.socialUser.id,
       profile: this.socialUser.photoUrl,
       provider: this.socialUser.provider,
-      majorId: option === 'skip' ? 0 : this.selectedMajor.id
+      majorId: option === 'skip' ? 1 : this.selectedMajor.id
     }
     console.log(this.profile)
     this.authService.register(this.profile);

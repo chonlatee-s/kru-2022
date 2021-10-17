@@ -19,7 +19,7 @@ export class StatsService {
 
     const stats = await this.statsRepository
       .createQueryBuilder('stats')
-      .select(['stats.userId', 'stats.score'])
+      .select(['stats.userId', 'stats.score', 'stats.createAt'])
       .orderBy('stats.createAt', 'DESC')
       .where('stats.userId = :userId', { userId: user.id })
       .limit(10)

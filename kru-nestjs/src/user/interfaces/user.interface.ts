@@ -7,6 +7,7 @@ export interface User {
   profile: string;
 
   provider?: string;
+  type: string;
 
   score?: number;
   updateAt?: Date;

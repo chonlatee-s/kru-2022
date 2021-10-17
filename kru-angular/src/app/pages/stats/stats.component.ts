@@ -1,35 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Car {
-  count: string
-  date: string
-  score: string
-}
-
+import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
+import { AuthService } from 'src/app/features/auth/services/auth.service';
+import { Stats } from 'src/app/features/stats/interfaces/stats.interface';
+import { StatsService } from 'src/app/features/stats/services/stats.service';
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
-  showMenuRight: boolean = true
-  avg: number = 100
-  constructor() { }
+  showMenuRight: boolean = true;
+  avg: number = 100;
 
-  cars: Car[] = [
-    {count:'1', date:'10-10-2563', score:'10'},
-    {count:'2', date:'10-10-2563', score:'10'},
-    {count:'3', date:'10-10-2563', score:'10'},
-    {count:'4', date:'10-10-2563', score:'10'},
-    {count:'5', date:'10-10-2563', score:'10'},
-    {count:'6', date:'10-10-2563', score:'10'},
-    {count:'7', date:'10-10-2563', score:'10'},
-    {count:'8', date:'10-10-2563', score:'10'},
-    {count:'9', date:'10-10-2563', score:'10'},
-    {count:'10', date:'10-10-2563', score:'10'},
-  ]
+  userProfile!: UserProfile;
+  stats!: Stats[];
 
-  ngOnInit(): void {
+  constructor(
+    private authService: AuthService,
+    private statsService: StatsService
+  ) { }
+
+  async ngOnInit(): Promise<void> {
+    this.userProfile = await this.authService.getProfile();
+    this.stats = await this.statsService.getStats(this.userProfile.uuId);
   }
 
 }

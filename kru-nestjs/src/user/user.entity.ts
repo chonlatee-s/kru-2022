@@ -28,6 +28,9 @@ export class UserEntity {
   profile: string;
 
   @Column()
+  provider: string;
+
+  @Column()
   score: number;
   @UpdateDateColumn()
   updateAt: Date;

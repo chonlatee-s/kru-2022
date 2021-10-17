@@ -6,6 +6,8 @@ export interface User {
   fullname: string;
   profile: string;
 
+  provider?: string;
+
   score?: number;
   updateAt?: Date;
   createAt?: Date;

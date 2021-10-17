@@ -20,6 +20,12 @@ import { MenuComponent } from './shared/layout-main/menu/menu.component';
 import { CompetitorsComponent } from './shared/layout-main/competitors/competitors.component';
 import { FooterComponent } from './shared/layout-main/footer/footer.component';
 
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+} from 'angularx-social-login';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,9 +46,28 @@ import { FooterComponent } from './shared/layout-main/footer/footer.component';
     TooltipModule,
     DialogModule,
     DividerModule,
-    ButtonModule
+    ButtonModule,
+    
+    SocialLoginModule,
+    HttpClientModule
   ],
-  providers: [],
+  // providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '413443577640-cuq0u63d2qgudd7ml02uooatg4ndmveg.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }    
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

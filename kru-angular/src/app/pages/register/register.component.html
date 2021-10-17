@@ -1,17 +1,38 @@
-<div class="flex flex-column align-items-center mt-8">
+<div class="flex flex-column align-items-center mt-8" *ngIf="step1">
   <div class="flex"><img src="assets/img/logo.svg" alt="ครูผู้ช่วย.com" width="40"></div>
   <div class="flex mt-4 txt-welcome">ฉัน <i class="pi pi-heart icon-love"></i> อาชีพครู</div>
-  <div class="flex mt-2 mr-2 ml-2 txt-detail text-center">" What is not started today is never finished tomorrow. "</div>
-  <div class="flex txt-quote">- Johann Wolfgang von Goethe -</div>
+  <div class="flex mt-2 mr-2 ml-2 txt-detail text-center">" Learning by Doing. "</div>
+  <div class="flex txt-quote">- John Dewey -</div>
   <div class="flex flex-column">
     <p-divider></p-divider>
-    <a href="/">
     <div class="flex mb-2 align-items-start">
-      <button pButton pRipple type="button" label="ลงทะเบียนด้วย Google" icon="pi pi-google" class="btn-regis p-button-rounded p-button-secondary p-button-outlined"></button>
+      <button pButton pRipple type="button" label="ลงทะเบียนด้วย Google" icon="pi pi-google" class="btn-regis p-button-rounded p-button-secondary p-button-outlined" (click)="signInWithGoogle()"></button>
     </div>
     <div class="flex mb-2 align-items-start">
       <button pButton pRipple type="button" label="ลงทะเบียนด้วย Facebook" icon="pi pi-facebook" class="btn-regis p-button-rounded p-button-secondary p-button-outlined"></button>
     </div>
-    </a>
+  </div>
+</div>
+
+<div class="flex flex-column align-items-center mt-8" *ngIf="step2">
+  <div class="flex"><span class="txt-topic-major">เลือกสาขาเพื่อเจอเพื่อนใหม่</span></div>
+  <div class="flex mt-2 mr-2 ml-2">
+    <span class="txt-detail">อีเมล {{ socialUser.email }}</span>
+  </div>
+
+  <div class="flex flex-grow-1 mt-6 mr-2 ml-2">
+    <p-dropdown 
+      placeholder="หากไม่พบข้อมูล ให้เลือกสาขาที่ใกล้เคียง"
+      [options]="majors"
+      [filter] = "true"
+      [(ngModel)]="selectedMajor" 
+      optionLabel="major"
+      [style]="{ minWidth: '100%' }"
+    ></p-dropdown>
+  </div>
+
+  <div class="flex mt-4">
+    <button (click)="register('skip')" pButton pRipple type="button" label="ข้าม" class="p-button-outlined p-button-secondary p-button-rounded"></button> &nbsp;&nbsp;
+    <button (click)="register('ok')" pButton pRipple type="button" label="ตกลง" class="p-button-success p-button-rounded"></button>
   </div>
 </div>

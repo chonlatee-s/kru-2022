@@ -12,7 +12,10 @@ export class MajorService {
   ) {}
 
   async findAll() {
-    return this.majorRepository.find();
+    return this.majorRepository
+      .createQueryBuilder('major')
+      .select(['major.id', 'major.major'])
+      .getMany();
   }
 
   async findOne(id: string) {

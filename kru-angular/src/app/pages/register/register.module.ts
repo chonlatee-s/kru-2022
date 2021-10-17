@@ -5,6 +5,8 @@ import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,10 @@ import { DividerModule } from 'primeng/divider';
     CommonModule,
     RegisterRoutingModule,
     ButtonModule,
-    DividerModule
+    DividerModule,
+    DropdownModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class RegisterModule { }

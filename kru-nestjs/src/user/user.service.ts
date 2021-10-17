@@ -24,14 +24,12 @@ export class UserService {
   }
 
   async createUser(data: User): Promise<User> {
-    const checkUser: User = await this.userRepository.findOne({
-      generateId: data.generateId,
-    });
+    const checkUser = await this.userRepository.findOne({ email: data.email });
 
     // ถ้าไม่มี user คนนี้ให้ลงทะเบียน
     if (!checkUser) {
       await this.userRepository.save(data);
-      return this.userRepository.findOne({ generateId: data.generateId });
+      return this.userRepository.findOne({ email: data.email });
     }
     throw new ForbiddenException();
   }

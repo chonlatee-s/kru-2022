@@ -24,7 +24,12 @@ export class UserService {
   }
 
   async findOneById(id: string) {
-    return this.userRepository.findOne({ uuId: id });
+    // return this.userRepository.findOne({ uuId: id });
+    return this.userRepository
+      .createQueryBuilder('user')
+      .where('user.uuId = :uuId', { uuId: id })
+      .leftJoinAndSelect('user.major', 'major')
+      .getOne();
   }
 
   async createUser(data: User): Promise<User> {

@@ -40,4 +40,9 @@ export class AuthController {
   async create(@Body() data: User): Promise<User> {
     return await this.userService.createUser(data);
   }
+
+  @Get('profile')
+  async getProfile(@Request() req) {
+    return req.user;
+  }
 }

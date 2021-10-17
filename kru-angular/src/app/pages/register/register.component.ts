@@ -12,8 +12,6 @@ import { RegisterService } from 'src/app/features/register/services/register.ser
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
-  socialUser!: SocialUser;
   profile!: Profile;
   step1: boolean = true;
   step2: boolean = false;
@@ -33,22 +31,14 @@ export class RegisterComponent implements OnInit {
   async signInWithGoogle() {
     const user = await this.authService.signInWithGoogle();
     if(user) {
-      this.socialUser = user;
+      this.profile = user;
       this.step1 = false;
       this.step2 = true;
     }
   }
 
   register(option: string) {
-    this.profile = {
-      email: this.socialUser.email,
-      fullname: this.socialUser.name,
-      generateId: this.socialUser.id,
-      profile: this.socialUser.photoUrl,
-      provider: this.socialUser.provider,
-      majorId: option === 'skip' ? 1 : this.selectedMajor.id
-    }
-    console.log(this.profile)
+    this.profile.majorId = 1;
     this.authService.register(this.profile);
   }
 }

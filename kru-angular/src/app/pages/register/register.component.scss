@@ -42,3 +42,14 @@
   font-size: 14px;
   font-weight: 300;
 }
+
+::ng-deep .p-dropdown-item {
+  font-family: 'Sarabun';
+  font-size: 14px;
+  font-weight: 300;
+
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}

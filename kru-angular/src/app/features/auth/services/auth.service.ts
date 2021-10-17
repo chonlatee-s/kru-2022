@@ -3,15 +3,15 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { BaseService } from 'src/app/core/services/base.service';
+import { Login } from '../interfaces/login.interface';
 import { Profile } from '../interfaces/profile.interface';
 import { UserProfile } from '../interfaces/user-profile';
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService extends BaseService<unknown, unknown>{
   public userProfile!: UserProfile;
-  isLoggedin: boolean = false;
+  profile!: Profile;
   
   constructor(
     protected http: HttpClient,
@@ -22,12 +22,21 @@ export class AuthService extends BaseService<unknown, unknown>{
  
   async signInWithGoogle() {
     const user = await this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    return this.checkUser(user);
+    this.profile  = {
+      email: user.email,
+      fullname: user.name,
+      generateId: user.id,
+      profile: user.photoUrl,
+      provider: user.provider,
+      majorId: 1,
+    }
+    
+    return this.checkUser(this.profile);
   }
 
 
-  async checkUser(user: SocialUser) {
-    const data = await this.http.get<any>(`${this.endpoint}/check/${user.email}`).toPromise();
+  async checkUser(user: Profile) {
+    const data = await this.http.get<boolean>(`${this.endpoint}/check/${user.email}`).toPromise();
 
     if(data) {
       this.login(user);
@@ -39,14 +48,12 @@ export class AuthService extends BaseService<unknown, unknown>{
 
   async register(profile: Profile) {
     const data = await this.http.post<any>(`${this.endpoint}/register`, profile).toPromise();
- 
-    data.id = data.generateId;
     this.login(data);
   }
 
 
-  async login(dataLogin: any) {
-    const data = await this.http.post<any>(`${this.endpoint}/login`, { email: dataLogin.email, password: dataLogin.id }).toPromise();
+  async login(dataLogin: Login) {
+    const data = await this.http.post<any>(`${this.endpoint}/login`, { email: dataLogin.email, password: dataLogin.generateId }).toPromise();
     if(data){
 
       localStorage.setItem('token', data.access_token);

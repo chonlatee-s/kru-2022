@@ -4,5 +4,5 @@ export interface Profile {
   fullname: string;
   profile: string;
   provider: string;
-  majorId: number;
+  majorId?: number;
 }

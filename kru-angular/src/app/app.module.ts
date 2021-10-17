@@ -24,7 +24,8 @@ import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-logi
 import {
   GoogleLoginProvider,
 } from 'angularx-social-login';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './core/interceptors/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,6 @@ import { HttpClientModule } from '@angular/common/http';
     SocialLoginModule,
     HttpClientModule
   ],
-  // providers: [],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
@@ -66,7 +66,12 @@ import { HttpClientModule } from '@angular/common/http';
           }
         ]
       } as SocialAuthServiceConfig,
-    }    
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })

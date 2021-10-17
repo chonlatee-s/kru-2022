@@ -51,11 +51,13 @@ export class AuthService extends BaseService<unknown, unknown>{
     else this.router.navigate(['/register']);
   }
 
-
   getToken() {
-    return localStorage.getItem('token')
+    return localStorage.getItem('token');
   }
 
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
 
   signOut(): void {
     this.socialAuthService.signOut();

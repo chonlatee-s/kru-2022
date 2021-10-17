@@ -15,6 +15,8 @@ export class StatsService {
 
   async findOne(id: string) {
     const user = await this.userService.findOneById(id);
+    if (!user) throw new ForbiddenException();
+
     const stats = await this.statsRepository
       .createQueryBuilder('stats')
       .select(['stats.userId', 'stats.score'])

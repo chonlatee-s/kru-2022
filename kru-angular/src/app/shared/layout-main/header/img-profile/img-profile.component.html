@@ -1,11 +1,11 @@
-<p-avatar *ngIf="userProfile.fullname"
+<p-avatar *ngIf="isLogin"
   image="{{ userProfile.profile }}" 
   shape="circle" tooltipStyleClass="tooltip" 
   pTooltip="บัญชี" tooltipPosition="top" 
   (click)="listMenu()" class="pointer">
 </p-avatar>
 
-<p-avatar *ngIf="!userProfile.fullname"
+<p-avatar *ngIf="!isLogin"
   icon="pi pi-user" 
   shape="circle"
   (click)="listMenu()" class="pointer">
@@ -17,10 +17,14 @@
 
   <div class="flex flex-column">
 
-    <div *ngIf="userProfile.fullname; else elseBlock">
+    <div *ngIf="isLogin; else elseBlock">
       <div class="flex">
         <i class="pi pi-user icon"></i>
         <span class="txt-menu">{{ userProfile.fullname }}</span>
+      </div>
+      <div class="flex mt-3">
+        <i class="pi pi-ticket icon"></i>
+        <span class="txt-menu"> วิชาเอก {{ userProfile.major }} </span>
       </div>
     </div>
     <ng-template #elseBlock>
@@ -32,14 +36,14 @@
 
     <p-divider></p-divider>
 
-    <div *ngIf="userProfile.fullname" class="flex pointer" (click)="logout()">
+    <div *ngIf="isLogin" class="flex pointer" (click)="logout()">
       <a href="#">
         <i class="pi pi-sign-out icon"></i>
         <span class="txt-menu">ออกจากระบบ</span>
       </a>
     </div>
 
-    <div *ngIf="!userProfile.fullname" class="flex pointer">
+    <div *ngIf="!isLogin" class="flex pointer">
       <a routerLink="/register">
         <i class="pi pi-sign-in icon"></i>
         <span class="txt-menu">ลงทะเบียน</span>

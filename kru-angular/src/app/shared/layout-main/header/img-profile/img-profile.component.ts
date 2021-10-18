@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 
@@ -12,13 +11,17 @@ export class ImgProfileComponent {
   display: boolean = false;
   position: string ='top-right';
   userProfile!: UserProfile;
-  
+  isLogin: boolean = false;
+
   constructor(
     private authService: AuthService
   ) { }
 
   async ngOnInit(): Promise<void> {
     this.userProfile = await this.authService.getProfile();
+    const checckUserProfile = Object.getOwnPropertyNames(this.userProfile).length;
+    if (checckUserProfile === 0) this.isLogin = false;
+    else this.isLogin = true;
   }
 
   listMenu() {

@@ -5,11 +5,11 @@
   <div class="flex txt-quote">- John Dewey -</div>
   <div class="flex flex-column">
     <p-divider></p-divider>
-    <div class="flex mt-2 mb-2 align-items-start">
-      <button pButton pRipple type="button" label="ลงทะเบียนด้วย Google" icon="pi pi-google" class="btn-regis p-button-rounded p-button-secondary p-button-outlined" (click)="signInWithGoogle()"></button>
+    <div class="flex mt-2 align-items-start">
+      <button pButton pRipple type="button" label="ลงทะเบียนด้วย Google" icon="pi pi-google" class="menu-login btn-regis p-button-rounded" (click)="signInWithGoogle()"></button>
     </div>
-    <div class="flex mb-2 align-items-start">
-      <button pButton pRipple type="button" label="ลงทะเบียนด้วย Facebook" icon="pi pi-facebook" class="btn-regis p-button-rounded p-button-secondary p-button-outlined"></button>
+    <div class="flex align-items-start">
+      <button pButton pRipple type="button" label="ลงทะเบียนด้วย Facebook" icon="pi pi-facebook" class="menu-login btn-regis p-button-rounded"></button>
     </div>
   </div>
 </div>
@@ -17,22 +17,26 @@
 <div class="flex flex-column align-items-center mt-8" *ngIf="step2">
   <div class="flex"><span class="txt-topic-major">เลือกสาขาเพื่อเจอเพื่อนใหม่</span></div>
   <div class="flex mt-2 mr-2 ml-2">
-    <span class="txt-detail">อีเมล {{ profile.email }}</span>
+    <span class="txt-detail">ชื่อ {{ profile.fullname }}</span>
   </div>
 
-  <div class="flex flex-grow-1 mt-6 mr-2 ml-2">
+  <div class="flex flex-grow-1 mt-5 mr-2 ml-2">
     <p-dropdown 
       placeholder="เลือกกลุ่มสาขาที่จะสมัครสอบ"
       [options]="majors"
       [filter] = "true"
       [(ngModel)]="selectedMajor" 
       optionLabel="major"
+      (onChange) = "onChange()"
     ></p-dropdown>
   </div>
-
+  <div class="flex mt-1" *ngIf="alertMessage">
+    <p-message severity="info" text="เลือกสาขาแล้วไปเจอเพื่อนใหม่"></p-message> 
+  </div>
+  
   <div class="flex mt-4 mb-2">
-    <button (click)="register('skip')" pButton pRipple type="button" label="ข้าม" class="p-button-outlined p-button-secondary p-button-rounded"></button> &nbsp;&nbsp;
-    <button (click)="register('ok')" pButton pRipple type="button" label="ตกลง" class="p-button-success p-button-rounded"></button>
+    <button (click)="register('skip')" pButton pRipple type="button" label="ข้าม" class="menu-login p-button-rounded"></button> &nbsp;&nbsp;
+    <button (click)="register('ok')" pButton pRipple type="button" label="ตกลง" class="menu-login-confirm p-button-rounded"></button>
   </div>
 
 </div>

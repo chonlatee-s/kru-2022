@@ -26,7 +26,6 @@ import {
 } from 'angularx-social-login';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './core/interceptors/token-interceptor.service';
-
 @NgModule({
   declarations: [
     AppComponent,

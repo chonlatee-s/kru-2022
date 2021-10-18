@@ -7,7 +7,8 @@ import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { AvatarModule } from 'primeng/avatar';
+import { MessageModule } from 'primeng/message';
 @NgModule({
   declarations: [
     RegisterComponent
@@ -19,7 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DividerModule,
     DropdownModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AvatarModule,
+    MessageModule
   ]
 })
 export class RegisterModule { }

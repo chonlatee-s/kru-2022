@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SocialUser } from 'angularx-social-login';
+import { MessageService } from 'primeng/api';
 import { Profile } from 'src/app/features/auth/interfaces/profile.interface';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { Major } from 'src/app/features/register/interfaces/major.interface';
@@ -9,7 +9,8 @@ import { RegisterService } from 'src/app/features/register/services/register.ser
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  providers: [MessageService]
 })
 export class RegisterComponent implements OnInit {
   profile!: Profile;
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit {
   step2: boolean = false;
   majors!: Major[];
   selectedMajor!: Major;
+  alertMessage: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -38,7 +40,23 @@ export class RegisterComponent implements OnInit {
   }
 
   register(option: string) {
-    this.profile.majorId = 1;
-    this.authService.register(this.profile);
+
+    if (option === 'skip') {
+      this.profile.majorId = 1; // ไม่ระบุสาขา
+      this.authService.register(this.profile);
+    }
+    else {
+      if (this.selectedMajor === undefined) this.alertMessage = true;
+      else {
+        this.profile.majorId = this.selectedMajor.id;
+        this.authService.register(this.profile);
+      }
+    }
+
+  }
+
+  onChange() {
+    if (this.selectedMajor === undefined) this.alertMessage = true;
+    else this.alertMessage = false;
   }
 }

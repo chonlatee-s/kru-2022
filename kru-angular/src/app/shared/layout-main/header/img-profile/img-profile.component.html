@@ -1,19 +1,50 @@
-<p-avatar
-image="{{ userProfile.profile }}" 
-shape="circle" tooltipStyleClass="tooltip" pTooltip="บัญชี" tooltipPosition="top" (click)="listMenu()" class="pointer"></p-avatar>
+<p-avatar *ngIf="userProfile.fullname"
+  image="{{ userProfile.profile }}" 
+  shape="circle" tooltipStyleClass="tooltip" 
+  pTooltip="บัญชี" tooltipPosition="top" 
+  (click)="listMenu()" class="pointer">
+</p-avatar>
+
+<p-avatar *ngIf="!userProfile.fullname"
+  icon="pi pi-user" 
+  shape="circle"
+  (click)="listMenu()" class="pointer">
+</p-avatar>
 
 <p-dialog header="บัญชีของคุณ" styleClass="listMenu" 
-[breakpoints]="{'1024px': '100vw', '640px': '100vw'}" [style]="{width: '25vw'}"
-[(visible)]="display" [position]="position" [draggable]="false"  [modal]="true" [dismissableMask]="true">
-<div class="flex flex-column">
-  <div class="flex">
-    <i class="pi pi-user icon"></i>
-    <span class="txt-menu">{{ userProfile.fullname }}</span>
+  [breakpoints]="{'1024px': '100vw', '640px': '100vw'}" [style]="{width: '25vw'}"
+  [(visible)]="display" [position]="position" [draggable]="false"  [modal]="true" [dismissableMask]="true">
+
+  <div class="flex flex-column">
+
+    <div *ngIf="userProfile.fullname; else elseBlock">
+      <div class="flex">
+        <i class="pi pi-user icon"></i>
+        <span class="txt-menu">{{ userProfile.fullname }}</span>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="flex">
+        <i class="pi pi-user icon"></i>
+        <span class="txt-menu"> ผู้มาเยือน </span>
+      </div>
+    </ng-template>
+
+    <p-divider></p-divider>
+
+    <div *ngIf="userProfile.fullname" class="flex pointer" (click)="logout()">
+      <a href="#">
+        <i class="pi pi-sign-out icon"></i>
+        <span class="txt-menu">ออกจากระบบ</span>
+      </a>
+    </div>
+
+    <div *ngIf="!userProfile.fullname" class="flex pointer">
+      <a routerLink="/register">
+        <i class="pi pi-sign-in icon"></i>
+        <span class="txt-menu">ลงทะเบียน</span>
+      </a>
+    </div>
+
   </div>
-  <p-divider></p-divider>
-  <div class="flex pointer" (click)="logout()">
-    <i class="pi pi-sign-out icon"></i>
-    <span class="txt-menu">ออกจากระบบ</span>
-  </div>
-</div>
 </p-dialog>

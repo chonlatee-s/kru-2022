@@ -78,7 +78,7 @@ export class AuthService extends BaseService<unknown, unknown>{
   logout() {
     this.userProfile = {} as UserProfile;
     localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   getToken() {

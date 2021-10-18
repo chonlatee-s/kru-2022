@@ -10,7 +10,6 @@ export class LayoutMainComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
   }
   onActivate(e: any) {
     this.showMenuRight = e.showMenuRight

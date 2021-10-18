@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 
@@ -9,18 +10,20 @@ import { AuthService } from 'src/app/features/auth/services/auth.service';
 })
 export class ImgProfileComponent {
   display: boolean = false;
-  position: string ='top-right'
+  position: string ='top-right';
   userProfile!: UserProfile;
   
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   async ngOnInit(): Promise<void> {
     this.userProfile = await this.authService.getProfile();
   }
 
   listMenu() {
-    if(this.display) this.display = false
-    else this.display = true
+    if(this.display) this.display = false;
+    else this.display = true;
   }
 
   logout() {

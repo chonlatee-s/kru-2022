@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Competitor } from 'src/app/features/stats/interfaces/competitor.interface';
+import { StatsService } from 'src/app/features/stats/services/stats.service';
 
 @Component({
   selector: 'app-competitors-top',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompetitorsTopComponent implements OnInit {
   showMenuRight: boolean = true
-  constructor() { }
+  
+  competitor!: Competitor[];
+  constructor(private statsService: StatsService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.competitor = await this.statsService.getTop5();
   }
 
 }

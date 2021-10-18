@@ -17,4 +17,8 @@ export class StatsService extends BaseService<unknown, unknown>{
   async getStats(id: string) {
     return await this.http.get<any>(`${this.endpoint}/${id}`).toPromise();
   }
+
+  async getTop5() {
+    return await this.http.get<any>(`${this.endpoint}/competitor/top5`).toPromise();
+  }
 }

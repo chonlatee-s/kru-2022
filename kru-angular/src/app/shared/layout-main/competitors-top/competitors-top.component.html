@@ -1,44 +1,20 @@
 <div class="container">
   <div class="flex justify-content-between flex-wrap">
-    <div class="flex flex-row align-items-center justify-content-center win1">
-      <div class="flex flex-column align-items-center">
-        <p-avatar image="https://lh3.googleusercontent.com/a-/AOh14GicIT0uW03JgwKA-3KjWtDU1hdAIEpb5aK_zf9G=s96-c" 
-        shape="circle" size="large"></p-avatar>
-        <div class="flex align-items-center score"> 29 คะแนน </div>
-      </div>
-    </div>
+    
+    <ng-template ngFor let-item [ngForOf]="competitor" let-i="index">
 
-    <div class="flex flex-row align-items-center justify-content-center win2">
-      <div class="flex flex-column align-items-center">
-        <p-avatar image="https://lh3.googleusercontent.com/a-/AOh14GjdTw6FALj02J_uCPcxZ7AiHxH5r2AGAJG_oflvkQ=s96-c" 
-        shape="circle" size="large"></p-avatar>
-        <div class="flex score align-items-center"> 24 คะแนน </div>
+      <div class="flex flex-row align-items-center justify-content-center" [ngClass]="{'win1': i === 0, 'win2': i === 1, 'win3': i===2 }">
+        <div class="flex flex-column align-items-center">
+          <p-avatar image="{{ item.profile }}" shape="circle" size="large"></p-avatar>
+          <div class="flex align-items-center score"> 
+            {{ item.major.substr(0, 12) }} 
+            <span *ngIf="item.major.length >=12 ">...</span>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="flex flex-row align-items-center justify-content-center win3">
-      <div class="flex flex-column align-items-center">
-        <p-avatar image="https://lh5.googleusercontent.com/-PDm4o0WFFp8/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl546ptPfH9jPHnzckB5PU_iIOx1w/s96-c/photo.jpg" 
-        shape="circle" size="large"></p-avatar>
-        <div class="flex score align-items-center"> 23 คะแนน </div>
-      </div>
-    </div>
-
-    <div class="flex flex-row align-items-center justify-content-center">
-      <div class="flex flex-column align-items-center">
-        <p-avatar image="https://lh3.googleusercontent.com/a-/AOh14GgcVkwKu0QuyosiKzfMAEyp1n8Ta_xsfTbgboBj=s96-c" 
-        shape="circle" size="large"></p-avatar>
-        <div class="flex score align-items-center"> 10 คะแนน </div>
-      </div>
-    </div>
-
-    <div class="flex flex-row align-items-center justify-content-center">
-      <div class="flex flex-column align-items-center">
-        <p-avatar image="https://lh6.googleusercontent.com/-z6eIqpSuADM/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclFsw5GRqfRfsNoeQhiQKn8U1U1cg/s96-c/photo.jpg" 
-        shape="circle" size="large"></p-avatar>
-        <div class="flex score align-items-center"> 8 คะแนน </div>
-      </div>
-    </div>
+    </ng-template>
+  
   </div>
   <div class="menu-boxC">
     <a routerLink="/test"><button pButton type="button" class="menu p-button-rounded" label="ทำข้อสอบ"></button></a>

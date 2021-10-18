@@ -15,9 +15,10 @@ import { CourseModule } from './course/course.module';
 import { MajorModule } from './major/major.module';
 import { ForumModule } from './forum/forum.module';
 import { ForumDetailModule } from './forum-detail/forum-detail.module';
+import { PredictModule } from './predict/predict.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule, StatsModule, UploadImgModule, CourseModule, MajorModule, ForumModule, ForumDetailModule],
+  imports: [TypeOrmModule.forRoot(), UserModule, AuthModule, JobModule, DownloadModule, ExamModule, StatsModule, UploadImgModule, CourseModule, MajorModule, ForumModule, ForumDetailModule, PredictModule],
   controllers: [AppController],
   providers: [
     AppService,

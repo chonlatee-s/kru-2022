@@ -1,15 +1,23 @@
 <app-competitors-top></app-competitors-top>
 <div class="card-step">
-  <p-steps [model]="items" [activeIndex]="2"></p-steps>
+  <p-steps [model]="items" [activeIndex]="step"></p-steps>
 </div>
-<div class="card-predict">
-  <b>คุณได้ใบที่ 1</b>
+
+<div class="card-btn" *ngIf="step1" (click)="getPredict()">
+  <p>ถ้าพร้อมแล้ว เริ่ม</p>
+</div>
+
+<div class="card-predict" *ngIf="step2">
+  <div class="text-center">
+    <p>กำลังทำนาย . . .</p>
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</div>
+
+<div class="card-predict" *ngIf="predict">
+  <b>คุณได้ใบที่ {{ predict.id }} </b>
   <p>
-    ใบปฐมสมจิตอธิษฐาน  จะมีผู้อุปถัมภ์แสนสำราญ  สำเร็จการที่ตรึกนึกในใจ  แต่ช้าๆจึงจะสมอารมณ์คิด  
-    ด้วยเดชสัตย์สุจริตประสิทธิ์ให้  ทั้งพวกพ้องวงศ์ญาติปราศทุกข์ภัย  มีโชคชัยได้สุขทุกคืนวัน  
-    แม้นถามถึงโชคร้ายในกายตัว  อีกสักหน่อยค่อยยังชั่วอย่าโศกศัลย์  ถามลูกหนี้พี่น้องต้องพบกัน  
-    ไม่ช้าวันพบพักตร์เหมือนทักทาย ลาภพิเศษเจตนาเวลานี้  นานๆมีให้บ้างไม่ห่างหาย  ถามเนื้อคู่ดูดีจริงทั้งหญิงชาย  
-    เหมือนชักนำทํานายเท่านี้เอย ฯ
+    {{ predict.result }}
   </p>
   <p-divider></p-divider>
   <p class="txt-ref">ที่มา วัดหนองบัว จังหวัดอุบลราชธานี</p>

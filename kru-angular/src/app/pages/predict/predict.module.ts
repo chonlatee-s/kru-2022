@@ -7,6 +7,7 @@ import { CompetitorsTopModule } from 'src/app/shared/layout-main/competitors-top
 import { StepsModule } from 'primeng/steps';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DividerModule } from 'primeng/divider';
     CompetitorsTopModule,
     StepsModule,
     CardModule,
-    DividerModule
+    DividerModule,
+    ProgressSpinnerModule
   ]
 })
 export class PredictModule { }

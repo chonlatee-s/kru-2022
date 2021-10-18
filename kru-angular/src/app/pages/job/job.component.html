@@ -1,6 +1,6 @@
 <app-competitors-top></app-competitors-top>
 <div style="width:100%">
-  <p-table [value]="cars"
+  <p-table [value]="jobs"
     styleClass="p-datatable-sm"
     [paginator]="true" 
     [rows]="rows" 
@@ -15,11 +15,11 @@
           <th pResizableColumn>หางาน</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-car>
+    <ng-template pTemplate="body" let-job>
         <tr>
             <td>
-              <div>{{car.topic}}</div>
-              <div class="date">รับสมัครถึงวันที่ 12-12-2564</div>
+              <div>{{ job.topic }}</div>
+              <div class="date">รับสมัครถึงวันที่ {{ job.dateExpire }}</div>
             </td>
         </tr>
     </ng-template>

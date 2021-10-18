@@ -69,8 +69,8 @@ export class AuthService extends BaseService<unknown, unknown>{
     try {
       this.userProfile = await this.http.get<UserProfile>(`${this.endpoint}/profile`).toPromise();
     } catch (error) {
-      this.logout();
       this.signOut();
+      this.logout();
     }
     return this.userProfile;
   }

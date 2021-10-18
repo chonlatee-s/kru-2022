@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Car {
-  topic: string
-  icon: string
-}
-
+import { Download } from 'src/app/features/download/interfaces/download.interface';
+import { DownloadService } from 'src/app/features/download/services/download.service';
 @Component({
   selector: 'app-download',
   templateUrl: './download.component.html',
@@ -12,18 +8,15 @@ interface Car {
 })
 
 export class DownloadComponent implements OnInit {
-  showMenuRight: boolean = true
-  constructor() { }
+  showMenuRight: boolean = true;
+  downloads!: Download[];
+  first = 0;
+  rows = 5;
 
-  cars: Car[] = [
-    {topic:'ข้อสอบเก่าปี 2559 สพฐ.', icon:'pi pi-file'},
-    {topic:'ดาวน์โหลดฟรีข้อสอบวิชาคณิตศาสตร์', icon:'pi pi-file'},
-    {topic:'แนวข้อสอบอาชีวศึกษา รอบทั่วไป', icon:'pi pi-file'}
-  ]
-  first = 0
-  rows = 5
+  constructor(private downloadService: DownloadService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.downloads = await this.downloadService.find({}).toPromise();
   }
 
   next() {
@@ -39,11 +32,11 @@ export class DownloadComponent implements OnInit {
   }
 
   isLastPage(): boolean {
-    return this.cars ? this.first === (this.cars.length - this.rows): true;
+    return this.downloads ? this.first === (this.downloads.length - this.rows): true;
   }
 
   isFirstPage(): boolean {
-    return this.cars ? this.first === 0 : true;
+    return this.downloads ? this.first === 0 : true;
   }
 
 }

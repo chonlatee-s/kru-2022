@@ -1,6 +1,6 @@
 <app-competitors-top></app-competitors-top>
 <div style="width:100%">
-  <p-table [value]="cars"
+  <p-table [value]="downloads"
     styleClass="p-datatable-sm"
     [paginator]="true" 
     [rows]="rows" 
@@ -15,13 +15,12 @@
           <th pResizableColumn>แนวข้อสอบ</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-car>
+    <ng-template pTemplate="body" let-download>
         <tr>
             <td>
-              <div>{{car.topic}}</div>
-              <div class="date">โดย ครูบัญชีชายขอบ</div>
+              <div>{{download.topic}}</div>
+              <div class="date">โดย {{ download.ref }} </div>
             </td>
-            <!-- <td><i class="{{car.icon}}" style="font-size: 12px"></i></td> -->
         </tr>
     </ng-template>
   </p-table>

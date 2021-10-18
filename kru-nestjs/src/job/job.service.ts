@@ -12,7 +12,10 @@ export class JobService {
   ) {}
 
   async findAll() {
-    return this.jobRepository.find();
+    return this.jobRepository
+      .createQueryBuilder('job')
+      .select(['job.topic', 'job.ref', 'job.dateExpire'])
+      .getMany();
   }
 
   async findOne(id: string) {

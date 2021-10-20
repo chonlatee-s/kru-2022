@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
+import { FnService } from 'src/app/features/fn/services/fn.service';
 import { Stats } from 'src/app/features/stats/interfaces/stats.interface';
 import { StatsService } from 'src/app/features/stats/services/stats.service';
 @Component({
@@ -17,12 +18,18 @@ export class StatsComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private statsService: StatsService
+    private statsService: StatsService,
+    private fnService: FnService
   ) { }
 
   async ngOnInit(): Promise<void> {
     this.userProfile = await this.authService.getProfile();
     this.stats = await this.statsService.getStats(this.userProfile.uuId);
   }
+
+  converseDate(D: string) {
+    return this.fnService.converseDate(D);
+  }
+
 
 }

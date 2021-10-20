@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FnService } from 'src/app/features/fn/services/fn.service';
 import { Job } from 'src/app/features/job/interfaces/job.interface';
 import { JobService } from 'src/app/features/job/services/job.service';
 @Component({
@@ -14,10 +15,17 @@ export class JobComponent implements OnInit {
   first = 0;
   rows = 5;
 
-  constructor(private jobService: JobService) { }
+  constructor(
+    private jobService: JobService,
+    private fnService: FnService
+  ) { }
 
   async ngOnInit(): Promise<void> {
     this.jobs = await this.jobService.find({}).toPromise();
+  }
+
+  converseDate(D: string) {
+    return this.fnService.converseDate(D);
   }
 
   next() {

@@ -19,7 +19,7 @@
         <tr>
             <td>
               <div>{{ job.topic }}</div>
-              <div class="date">รับสมัครถึงวันที่ {{ job.dateExpire }}</div>
+              <div class="date">รับสมัครถึงวันที่ {{ converseDate(job.dateExpire) | date: "dd/MM/yy" }}</div>
             </td>
         </tr>
     </ng-template>

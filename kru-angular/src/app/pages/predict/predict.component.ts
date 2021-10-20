@@ -30,7 +30,7 @@ export class PredictComponent implements OnInit {
 
     setTimeout(() => { 
       this.result();
-    }, 3000);
+    }, 1500);
 
   }
 

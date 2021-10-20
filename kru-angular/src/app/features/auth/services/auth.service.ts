@@ -9,6 +9,7 @@ import { UserProfile } from '../interfaces/user-profile';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService extends BaseService<unknown, unknown>{
   public userProfile!: UserProfile;
   profile!: Profile;
@@ -51,7 +52,6 @@ export class AuthService extends BaseService<unknown, unknown>{
     this.login(data);
   }
 
-
   async login(dataLogin: Login) {
     const data = await this.http.post<any>(`${this.endpoint}/login`, { email: dataLogin.email, password: dataLogin.generateId }).toPromise();
     if(data){
@@ -85,11 +85,9 @@ export class AuthService extends BaseService<unknown, unknown>{
     return localStorage.getItem('token');
   }
 
-
   loggedIn() {
     return !!localStorage.getItem('token');
   }
-
 
   signOut(): void {
     this.socialAuthService.signOut();

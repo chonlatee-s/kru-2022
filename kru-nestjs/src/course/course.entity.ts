@@ -18,8 +18,6 @@ export class CourseEntity {
   @Column()
   topic: string;
   @Column({ type: 'text' })
-  detail: string;
-  @Column({ type: 'text' })
   ref: string;
   @CreateDateColumn()
   createAt: Date;

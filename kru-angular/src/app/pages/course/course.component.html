@@ -1,16 +1,19 @@
 <div class="box">
-  <p class="txt-topic">เรียนออนไลน์</p>
   <div class="flex justify-content-center">
-    <p-dataView [value]="cars" [paginator]="true" [rows]="6" layout="grid">
-      <ng-template let-car pTemplate="gridItem">
+    <p-dataView [value]="courses" [paginator]="true" [rows]="6" layout="grid">
+      <ng-template let-course pTemplate="gridItem">
         <div class="flex flex-row flex-grow-1 justify-content-center">
           <div class="menu-box">
-            <div style="background-image: url({{car.url}}); height: 130px;  border-top-left-radius: 15px; border-top-right-radius: 15px;"></div>
+            <div class="flex">
+              <img src="{{ path }}/course/img/{{ course.img }}" alt="" width="240" class="img-course">
+            </div>
             <div class="flex flex-row justify-content-center">
-              <p class="txt-box">{{car.id}}</p>
+              <p class="txt-box">{{ course.topic }}</p>
             </div>
             <div class="flex justify-content-center">
-              <p-chip label="เข้าสู่บทเรียน" icon="pi pi-heart" styleClass="chip"></p-chip>
+              <a href="{{ course.ref }}" target="_blank">
+                <p-chip label="เข้าสู่บทเรียน" icon="pi pi-heart" styleClass="chip"></p-chip>
+              </a>
             </div>
           </div>
         </div>

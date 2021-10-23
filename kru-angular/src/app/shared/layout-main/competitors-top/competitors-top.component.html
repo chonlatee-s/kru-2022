@@ -7,8 +7,8 @@
         <div class="flex flex-column align-items-center">
           <p-avatar image="{{ item.profile }}" shape="circle" size="large"></p-avatar>
           <div class="flex align-items-center score"> 
-            {{ item.major.substr(0, 12) }} 
-            <span *ngIf="item.major.length >=12 ">...</span>
+            {{ item.fullname.substr(0, 12) }} 
+            <span *ngIf="item.fullname.length >=12 ">...</span>
           </div>
         </div>
       </div>

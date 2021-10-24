@@ -22,6 +22,11 @@ export class MajorService {
     return this.majorRepository.findOne({ uuId: id });
   }
 
+  async findOneById(id: number) {
+    const major = await this.majorRepository.findOne({ id: id });
+    return major.major;
+  }
+
   async createMajor(data: Major) {
     return await this.majorRepository.save(data);
   }

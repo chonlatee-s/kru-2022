@@ -12,7 +12,10 @@ export class CourseService {
   ) {}
 
   async findAll() {
-    return this.courseRepository.find();
+    return this.courseRepository
+      .createQueryBuilder('course')
+      .select(['course.img', 'course.topic', 'course.ref', 'course.createAt'])
+      .getMany();
   }
 
   async findOne(id: string) {

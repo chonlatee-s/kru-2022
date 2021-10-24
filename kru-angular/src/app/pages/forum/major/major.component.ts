@@ -1,27 +1,55 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Car {
-  profile: string
-  topic: string
-}
-
+import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
+import { AuthService } from 'src/app/features/auth/services/auth.service';
+import { FnService } from 'src/app/features/fn/services/fn.service';
+import { ForumData } from 'src/app/features/forum/interfaces/forum-data.interface';
+import { Forum } from 'src/app/features/forum/interfaces/forum.interface';
+import { ForumService } from 'src/app/features/forum/services/forum.service';
 @Component({
   selector: 'app-major',
   templateUrl: './major.component.html',
   styleUrls: ['./major.component.scss']
 })
+
 export class MajorComponent implements OnInit {
   display:boolean = false;
-  constructor() { }
+  userProfile!: UserProfile;
+  forums!: Forum[];
+  data!: ForumData;
+  msg: string = "";
+  first = 0;
+  rows = 10;
 
-  cars: Car[] = [
-    {profile:'https://lh3.googleusercontent.com/a-/AOh14GicIT0uW03JgwKA-3KjWtDU1hdAIEpb5aK_zf9G=s96-c', topic:'ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก'},
-    {profile:'https://lh5.googleusercontent.com/-PDm4o0WFFp8/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl546ptPfH9jPHnzckB5PU_iIOx1w/s96-c/photo.jpg', topic:'ประกาศรับสมัครสอบครูอาชีวะเมื่อไหร่คะ'},
-  ]
-  first = 0
-  rows = 10
+  constructor(
+    private forumService: ForumService,
+    private authService: AuthService,
+    private fnService: FnService,
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.forums = await this.forumService.find({}).toPromise();
+    this.userProfile = await this.authService.getProfile();
+  }
+
+  async sendData() {
+    this.data = {
+      topic: this.msg,
+      uuId: this.userProfile.uuId
+    }
+
+    if(this.msg !== '') {
+      await this.forumService.create(this.data).toPromise();
+      this.display = false;
+      this.forums = await this.forumService.find({}).toPromise();
+    }
+  }
+
+  converseDate(D: string) {
+    return this.fnService.converseDate(D);
+  }
+
+  resetMsg() {
+    this.msg = "";
   }
 
   next() {
@@ -37,12 +65,11 @@ export class MajorComponent implements OnInit {
   }
 
   isLastPage(): boolean {
-    return this.cars ? this.first === (this.cars.length - this.rows): true;
+    return this.forums ? this.first === (this.forums.length - this.rows): true;
   }
 
   isFirstPage(): boolean {
-    return this.cars ? this.first === 0 : true;
+    return this.forums ? this.first === 0 : true;
   }
-
 
 }

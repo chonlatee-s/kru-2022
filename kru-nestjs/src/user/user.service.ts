@@ -31,6 +31,15 @@ export class UserService {
       .getOne();
   }
 
+  async findOneByuserId(id: number) {
+    return this.userRepository
+      .createQueryBuilder('user')
+      .select(['user.email', 'user.fullname', 'user.profile'])
+      .where('user.id = :id', { id: id })
+      .leftJoinAndSelect('user.major', 'major')
+      .getOne();
+  }
+
   async createUser(data: User): Promise<User> {
     const checkUser = await this.userRepository.findOne({ email: data.email });
 

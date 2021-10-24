@@ -6,15 +6,14 @@ import { TableModule } from 'primeng/table';
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
 import { AvatarGroupModule  } from 'primeng/avatargroup';
-import { MajorsComponent } from './majors/majors.component';
 import { MajorComponent } from './major/major.component';
 import { ChatComponent } from './chat/chat.component';
 import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
 import { SidebarModule } from 'primeng/sidebar';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
-    MajorsComponent,
     MajorComponent,
     ChatComponent
   ],
@@ -27,7 +26,8 @@ import { SidebarModule } from 'primeng/sidebar';
     AvatarGroupModule,
     DividerModule,
     ChipModule,
-    SidebarModule
+    SidebarModule,
+    FormsModule,
   ]
 })
 export class ForumModule { }

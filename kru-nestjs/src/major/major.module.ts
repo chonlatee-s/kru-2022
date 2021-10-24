@@ -8,5 +8,6 @@ import { MajorService } from './major.service';
   imports: [TypeOrmModule.forFeature([MajorEntity])],
   controllers: [MajorController],
   providers: [MajorService],
+  exports: [MajorService],
 })
 export class MajorModule {}

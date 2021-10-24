@@ -42,6 +42,7 @@ export class MajorComponent implements OnInit {
       this.display = false;
       this.forums = await this.forumService.find({}).toPromise();
     }
+    this.resetMsg();
   }
 
   converseDate(D: string) {

@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ForumService } from 'src/forum/forum.service';
+import { UserService } from 'src/user/user.service';
 import { Repository } from 'typeorm';
 import { ForumDetailEntity } from './forum-detail.entity';
 import { ForumDetail } from './interfaces/forum-detail.interface';
@@ -9,6 +11,8 @@ export class ForumDetailService {
   constructor(
     @InjectRepository(ForumDetailEntity)
     private forumDetailRepository: Repository<ForumDetailEntity>,
+    private userService: UserService,
+    private forumService: ForumService,
   ) {}
 
   async findAll() {
@@ -19,8 +23,16 @@ export class ForumDetailService {
     return this.forumDetailRepository.findOne({ uuId: id });
   }
 
-  async createForumDetail(data: ForumDetail) {
-    return await this.forumDetailRepository.save(data);
+  async createForumDetail(data: any) {
+    const userId = await this.userService.findOneById(data.uuId);
+    const forumId = await this.forumService.checkId(data.forumuuId);
+
+    const setData = {
+      answer: data.answer,
+      forumId: forumId.id,
+      userId: userId.id,
+    };
+    return await this.forumDetailRepository.save(setData);
   }
 
   async updateForumDetail(data: ForumDetail) {

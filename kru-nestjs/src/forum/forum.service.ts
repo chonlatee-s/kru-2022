@@ -78,8 +78,8 @@ export class ForumService {
 
   async createForum(data: Forum) {
     const userId = await this.userService.findOneById(data.uuId);
-    data.userId = userId.id;
-    return await this.forumRepository.save(data);
+    const setData = { topic: data.topic, userId: userId.id };
+    return await this.forumRepository.save(setData);
   }
 
   async updateForum(data: Forum) {
@@ -88,5 +88,9 @@ export class ForumService {
 
   async removeForum(id: string) {
     return await this.forumRepository.delete({ uuId: id });
+  }
+
+  async checkId(id: string) {
+    return await this.forumRepository.findOne({ uuId: id });
   }
 }

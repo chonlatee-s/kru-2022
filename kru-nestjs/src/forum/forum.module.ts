@@ -9,5 +9,6 @@ import { ForumService } from './forum.service';
   imports: [MajorModule, UserModule, TypeOrmModule.forFeature([ForumEntity])],
   controllers: [ForumController],
   providers: [ForumService],
+  exports: [ForumService],
 })
 export class ForumModule {}

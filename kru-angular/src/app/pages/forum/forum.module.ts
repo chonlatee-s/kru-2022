@@ -9,7 +9,6 @@ import { AvatarGroupModule  } from 'primeng/avatargroup';
 import { MajorComponent } from './major/major.component';
 import { ChatComponent } from './chat/chat.component';
 import { DividerModule } from 'primeng/divider';
-import { ChipModule } from 'primeng/chip';
 import { SidebarModule } from 'primeng/sidebar';
 import { FormsModule } from '@angular/forms';
 @NgModule({
@@ -25,7 +24,6 @@ import { FormsModule } from '@angular/forms';
     ButtonModule,
     AvatarGroupModule,
     DividerModule,
-    ChipModule,
     SidebarModule,
     FormsModule,
   ]

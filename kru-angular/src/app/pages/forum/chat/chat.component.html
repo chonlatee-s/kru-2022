@@ -6,10 +6,12 @@
       </div>
       <div class="flex flex-column mt-2">
         <div class="flex txt-name"> {{ forum.fullname }} </div>
-        <div class="flex txt-major mt-1"> {{ forum.major }} </div>
+        <div class="flex txt-major mt-1">สาขา {{ forum.major }} </div>
       </div>
     </div>
-    <div class="flex mt-2 mouse reply" (click)="display = true"><p-chip label="แสดงความคิดเห็น" icon="pi pi-comment"></p-chip></div>
+    <div class="chat-btn-hover">
+      <button pButton type="button" class="chat-btn p-button-rounded" (click)="display = true">แสดงความคิดเห็น</button>
+    </div>
   </div>
 
   <div class="flex txt-topic-comment ml-7 mr-7">  {{ forum.topic }} </div>
@@ -25,7 +27,7 @@
         </div>
         <div class="flex flex-column">
           <div class="flex txt-name"> {{ item.fullname }} </div>
-          <div class="flex txt-major mt-1"> {{ item.major }} </div>
+          <div class="flex txt-major mt-1">สาขา {{ item.major }} </div>
         </div>
       </div>
       <div class="flex txt-comment ml-6 mr-6"> {{ item.answer }} </div>
@@ -36,38 +38,19 @@
     </div>
   </div>
 
-  <!-- <div class="flex flex-column md:ml-7">
-    <div class="flex mb-2"> 
-      <div class="flex mr-3">
-        <p-avatar image="https://lh3.googleusercontent.com/a-/AOh14GicIT0uW03JgwKA-3KjWtDU1hdAIEpb5aK_zf9G=s96-c" shape="circle"></p-avatar>
-      </div>
-      <div class="flex flex-column">
-        <div class="flex txt-name">บรรเจิด เลิศภิรมย์สมฤดี</div>
-        <div class="flex txt-major mt-1">เอกคณิตศาสตร์</div>
-      </div>
-    </div>
-    <div class="flex txt-comment ml-6 mr-6">
-      ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก ปีนี้สอบเกณฑ์ใหม่หรือเกณฑ์เก่า ใครรู้บอกที ขอบน้ำใจมาก
-    </div>
-    <div class="flex txt-date ml-6 mt-2"><i class="pi pi-calendar icon-date"></i> 12-12-64</div>
-    <div class="block ml-6 mr-6">
-      <p-divider></p-divider>
-    </div>
-  </div> -->
-
 </div>
 
-<p-sidebar [(visible)]="display" position="bottom">
+<p-sidebar [(visible)]="display" position="bottom" *ngIf="userProfile">
   <div class="flex flex-row justify-content-around flex-wrap">
     <div class="flex">
-      <p-avatar image="https://lh3.googleusercontent.com/a-/AOh14GicIT0uW03JgwKA-3KjWtDU1hdAIEpb5aK_zf9G=s96-c" shape="circle"></p-avatar>
+      <p-avatar image=" {{userProfile.profile}} " shape="circle"></p-avatar>
     </div>
     <div class="flex mb-2 flex-grow-1">
-      <input type="text" class="comment" placeholder="แสดงความคิดเห็น">
+      <input type="text" class="comment" placeholder="แสดงความคิดเห็น" [(ngModel)]="msg" #ctrl="ngModel" required>
     </div>
   </div>
   <div class="flex box-comment justify-content-center">
-    <div class="flex"><span class="btn-cancle">ยกเลิก</span></div>
-    <div class="flex"><button pButton type="button" class="p-button-rounded btn-comment">ส่งความคิดเห็น</button></div>
+    <div class="flex"><span class="btn-cancle" (click)="resetMsg()">ยกเลิก</span></div>
+    <div class="flex"><button pButton type="button" class="p-button-rounded btn-comment" (click)="sendData()" [disabled]="!ctrl.valid">ส่งความคิดเห็น</button></div>
   </div>
 </p-sidebar>

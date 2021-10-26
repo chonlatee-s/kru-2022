@@ -32,6 +32,7 @@ export class ForumService {
         profile: data.user.profile,
         majorId: data.user.majorId,
         detail: data.detail,
+        userId: data.user.uuId,
       };
     });
   }

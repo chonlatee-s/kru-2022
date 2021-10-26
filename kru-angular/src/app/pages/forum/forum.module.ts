@@ -11,6 +11,8 @@ import { ChatComponent } from './chat/chat.component';
 import { DividerModule } from 'primeng/divider';
 import { SidebarModule } from 'primeng/sidebar';
 import { FormsModule } from '@angular/forms';
+import { MenuModule } from 'primeng/menu';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
     MajorComponent,
@@ -26,6 +28,9 @@ import { FormsModule } from '@angular/forms';
     DividerModule,
     SidebarModule,
     FormsModule,
-  ]
+    MenuModule,
+    ConfirmDialogModule,
+  ],
+
 })
 export class ForumModule { }

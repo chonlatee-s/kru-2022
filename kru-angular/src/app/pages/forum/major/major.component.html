@@ -21,7 +21,7 @@
         <ng-template pTemplate="header">
           <tr> <th pResizableColumn colspan="2">แลกเปลี่ยนเรียนรู้</th> </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-forum>
+        <ng-template pTemplate="body" let-rowData let-forum>
             <tr>
                 <td>
                   <div class="flex flex-row">
@@ -39,11 +39,16 @@
                   </div>
                 </td>
                 <td style="text-align: right;" >
-                  <div class="flex">
-                    <a routerLink="/forum/chat/{{forum.uuId}}">
-                      <i class="pi pi-comments"></i>
-                      <span style="font-size: 10px; padding-left: 10px;"> {{ forum.detail.length }} </span>
-                    </a>
+                  <div class="flex flex-row justify-content-end">
+                    <div class="flex mr-3">
+                      <a routerLink="/forum/chat/{{forum.uuId}}">
+                        <i class="pi pi-comments"></i>
+                        <span style="font-size: 10px; padding-left: 10px;"> {{ forum.detail.length }} </span>
+                      </a>
+                    </div>
+                    <div class="flex" *ngIf="userProfile" style="cursor: pointer;">
+                      <i class="pi pi-ellipsis-v" *ngIf="forum.userId === userProfile.uuId" (click)="activeItem = rowData; menu.toggle($event)"></i>
+                    </div>
                   </div>
                 </td>
             </tr>
@@ -53,23 +58,44 @@
   </div>
 </div>
 
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+<p-confirmDialog #cd>
+  <ng-template pTemplate="footer">
+    <div class="flex mt-2 box-comment justify-content-center">
+      <div class="flex"><span class="btn-cancle" (click)="cd.reject()">ไม่</span></div>
+      <div class="flex">
+        <button pButton type="button" class="p-button-rounded btn-comment" (click)="cd.accept()"> ใช่ ลบเลย</button>
+      </div>
+    </div>
+  </ng-template>
+</p-confirmDialog>
+
+
 <p-sidebar [(visible)]="display" position="bottom" *ngIf="userProfile">
-  <div class="flex flex-row justify-content-around flex-wrap">
-    <div class="flex">
-      <p-avatar image="{{ userProfile.profile }}" shape="circle"></p-avatar>
+
+  <div *ngIf="isLogin; else elseBlock">
+    <div class="flex flex-row justify-content-around flex-wrap">
+      <div class="flex">
+        <p-avatar image="{{ userProfile.profile }}" shape="circle"></p-avatar>
+      </div>
+      <div class="flex flex-grow-1">
+        <input type="text" class="comment" placeholder="ข้อความ" [(ngModel)]="msg" #ctrl="ngModel" required>
+      </div>
     </div>
-    <div class="flex flex-grow-1">
-      <input type="text" class="comment" placeholder="ข้อความ" [(ngModel)]="msg" #ctrl="ngModel" required>
+    <div class="flex mt-2 box-comment justify-content-center">
+      <div class="flex"><span class="btn-cancle" (click)="resetMsg()">ยกเลิก</span></div>
+      <div class="flex">
+        <button 
+          pButton type="button" 
+          class="p-button-rounded btn-comment" 
+          (click)="sendData()" [disabled]="!ctrl.valid">
+          ส่งข้อความ </button>
+      </div>
     </div>
   </div>
-  <div class="flex mt-2 box-comment justify-content-center">
-    <div class="flex"><span class="btn-cancle" (click)="resetMsg()">ยกเลิก</span></div>
-    <div class="flex">
-      <button 
-        pButton type="button" 
-        class="p-button-rounded btn-comment" 
-        (click)="sendData()" [disabled]="!ctrl.valid">
-        ส่งข้อความ </button>
-    </div>
-  </div>
+  <ng-template #elseBlock>
+    <p class="text-center"> <a routerLink="/register">ลงทะเบียนเข้าใช้งาน</a> </p>
+  </ng-template>
+
 </p-sidebar>

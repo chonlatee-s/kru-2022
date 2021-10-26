@@ -21,11 +21,11 @@ import { CompetitorsComponent } from './shared/layout-main/competitors/competito
 import { FooterComponent } from './shared/layout-main/footer/footer.component';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import {
-  GoogleLoginProvider,
-} from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './core/interceptors/token-interceptor.service';
+
+import { ConfirmationService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +70,8 @@ import { TokenInterceptorService } from './core/interceptors/token-interceptor.s
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    ConfirmationService
   ],
   bootstrap: [AppComponent],
 })

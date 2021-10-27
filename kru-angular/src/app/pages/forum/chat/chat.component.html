@@ -43,7 +43,7 @@
 <p-sidebar [(visible)]="display" position="bottom" *ngIf="userProfile">
   <div class="flex flex-row justify-content-around flex-wrap">
     <div class="flex">
-      <p-avatar image=" {{userProfile.profile}} " shape="circle"></p-avatar>
+      <p-avatar image="{{ userProfile.profile }}" shape="circle"></p-avatar>
     </div>
     <div class="flex mb-2 flex-grow-1">
       <input type="text" class="comment" placeholder="แสดงความคิดเห็น" [(ngModel)]="msg" #ctrl="ngModel" required>

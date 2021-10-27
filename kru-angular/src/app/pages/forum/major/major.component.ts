@@ -70,17 +70,22 @@ export class MajorComponent implements OnInit {
     this.msg = "";
   }
   
-  confirmDelete() {
+  async confirmDelete() {
     this.confirmationService.confirm({
       message: 'คุณต้องการจะลบข้อมูลนี้ ใช่หรือไม่',
       header: 'ลบข้อมูล',
       icon: 'pi pi-exclamation-circle',
       accept: () => {
-        alert(this.activeItem.uuId);
+        this.acceptDelete();
       }
     });
   }
 
+  async acceptDelete() {
+    await this.forumService.remove(this.activeItem.uuId).toPromise();
+    this.forums = await this.forumService.find({}).toPromise();
+  }
+  
   next() {
     this.first = this.first + this.rows;
   }

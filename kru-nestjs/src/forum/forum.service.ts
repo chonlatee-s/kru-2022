@@ -1,5 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  forwardRef,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ForumDetailService } from 'src/forum-detail/forum-detail.service';
 import { MajorService } from 'src/major/major.service';
 import { UserService } from 'src/user/user.service';
 import { Repository } from 'typeorm';
@@ -13,6 +19,9 @@ export class ForumService {
     private forumRepository: Repository<ForumEntity>,
     private majorService: MajorService,
     private userService: UserService,
+
+    @Inject(forwardRef(() => ForumDetailService))
+    private forumDetailService: ForumDetailService,
   ) {}
 
   async findAll() {
@@ -88,6 +97,8 @@ export class ForumService {
   }
 
   async removeForum(id: string) {
+    const data = await this.forumRepository.findOne({ uuId: id });
+    await this.forumDetailService.removeFormByForumId(data.id);
     return await this.forumRepository.delete({ uuId: id });
   }
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ForumService } from 'src/forum/forum.service';
 import { UserService } from 'src/user/user.service';
@@ -12,6 +12,8 @@ export class ForumDetailService {
     @InjectRepository(ForumDetailEntity)
     private forumDetailRepository: Repository<ForumDetailEntity>,
     private userService: UserService,
+
+    @Inject(forwardRef(() => ForumService))
     private forumService: ForumService,
   ) {}
 
@@ -41,5 +43,9 @@ export class ForumDetailService {
 
   async removeForumDetail(id: string) {
     return await this.forumDetailRepository.delete({ uuId: id });
+  }
+
+  async removeFormByForumId(id: number) {
+    return await this.forumDetailRepository.delete({ forumId: id });
   }
 }

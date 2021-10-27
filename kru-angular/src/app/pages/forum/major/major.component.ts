@@ -4,6 +4,7 @@ import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { FnService } from 'src/app/features/fn/services/fn.service';
 import { ForumData } from 'src/app/features/forum/interfaces/forum-data.interface';
+import { ForumEdit } from 'src/app/features/forum/interfaces/forum-edit.interface';
 import { Forum } from 'src/app/features/forum/interfaces/forum.interface';
 import { List } from 'src/app/features/forum/interfaces/list.interface';
 import { ForumService } from 'src/app/features/forum/services/forum.service';
@@ -15,11 +16,16 @@ import { ForumService } from 'src/app/features/forum/services/forum.service';
 })
 
 export class MajorComponent implements OnInit {
-  display:boolean = false;
+  display: boolean = false;
+  displayEdit: boolean = false;
   userProfile!: UserProfile;
   forums!: Forum[];
   data!: ForumData;
   msg: string = "";
+
+  dataEdit!: ForumEdit;
+  msgEdit: string = "";
+  
   first = 0;
   rows = 10;
 
@@ -36,7 +42,12 @@ export class MajorComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.items = [
-      { label: 'แก้ไข', icon: 'pi pi-pencil', command: () => {} },
+      { label: 'แก้ไข', icon: 'pi pi-pencil', command: () => 
+        { 
+          this.displayEdit = true;
+          this.msgEdit = this.activeItem.topic;
+        }
+      },
       { label: 'ลบ', icon: 'pi pi-trash', command: () => { this.confirmDelete(); } }
     ];
 
@@ -68,6 +79,7 @@ export class MajorComponent implements OnInit {
 
   resetMsg() {
     this.msg = "";
+    this.msgEdit = "";
   }
   
   async confirmDelete() {
@@ -86,6 +98,17 @@ export class MajorComponent implements OnInit {
     this.forums = await this.forumService.find({}).toPromise();
   }
   
+  async sendDataEdit() {
+    this.dataEdit = { topic: this.msgEdit };
+    if(this.msgEdit !== '') {
+      await this.forumService.update(this.activeItem.uuId, this.dataEdit).toPromise();
+      this.displayEdit = false;
+      this.forums = await this.forumService.find({}).toPromise();
+    }
+    this.resetMsg();
+  }
+
+
   next() {
     this.first = this.first + this.rows;
   }

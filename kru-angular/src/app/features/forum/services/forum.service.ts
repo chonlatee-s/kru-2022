@@ -6,7 +6,7 @@ import { Forum } from '../interfaces/forum.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class ForumService extends BaseService<Forum, Forum>{
+export class ForumService extends BaseService<Forum, unknown>{
   
   constructor(
     protected http: HttpClient

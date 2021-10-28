@@ -64,6 +64,8 @@ export class ForumService {
       );
 
       detail.push({
+        uuId: data.detail[i].uuId,
+        useruuId: user.uuId,
         email: user.email,
         fullname: user.fullname,
         profile: user.profile,

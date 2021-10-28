@@ -19,38 +19,92 @@
   <p-divider></p-divider>
 
 
-  <div *ngFor="let item of forum.detail; let i=index;">
-    <div class="flex flex-column md:ml-7">
-      <div class="flex mb-2"> 
-        <div class="flex mr-3">
-          <p-avatar image="{{ item.profile }}" shape="circle"></p-avatar>
-        </div>
-        <div class="flex flex-column">
-          <div class="flex txt-name"> {{ item.fullname }} </div>
-          <div class="flex txt-major mt-1">สาขา {{ item.major }} </div>
-        </div>
-      </div>
-      <div class="flex txt-comment ml-6 mr-6"> {{ item.answer }} </div>
-      <div class="flex txt-date ml-6 mt-2"><i class="pi pi-calendar icon-date"></i> {{ converseDate(item.updateAt) | date: "dd/MM/yy" }} </div>
-      <div class="block ml-6 mr-6">
-        <p-divider></p-divider>
-      </div>
+  <div class="flex flex-grow-1">
+    <div style="width:100%">
+      <p-table [value]="forum.detail" styleClass="p-datatable-sm" responsiveLayout="scroll">
+        <ng-template pTemplate="body" let-rowData let-detail>
+            <tr>
+                <td>
+                  <div class="flex flex-column md:ml-7">
+                    <div class="flex mb-2"> 
+                      <div class="flex mr-3">
+                        <p-avatar image="{{ detail.profile }}" shape="circle"></p-avatar>
+                      </div>
+                      <div class="flex flex-column">
+                        <div class="flex txt-name"> {{ detail.fullname }} </div>
+                        <div class="flex txt-major mt-1">สาขา {{ detail.major }} </div>
+                      </div>
+                    </div>
+                    <div class="flex txt-comment ml-6 mr-6"> {{ detail.answer }} </div>
+                    <div class="flex txt-date ml-6 mt-2"><i class="pi pi-calendar icon-date"></i> {{ converseDate(detail.updateAt) | date: "dd/MM/yy" }} </div>
+                  </div>
+                </td>
+
+                <td style="text-align: right; width: 5%;" >
+                  <div class="flex flex-row flex-wrap justify-content-end" *ngIf="userProfile" style="cursor: pointer;">
+                    <i class="pi pi-ellipsis-v" *ngIf="detail.useruuId === userProfile.uuId" (click)="activeItem = rowData; menu.toggle($event)"></i>
+                  </div>
+                </td>
+
+            </tr>
+        </ng-template>
+      </p-table>
     </div>
   </div>
-
 </div>
 
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+<p-confirmDialog #cd>
+  <ng-template pTemplate="footer">
+    <div class="flex mt-2 box-comment justify-content-center">
+      <div class="flex"><span class="btn-cancle" (click)="cd.reject()">ไม่</span></div>
+      <div class="flex">
+        <button pButton type="button" class="p-button-rounded btn-comment" (click)="cd.accept()"> ใช่ ลบเลย</button>
+      </div>
+    </div>
+  </ng-template>
+</p-confirmDialog>
+
 <p-sidebar [(visible)]="display" position="bottom" *ngIf="userProfile">
+
+  <div *ngIf="isLogin; else elseBlock">
+    <div class="flex flex-row justify-content-around flex-wrap">
+      <div class="flex">
+        <p-avatar image="{{ userProfile.profile }}" shape="circle"></p-avatar>
+      </div>
+      <div class="flex mb-2 flex-grow-1">
+        <input type="text" class="comment" placeholder="แสดงความคิดเห็น" [(ngModel)]="msg" #ctrl="ngModel" required>
+      </div>
+    </div>
+    <div class="flex box-comment justify-content-center">
+      <div class="flex"><span class="btn-cancle" (click)="resetMsg()">ยกเลิก</span></div>
+      <div class="flex"><button pButton type="button" class="p-button-rounded btn-comment" (click)="sendData()" [disabled]="!ctrl.valid">ส่งความคิดเห็น</button></div>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <p class="text-center"> <a routerLink="/register">ลงทะเบียนเข้าใช้งาน</a> </p>
+  </ng-template>
+
+</p-sidebar>
+
+<p-sidebar [(visible)]="displayEdit" position="bottom" *ngIf="userProfile">
   <div class="flex flex-row justify-content-around flex-wrap">
     <div class="flex">
       <p-avatar image="{{ userProfile.profile }}" shape="circle"></p-avatar>
     </div>
-    <div class="flex mb-2 flex-grow-1">
-      <input type="text" class="comment" placeholder="แสดงความคิดเห็น" [(ngModel)]="msg" #ctrl="ngModel" required>
+    <div class="flex flex-grow-1">
+      <input type="text" class="comment" placeholder="ข้อความ" [(ngModel)]="msgEdit" #ctrl2="ngModel" required>
     </div>
   </div>
-  <div class="flex box-comment justify-content-center">
+  <div class="flex mt-2 box-comment justify-content-center">
     <div class="flex"><span class="btn-cancle" (click)="resetMsg()">ยกเลิก</span></div>
-    <div class="flex"><button pButton type="button" class="p-button-rounded btn-comment" (click)="sendData()" [disabled]="!ctrl.valid">ส่งความคิดเห็น</button></div>
+    <div class="flex">
+      <button 
+        pButton type="button" 
+        class="p-button-rounded btn-comment" 
+        (click)="sendDataEdit()" [disabled]="!ctrl2.valid">
+        ส่งข้อความ </button>
+    </div>
   </div>
 </p-sidebar>

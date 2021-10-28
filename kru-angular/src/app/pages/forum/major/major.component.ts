@@ -18,6 +18,7 @@ import { ForumService } from 'src/app/features/forum/services/forum.service';
 export class MajorComponent implements OnInit {
   display: boolean = false;
   displayEdit: boolean = false;
+  
   userProfile!: UserProfile;
   forums!: Forum[];
   data!: ForumData;

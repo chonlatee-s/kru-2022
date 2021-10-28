@@ -6,7 +6,7 @@ import { Detail } from '../interfaces/detail.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class DetailService extends BaseService<Detail, Detail>{
+export class DetailService extends BaseService<Detail, unknown>{
   
   constructor(
     protected http: HttpClient

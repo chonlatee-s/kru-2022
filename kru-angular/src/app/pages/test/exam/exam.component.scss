@@ -43,11 +43,62 @@
   font-weight: 300;
   padding-left: 15px;
   padding-right: 15px;
+  cursor: pointer;
+}
+.choice:hover {
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 15px;
+  padding-right: 15px;
+  color:#B7996C;
+  cursor: pointer;
 }
 .txt-mode {
   font-size: 10px;
   font-weight: 200;
 }
-.btn-nb {
-  font-size: 18px;
+
+::ng-deep .btn-nb .p-button:enabled {
+  color: #222 !important;
+  background: #fff !important;
+  border: 1px solid #fff !important;
+}
+
+::ng-deep .btn-nb .p-button:enabled:hover {
+  color: #fff !important;
+  background: #B7996C !important;
+  border: 1px solid #B7996C !important;
+}
+::ng-deep .btn-nb .p-button:focus {
+  color: #fff;
+  background-color: #B7996C;
+  border: 1px solid #B7996C !important;
+}
+
+::ng-deep .btn-send .p-button:enabled {
+  font-family: 'Sarabun' !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  background: #222 !important;
+  border: 1px solid #222 !important;
+}
+
+::ng-deep .btn-send .p-button:enabled:hover {
+  font-family: 'Sarabun' !important;
+  font-size: 14px !important;
+  color: #fff !important;
+  background: #B7996C !important;
+  border: 1px solid #B7996C !important;
+}
+::ng-deep .btn-send .p-button:focus {
+  font-family: 'Sarabun' !important;
+  font-size: 14px !important;
+  color: #fff;
+  background-color: #B7996C;
+  border: 1px solid #B7996C !important;
+}
+
+.activeAnswer {
+  color: #B7996C;
 }

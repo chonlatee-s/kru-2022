@@ -33,10 +33,11 @@ export class ExamService {
   }
 
   async randomExam(qty: number) {
-    return await this.examRepository
+    const data = await this.examRepository
       .createQueryBuilder('exam')
       .select([
         'exam.uuId',
+        'exam.img',
         'exam.question',
         'exam.choice1',
         'exam.choice2',
@@ -46,6 +47,20 @@ export class ExamService {
       .orderBy('RAND()')
       .limit(qty)
       .getMany();
+
+    return data.map((data) => {
+      return {
+        uuId: data.uuId,
+        img: data.img,
+        question: data.question,
+        choice1: data.choice1,
+        choice2: data.choice2,
+        choice3: data.choice3,
+        choice4: data.choice4,
+        answer: '0',
+        correctAnser: '0',
+      };
+    });
   }
 
   async answer(data: Exam[]): Promise<ExamResult> {
@@ -64,9 +79,11 @@ export class ExamService {
     if (check.answer === data.answer) {
       data.ref = check.ref;
       data.check = true;
+      data.correctAnser = check.answer;
     } else {
       data.ref = check.ref;
       data.check = false;
+      data.correctAnser = check.answer;
     }
     return data;
   }

@@ -9,6 +9,10 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { DividerModule } from 'primeng/divider';
 import { TooltipModule } from 'primeng/tooltip';
 import { CardModule } from 'primeng/card';
+
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SidebarModule } from 'primeng/sidebar';
+import { DialogModule } from 'primeng/dialog';
 @NgModule({
   declarations: [
     TestComponent,
@@ -21,7 +25,10 @@ import { CardModule } from 'primeng/card';
     ProgressBarModule,
     DividerModule,
     TooltipModule,
-    CardModule
+    CardModule,
+    ProgressSpinnerModule,
+    SidebarModule,
+    DialogModule
   ]
 })
 export class TestModule { }

@@ -25,11 +25,11 @@ export class ExamEntity {
   choice3: string;
   @Column()
   choice4: string;
-  @Column()
+  @Column({ type: 'char' })
   answer: string;
   @Column({ type: 'text' })
   ref: string;
-  @Column()
+  @Column({ type: 'char' })
   type: string;
   @CreateDateColumn()
   createAt: Date;

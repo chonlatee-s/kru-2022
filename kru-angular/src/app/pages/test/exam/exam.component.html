@@ -1,34 +1,52 @@
-<div class="container">
+<div class="flext mt-5 text-center" *ngIf="!exams">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="container" *ngIf="exams">
   <div class="flex flex-row mt-4 mb-3 justify-content-between">
     <div class="flex"> <i class="pi pi-clock box-clock"></i><span class="time">09:45</span> </div>
     <div class="flex">
       <span pTooltip="เปลี่ยนคำถาม" tooltipPosition="top" tooltipStyleClass="tooltip"><i class="pi pi-sort-alt box-icon"></i></span>
-      <span pTooltip="ตัวช่วย" tooltipPosition="top" tooltipStyleClass="tooltip"><i class="pi pi-question box-icon"></i></span>
-      <span pTooltip="ขยายเต็มจอ" tooltipPosition="top" tooltipStyleClass="tooltip"><i class="pi pi-window-maximize box-icon"></i></span>
     </div>
   </div>
+
   <p-progressBar [value]="40" [showValue]="false" [style]="{'height': '8px'}"></p-progressBar>
+
   <div class="flex flex-column mt-2 box-question">
     <div class="flex flex-column md:flex-row mb-3 question">
-      <div class="flex mr-3 mb-3 md:mt-0 md:mb-0 justify-content-center">
+      <div class="flex mr-3 mb-3 md:mt-0 md:mb-0 justify-content-center" *ngIf="exams[arr].img !=='' ">
         <p-card>
-          <img src="https://live.staticflickr.com/65535/51423507131_d4dddee55c_m.jpg" width="200" alt="">
+          <img src="{{ exams[arr].img }}" width="200" alt="">
         </p-card>
       </div>
-      <div class="flex">1. ข้อใดไม่ใช่จรรยาบรรณวิชาชีพครู ข้อใดไม่ใช่จรรยาบรรณวิชาชีพครู ข้อใดไม่ใช่จรรยาบรรณวิชาชีพครู ข้อใดไม่ใช่จรรยาบรรณวิชาชีพครูข้อใดไม่ใช่จรรยาบรรณวิชาชีพครู</div>
+      <div class="flex">{{ arr+1 }}. {{ exams[arr].question }}</div>
     </div>
-    <div class="flex choice">ก. จรรยาบรรณต่อตนเอง</div>
+
+    <div class="flex choice" (click)="sendAnswer(exams[arr].uuId , '1')" [ngClass]="{'activeAnswer': exams[arr].answer === '1'}" > ก. {{ exams[arr].choice1 }} </div>
     <p-divider></p-divider>
-    <div class="flex choice">ข. จรรยาบรรณต่อวิชาชีพ</div>
+    <div class="flex choice" (click)="sendAnswer(exams[arr].uuId , '2')" [ngClass]="{'activeAnswer': exams[arr].answer === '2'}" > ข. {{ exams[arr].choice2 }} </div>
     <p-divider></p-divider>
-    <div class="flex choice">ค. จรรยาบรรณต่อต่อสังคม</div>
+    <div class="flex choice" (click)="sendAnswer(exams[arr].uuId , '3')" [ngClass]="{'activeAnswer': exams[arr].answer === '3'}" > ค. {{ exams[arr].choice3 }} </div>
     <p-divider></p-divider>
-    <div class="flex choice">ง. จรรยาบรรณต่อวินัย</div>
+    <div class="flex choice" (click)="sendAnswer(exams[arr].uuId , '4')" [ngClass]="{'activeAnswer': exams[arr].answer === '4'}" > ง. {{ exams[arr].choice4 }} </div>
     <p-divider></p-divider>
+
   </div>
+
   <div class="flex flex-row justify-content-between mt-5">
-    <div class="flex"><i class="pi pi-arrow-left btn-nb"></i></div>
-    <div class="flex"><span class="txt-mode">โหมดแข่งขัน</span></div>
-    <div class="flex"><i class="pi pi-arrow-right btn-nb"></i></div>
+    <div class="flex btn-nb" (click)="back()">
+      <button *ngIf="backBtn" pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded p-button-text"></button>
+    </div>
+    <div class="flex btn-send mt-2">
+      <span class="txt-mode" *ngIf="!sendAnswerBtn">โหมดแข่งขัน</span>
+      <button pButton pRipple (click)="checkScore()" *ngIf="sendAnswerBtn"  type="button" label="ตรวจคำตอบ" class="p-button-outlined p-button-rounded"></button>
+    </div>
+    <div class="flex btn-nb" (click)="next()">
+      <button *ngIf="nextBtn" pButton pRipple type="button" icon="pi pi-arrow-right" class="p-button-rounded p-button-text"></button>
+    </div>
   </div>
+
 </div>
+
+
+

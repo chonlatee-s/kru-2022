@@ -32,7 +32,16 @@ export class RegisterComponent implements OnInit {
 
   async signInWithGoogle() {
     const user = await this.authService.signInWithGoogle();
-    if(user) {
+    if (user) {
+      this.profile = user;
+      this.step1 = false;
+      this.step2 = true;
+    }
+  }
+
+  async signInWithFacebook() {
+    const user = await this.authService.signInWithFacebook();
+    if (user) {
       this.profile = user;
       this.step1 = false;
       this.step2 = true;

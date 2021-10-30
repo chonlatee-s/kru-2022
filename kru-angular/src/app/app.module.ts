@@ -20,7 +20,7 @@ import { MenuComponent } from './shared/layout-main/menu/menu.component';
 import { CompetitorsComponent } from './shared/layout-main/competitors/competitors.component';
 import { FooterComponent } from './shared/layout-main/footer/footer.component';
 
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './core/interceptors/token-interceptor.service';
@@ -59,9 +59,11 @@ import { ConfirmationService } from 'primeng/api';
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '413443577640-cuq0u63d2qgudd7ml02uooatg4ndmveg.apps.googleusercontent.com'
-            )
+            provider: new GoogleLoginProvider('413443577640-cuq0u63d2qgudd7ml02uooatg4ndmveg.apps.googleusercontent.com')
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('5208278095855396')
           }
         ]
       } as SocialAuthServiceConfig,

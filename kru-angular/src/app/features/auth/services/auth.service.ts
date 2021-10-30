@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService, FacebookLoginProvider } from 'angularx-social-login';
 import { BaseService } from 'src/app/core/services/base.service';
 import { Login } from '../interfaces/login.interface';
 import { Profile } from '../interfaces/profile.interface';
@@ -35,10 +35,24 @@ export class AuthService extends BaseService<unknown, unknown>{
     return this.checkUser(this.profile);
   }
 
+  async signInWithFacebook() {
+    const user =  await this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.profile  = {
+      email: user.email,
+      fullname: user.name,
+      generateId: user.id,
+      profile: user.photoUrl,
+      provider: user.provider,
+      majorId: 1,
+    }
+    
+    return this.checkUser(this.profile);
+  }
+
 
   async checkUser(user: Profile) {
     const data = await this.http.get<boolean>(`${this.endpoint}/check/${user.email}`).toPromise();
-
+    // เช็คว่ามีไหม ถ้ามี Login เลย ถ้าไม่มีส่งกลับไปหน้าบ้าน เพื่อเลือกสาขา แล้วกดกลับมาลงทะเบียน register อีกที
     if(data) {
       this.login(user);
       return null;
@@ -78,6 +92,7 @@ export class AuthService extends BaseService<unknown, unknown>{
     this.userProfile = {} as UserProfile;
     localStorage.removeItem('token');
     this.router.navigate(['/home']);
+    this.signOut();
   }
 
   getToken() {

@@ -3,5 +3,6 @@ export interface Download {
   uuId?: string;
   topic: string;
   ref: string;
+  credit: string;
   createAt?: Date;
 }

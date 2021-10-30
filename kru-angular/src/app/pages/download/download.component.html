@@ -18,8 +18,8 @@
     <ng-template pTemplate="body" let-download>
         <tr>
             <td>
-              <div>{{download.topic}}</div>
-              <div class="date">โดย {{ download.ref }} </div>
+              <div><a href="{{ download.ref }}" target="_blank">{{download.topic}}</a></div>
+              <div class="date">โดย {{ download.credit }} </div>
             </td>
         </tr>
     </ng-template>

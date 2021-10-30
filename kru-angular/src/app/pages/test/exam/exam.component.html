@@ -126,7 +126,7 @@
                         <i class="pi pi-times"></i>
                       </div>
                     </ng-template>
-                    {{ exam.ref === '' ? '' : 'อ้างอิง' }}
+                    <a href="{{ exam.ref }}" target="_blank" *ngIf="exam.ref !== '' ">อ้างอิง</a>
                   </div>
                 </td>
             </tr>

@@ -17,7 +17,6 @@ export class StatsComponent implements OnInit {
   stats!: Stats[];
 
   data:any;
-  chartOptions: any;
 
   constructor(
     private authService: AuthService,
@@ -40,7 +39,7 @@ export class StatsComponent implements OnInit {
         borderColor: 'white',
         borderWidth: 2
       }]
-    };
+    }
   }
 
   converseDate(D: string) {

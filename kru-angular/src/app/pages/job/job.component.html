@@ -18,7 +18,7 @@
     <ng-template pTemplate="body" let-job>
         <tr>
             <td>
-              <div>{{ job.topic }}</div>
+              <div><a href="{{ job.ref }}" target="_blank">{{ job.topic }}</a></div>
               <div class="date">รับสมัครถึงวันที่ {{ converseDate(job.dateExpire) | date: "dd/MM/yy" }}</div>
             </td>
         </tr>

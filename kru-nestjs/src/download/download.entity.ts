@@ -17,6 +17,8 @@ export class DownloadEntity {
   topic: string;
   @Column({ type: 'text' })
   ref: string;
+  @Column({ type: 'text' })
+  credit: string;
   @CreateDateColumn()
   createAt: Date;
 }

@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { StatsService } from 'src/stats/stats.service';
+import { UserService } from 'src/user/user.service';
 import { Repository } from 'typeorm';
 import { ExamEntity } from './exam.entity';
 import { ExamResult } from './interfaces/exam-result.interface';
@@ -10,6 +12,8 @@ export class ExamService {
   constructor(
     @InjectRepository(ExamEntity)
     private examRepository: Repository<ExamEntity>,
+    private statsService: StatsService,
+    private userService: UserService,
   ) {}
 
   async findAll() {
@@ -64,17 +68,23 @@ export class ExamService {
     });
   }
 
-  async answer(data: Exam[]): Promise<ExamResult> {
+  async answer(data: any): Promise<ExamResult> {
     const result = [];
     let sum = 0;
 
-    for (let i = 0; i < data.length; i++) {
-      result[i] = await this.checkAnswer(data[i]);
+    for (let i = 0; i < data.exams.length; i++) {
+      result[i] = await this.checkAnswer(data.exams[i]);
       if (result[i].check === true) sum++;
     }
 
     //send to DB
+    const dataToStats = {
+      id: data.uuId,
+      datas: { score: sum },
+    };
 
+    await this.statsService.createStats(dataToStats);
+    await this.userService.updateScore(data.uuId, sum);
     return { sum: sum, exams: result };
   }
 

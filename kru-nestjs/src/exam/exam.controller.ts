@@ -81,7 +81,7 @@ export class ExamController {
   }
 
   @Post('test/answer')
-  async answer(@Body() data: Exam[]) {
+  async answer(@Body() data: any) {
     return await this.examService.answer(data);
   }
 }

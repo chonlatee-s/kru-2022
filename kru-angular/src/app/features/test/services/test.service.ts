@@ -15,7 +15,7 @@ export class TestService extends BaseService<unknown, unknown>{
   async getExam(type: string) {
     return await this.http.get<any>(`${this.endpoint}/test/${type}`).toPromise();
   }
-  async checkScore(data: Exam[]) {
+  async checkScore(data: any) {
     return await this.http.post<any>(`${this.endpoint}/test/answer`, data).toPromise();
   }
   async changeQuestion(num: number) {

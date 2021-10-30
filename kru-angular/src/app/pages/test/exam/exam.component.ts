@@ -28,7 +28,7 @@ export class ExamComponent implements OnInit {
   progress = 0;
 
   constructor( 
-    private authService: AuthService, 
+    private authService: AuthService,
     private testService: TestService,
     private route: ActivatedRoute,
   ) { }
@@ -80,8 +80,11 @@ export class ExamComponent implements OnInit {
   }
 
   async checkScore() {
-    
-    const data = await this.testService.checkScore(this.exams);
+    const x = {
+      uuId: this.userProfile.uuId,
+      exams: this.exams
+    }
+    const data = await this.testService.checkScore(x);
     this.exams = data.exams;
     //reset
     this.arr = 0;

@@ -71,4 +71,8 @@ export class UserService {
       };
     });
   }
+
+  async updateScore(uuId: string, score: number) {
+    this.userRepository.update({ uuId: uuId }, { score: score });
+  }
 }

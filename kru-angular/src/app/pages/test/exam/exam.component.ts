@@ -12,8 +12,11 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./exam.component.scss']
 })
 export class ExamComponent implements OnInit {
-  path: String = "";
+  path: string = "";
+  type: string = "";
   userProfile!: UserProfile;
+  Count!:any;
+
   exams!: Exam[];
   arr: number = 0;
   nextBtn: boolean = true;
@@ -37,9 +40,14 @@ export class ExamComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.path = environment.apiUrl;
     this.userProfile = await this.authService.getProfile();
-    this.exams = await this.testService.getExam(this.route.snapshot.params.type);
+    this.type = this.route.snapshot.params.type;
+    this.exams = await this.testService.getExam(this.type);
     this.M = this.exams.length - 1; // ลบหนึ่งเพราะมีอีก 59 วินาที
     this.Timer();
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.Count);
   }
 
   next() {
@@ -82,11 +90,12 @@ export class ExamComponent implements OnInit {
   }
 
   async checkScore() {
-    const x = {
+    const toDB = {
       uuId: this.userProfile.uuId,
-      exams: this.exams
+      exams: this.exams,
+      type: this.type
     }
-    const data = await this.testService.checkScore(x);
+    const data = await this.testService.checkScore(toDB);
     this.exams = data.exams;
     //reset
     this.arr = 0;
@@ -112,11 +121,11 @@ export class ExamComponent implements OnInit {
   }
 
   Timer() {
-    const Count = setInterval(()=>{
+    this.Count = setInterval(()=>{
       this.S--;
       if (this.S === 0) { 
         if( this.M === 0 && this.S === 0) {
-          clearInterval(Count);
+          clearInterval(this.Count);
           this.checkScore();
         } else {
           this.M--;

@@ -83,8 +83,11 @@ export class ExamService {
       datas: { score: sum },
     };
 
-    await this.statsService.createStats(dataToStats);
-    await this.userService.updateScore(data.uuId, sum);
+    if (data.type === 'competition') {
+      await this.statsService.createStats(dataToStats);
+      await this.userService.updateScore(data.uuId, sum);
+    }
+
     return { sum: sum, exams: result };
   }
 

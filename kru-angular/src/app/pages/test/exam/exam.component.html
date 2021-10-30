@@ -73,7 +73,7 @@
       <button *ngIf="backBtn" pButton pRipple type="button" icon="pi pi-arrow-left" class="p-button-rounded p-button-text"></button>
     </div>
     <div class="flex btn-send mt-2">
-      <span class="txt-mode" *ngIf="!sendAnswerBtn">โหมดแข่งขัน</span>
+      <span class="txt-mode" *ngIf="!sendAnswerBtn"> {{ type === 'training' ? 'โหมดฝึกฝน' : 'โหมดแข่งขัน' }} </span>
       <button pButton pRipple (click)="checkScore()" *ngIf="sendAnswerBtn"  type="button" label="ตรวจคำตอบ" class="p-button-outlined p-button-rounded"></button>
     </div>
     <div class="flex btn-nb" (click)="next()">

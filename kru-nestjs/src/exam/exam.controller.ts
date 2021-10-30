@@ -65,8 +65,8 @@ export class ExamController {
     return await this.examService.removeExam(id);
   }
 
-  @Get('test/trainning')
-  async trainning() {
+  @Get('test/training')
+  async training() {
     return await this.examService.randomExam(10);
   }
 

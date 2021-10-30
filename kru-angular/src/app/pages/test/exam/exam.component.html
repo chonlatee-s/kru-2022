@@ -6,10 +6,10 @@
   <div class="flex flex-row mt-4 mb-3 justify-content-between">
 
     <div class="flex" *ngIf="!checkDone">
-      <i class="pi pi-clock box-clock"></i><span class="time">09:45</span>
+      <i class="pi pi-clock box-clock"></i><span class="time">{{ M }} : {{ S }}</span>
     </div>
     <div class="flex box-result flex-grow-1 justify-content-between"  *ngIf="checkDone">
-      <div class="flex"> <span>คุณได้ {{ score }} / {{ exams.length }} คะแนน</span> </div>
+      <div class="flex"> <span>{{ score }} / {{ exams.length }} คะแนน</span> </div>
       <div class="flex">
         <i class="pi pi-list box-icon" pTooltip="ดูทั้งหมด" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeViewList()"></i> 
         <i class="pi pi-table box-icon" pTooltip="ดูทีละข้อ" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeViewOne()"></i>
@@ -28,7 +28,7 @@
     </ng-template>
   </div>
 
-  <p-progressBar [value]="40" [showValue]="false" [style]="{'height': '8px'}" *ngIf="!checkDone"></p-progressBar>
+  <p-progressBar [value]="progress" [showValue]="false" [style]="{'height': '8px'}" *ngIf="!checkDone"></p-progressBar>
 
   <div class="flex flex-column mt-2 box-question" *ngIf="!showList">
     <div class="flex flex-column md:flex-row mb-3 question">
@@ -102,7 +102,7 @@
                       exam.answer === '2' ? exam.choice2 :
                       exam.answer === '3' ? exam.choice3 :
                       exam.answer === '4' ? exam.choice4 :
-                      'ยังไม่ตอบ'
+                      'ไม่ได้ตอบคำถาม'
                     }}
                   </div>
                   <div class="flex txt-result-answer" *ngIf="!exam.check">

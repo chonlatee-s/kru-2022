@@ -23,6 +23,10 @@ export class ExamComponent implements OnInit {
   checkDone: boolean = false;
   showList: boolean = false;
 
+  M: number = 0;
+  S: number = 59;
+  progress = 0;
+
   constructor( 
     private authService: AuthService, 
     private testService: TestService,
@@ -32,15 +36,17 @@ export class ExamComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.userProfile = await this.authService.getProfile();
     this.exams = await this.testService.getExam(this.route.snapshot.params.type);
+    this.M = this.exams.length - 1; // ลบหนึ่งเพราะมีอีก 59 วินาที
+    this.Timer();
   }
 
   next() {
-    if (this.arr < (this.exams.length-1)) {
+    if (this.arr < (this.exams.length - 1)) {
       this.arr++;
       this.backBtn = true;
     }
 
-    if (this.arr === this.exams.length-1) this.nextBtn = false;
+    if (this.arr === this.exams.length - 1) this.nextBtn = false;
   }
   
   back() {
@@ -53,6 +59,7 @@ export class ExamComponent implements OnInit {
   }
 
   sendAnswer(num: number, answer: string) {
+    this.progress += 100/this.exams.length;
     if (this.checkDone !== true) {
       this.exams.map( (data) => {
         if (data.num == num) data.answer = answer;
@@ -73,6 +80,7 @@ export class ExamComponent implements OnInit {
   }
 
   async checkScore() {
+    
     const data = await this.testService.checkScore(this.exams);
     this.exams = data.exams;
     //reset
@@ -87,7 +95,6 @@ export class ExamComponent implements OnInit {
   }
   async changeQuestion(num: number) {
     const data = await this.testService.changeQuestion(num);
-    console.log(data);
     this.exams.splice(this.arr, 1, data[0]);
     this.displayChangeQuestion = false;
   }
@@ -97,5 +104,22 @@ export class ExamComponent implements OnInit {
   }
   changeViewOne() {
     this.showList = false;
+  }
+
+  Timer() {
+    const Count = setInterval(()=>{
+      this.S--;
+      if (this.S === 0) { 
+        if( this.M === 0 && this.S === 0) {
+          clearInterval(Count);
+          this.checkScore();
+        } else {
+          this.M--;
+          this.S = 59;
+        }
+      }
+    }, 1000);
+    
+
   }
 }

@@ -72,6 +72,9 @@ export class ExamService {
       result[i] = await this.checkAnswer(data[i]);
       if (result[i].check === true) sum++;
     }
+
+    //send to DB
+
     return { sum: sum, exams: result };
   }
 

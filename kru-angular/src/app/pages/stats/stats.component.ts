@@ -16,6 +16,9 @@ export class StatsComponent implements OnInit {
   userProfile!: UserProfile;
   stats!: Stats[];
 
+  data:any;
+  chartOptions: any;
+
   constructor(
     private authService: AuthService,
     private statsService: StatsService,
@@ -25,6 +28,19 @@ export class StatsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.userProfile = await this.authService.getProfile();
     this.stats = await this.statsService.getStats(this.userProfile.uuId);
+    const datas = this.stats.map(x => { return x.score});
+
+    this.data = {
+      labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      datasets: [{
+        type: 'bar',
+        label: 'คะแนนสอบ',
+        backgroundColor: '#66BB6A',
+        data: datas,
+        borderColor: 'white',
+        borderWidth: 2
+      }]
+    };
   }
 
   converseDate(D: string) {

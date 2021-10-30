@@ -1,9 +1,7 @@
 <app-competitors-top></app-competitors-top>
-<div class="flex flex-row flex-wrap justify-content-center">
-  <div class="flex">
-    <div class="box">
-      <p-knob valueTemplate="{{avg}}%" [(ngModel)]="avg" [strokeWidth]="5" valueColor="#E27272"></p-knob>
-    </div>
+<div class="flex flex-column justify-content-center">
+  <div class="flex mb-5 justify-content-center">
+    <p-chart type="bar" [data]="data"></p-chart>
   </div>
   <div class="flex flex-grow-1">
     <div style="width:100%">

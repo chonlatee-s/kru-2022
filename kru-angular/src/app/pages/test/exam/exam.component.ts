@@ -4,6 +4,7 @@ import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { Exam } from 'src/app/features/test/interfaces/exam.service';
 import { TestService } from 'src/app/features/test/services/test.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-exam',
@@ -11,7 +12,7 @@ import { TestService } from 'src/app/features/test/services/test.service';
   styleUrls: ['./exam.component.scss']
 })
 export class ExamComponent implements OnInit {
-
+  path: String = "";
   userProfile!: UserProfile;
   exams!: Exam[];
   arr: number = 0;
@@ -34,6 +35,7 @@ export class ExamComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
+    this.path = environment.apiUrl;
     this.userProfile = await this.authService.getProfile();
     this.exams = await this.testService.getExam(this.route.snapshot.params.type);
     this.M = this.exams.length - 1; // ลบหนึ่งเพราะมีอีก 59 วินาที

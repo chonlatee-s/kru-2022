@@ -33,9 +33,7 @@
   <div class="flex flex-column mt-2 box-question" *ngIf="!showList">
     <div class="flex flex-column md:flex-row mb-3 question">
       <div class="flex mr-3 mb-3 md:mt-0 md:mb-0 justify-content-center" *ngIf="exams[arr].img !=='' ">
-        <p-card>
-          <img src="{{ exams[arr].img }}" width="200" alt="">
-        </p-card>
+        <img src="{{ path }}/course/img/{{ exams[arr].img }}" alt="img" width="250"  class="img-exam">
       </div>
       <div class="flex">{{ exams[arr].num }}. {{ exams[arr].question }}</div>
     </div>
@@ -93,6 +91,9 @@
         <ng-template pTemplate="body" let-exam let-i="rowIndex">
             <tr class="txt-result">
                 <td>
+                  <div class="flex mb-2 mt-2" *ngIf="exam.img !=='' ">
+                    <img src="{{ path }}/course/img/{{ exam.img }}" alt="img" width="150">
+                  </div>
                   <div class="flex mb-1">
                     ข้อ {{ i+1 }}. {{ exam.question }}
                   </div>

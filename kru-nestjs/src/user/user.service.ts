@@ -73,6 +73,8 @@ export class UserService {
   }
 
   async updateScore(uuId: string, score: number) {
-    this.userRepository.update({ uuId: uuId }, { score: score });
+    const d = new Date();
+    const YMD = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    this.userRepository.update({ uuId: uuId }, { score: score, updateAt: YMD });
   }
 }

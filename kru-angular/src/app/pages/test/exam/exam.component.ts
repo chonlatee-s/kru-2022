@@ -18,7 +18,10 @@ export class ExamComponent implements OnInit {
   nextBtn: boolean = true;
   backBtn: boolean = false;
   sendAnswerBtn: boolean = false;
-  displayMaximizable: boolean = true;
+  displayChangeQuestion: boolean = true;
+  score: number = 0;
+  checkDone: boolean = false;
+  showList: boolean = false;
 
   constructor( 
     private authService: AuthService, 
@@ -49,13 +52,14 @@ export class ExamComponent implements OnInit {
     if (this.arr === 0) this.backBtn = false;
   }
 
-  sendAnswer(uuId: string, answer: string) {
-    this.exams.map( (data) => {
-      if (data.uuId == uuId) data.answer = answer;
-    });
-
+  sendAnswer(num: number, answer: string) {
+    if (this.checkDone !== true) {
+      this.exams.map( (data) => {
+        if (data.num == num) data.answer = answer;
+      });
+      this.checkExamDone();
+    }
     this.next();
-    this.checkExamDone();
   }
 
   checkExamDone(): boolean {
@@ -70,6 +74,28 @@ export class ExamComponent implements OnInit {
 
   async checkScore() {
     const data = await this.testService.checkScore(this.exams);
+    this.exams = data.exams;
+    //reset
+    this.arr = 0;
+    this.nextBtn = true;
+    this.backBtn = false;
+    this.sendAnswerBtn = false;
+    this.score = data.sum;
+    this.displayChangeQuestion = false;
+    this.checkDone = true;
+    this.showList = true;
+  }
+  async changeQuestion(num: number) {
+    const data = await this.testService.changeQuestion(num);
     console.log(data);
+    this.exams.splice(this.arr, 1, data[0]);
+    this.displayChangeQuestion = false;
+  }
+
+  changeViewList() {
+    this.showList = true;
+  }
+  changeViewOne() {
+    this.showList = false;
   }
 }

@@ -13,6 +13,7 @@ import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SidebarModule } from 'primeng/sidebar';
 import { DialogModule } from 'primeng/dialog';
+import { TableModule } from 'primeng/table';
 @NgModule({
   declarations: [
     TestComponent,
@@ -28,7 +29,8 @@ import { DialogModule } from 'primeng/dialog';
     CardModule,
     ProgressSpinnerModule,
     SidebarModule,
-    DialogModule
+    DialogModule,
+    TableModule
   ]
 })
 export class TestModule { }

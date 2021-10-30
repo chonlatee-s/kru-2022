@@ -75,6 +75,11 @@ export class ExamController {
     return await this.examService.randomExam(20);
   }
 
+  @Get('test/change/:num')
+  async change(@Param('num') num: number) {
+    return await this.examService.changeQuestion(num);
+  }
+
   @Post('test/answer')
   async answer(@Body() data: Exam[]) {
     return await this.examService.answer(data);

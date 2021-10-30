@@ -8,5 +8,7 @@ export interface Exam {
   choice4: string;
   answer: string;
 
-  correctAnser: string;
+  num: number;
+  correctAnswer: string;
+  check: boolean;
 }

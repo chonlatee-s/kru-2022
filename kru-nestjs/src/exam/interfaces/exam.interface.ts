@@ -12,6 +12,6 @@ export interface Exam {
   type: string;
   createAt?: Date;
   check?: boolean;
-
-  correctAnser?: string;
+  num: number;
+  correctAnswer?: string;
 }

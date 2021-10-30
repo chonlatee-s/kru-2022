@@ -1,9 +1,5 @@
-.box-icon {
-  background-color:#EBF3FF;
-  padding: 5px;
-  font-size: 12px;
-  color: #789CCE;
-  margin: 5px 0px 5px 5px 
+::ng-deep .p-component {
+  font-family: 'Sarabun'!important;
 }
 .time {
   font-size: 16px;
@@ -51,7 +47,7 @@
   font-weight: 300;
   padding-left: 15px;
   padding-right: 15px;
-  color:#B7996C;
+  color:#E27272;
   cursor: pointer;
 }
 .txt-mode {
@@ -100,5 +96,49 @@
 }
 
 .activeAnswer {
-  color: #B7996C;
+  color: #E27272;
+}
+
+.box-icon {
+  cursor: pointer;
+  background-color:#EBF3FF;
+  padding: 5px;
+  font-size: 12px;
+  color: #789CCE;
+  margin: 5px 0px 5px 5px 
+}
+
+.box-icon-disabled {
+  background-color:#dbdbdb;
+  padding: 5px;
+  font-size: 12px;
+  color: #999999;
+  margin: 5px 0px 5px 5px
+}
+
+.icon-check {
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.box-result {
+  color: #789CCE;
+  padding: 10px;
+  font-size: 24px;
+  font-weight: 500;
+}
+.txt-result {
+  font-size: 14px;
+  font-weight: 300;
+}
+.txt-result-answer {
+  color: #E27272;
+  font-size: 14px;
+  font-weight: 300;
+}
+.view {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 3.5px;
+  padding: 5px;
 }

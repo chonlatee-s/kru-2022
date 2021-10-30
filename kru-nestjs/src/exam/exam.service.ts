@@ -48,8 +48,9 @@ export class ExamService {
       .limit(qty)
       .getMany();
 
-    return data.map((data) => {
+    return data.map((data, index) => {
       return {
+        num: index + 1,
         uuId: data.uuId,
         img: data.img,
         question: data.question,
@@ -58,7 +59,7 @@ export class ExamService {
         choice3: data.choice3,
         choice4: data.choice4,
         answer: '0',
-        correctAnser: '0',
+        correctAnswer: '0',
       };
     });
   }
@@ -79,12 +80,44 @@ export class ExamService {
     if (check.answer === data.answer) {
       data.ref = check.ref;
       data.check = true;
-      data.correctAnser = check.answer;
+      data.correctAnswer = check.answer;
     } else {
       data.ref = check.ref;
       data.check = false;
-      data.correctAnser = check.answer;
+      data.correctAnswer = check.answer;
     }
     return data;
+  }
+
+  async changeQuestion(num: number) {
+    const data = await this.examRepository
+      .createQueryBuilder('exam')
+      .select([
+        'exam.uuId',
+        'exam.img',
+        'exam.question',
+        'exam.choice1',
+        'exam.choice2',
+        'exam.choice3',
+        'exam.choice4',
+      ])
+      .orderBy('RAND()')
+      .limit(1)
+      .getMany();
+
+    return data.map((data) => {
+      return {
+        num: num,
+        uuId: data.uuId,
+        img: data.img,
+        question: data.question,
+        choice1: data.choice1,
+        choice2: data.choice2,
+        choice3: data.choice3,
+        choice4: data.choice4,
+        answer: '0',
+        correctAnswer: '0',
+      };
+    });
   }
 }

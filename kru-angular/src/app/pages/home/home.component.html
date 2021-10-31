@@ -1,21 +1,24 @@
 <app-competitors-top></app-competitors-top>
 <div class="flex justify-content-center flex-row-reverse flex-wrap">
   <div class="flex px-1">
-    <p-carousel [value]="cars" [autoplayInterval]="3000" 
-    [responsiveOptions]="cars"  [showNavigators]="false"
+    <p-carousel [value]="news" [autoplayInterval]="3000" 
+    [responsiveOptions]="news"  [showNavigators]="false"
     [numVisible]="1" [numScroll]="1"
     >
-      <ng-template let-car pTemplate="item">
+      <ng-template let-item pTemplate="item">
         <div style="width: 155px;">
-          <img src="{{car.txt}}" alt="" width="310px">
+          <a href="{{ item.ref }}" target="_blank">  
+            <img src="{{ path }}/news/{{ item.news }}" alt="news" width="310px">
+          </a>
         </div>
       </ng-template>
     </p-carousel>
   </div>
 
-  <div class="flex px-1">
-    <img src="https://live.staticflickr.com/65535/51411164195_c84a3ec3ec_o.png" alt="" width="310px" height="310px">
+  <div class="flex px-1" *ngIf="news">
+    <a href="{{ left[0].ref }}" target="_blank">
+      <img src="{{ path }}/news/{{ left[0].news }}" alt="news" width="310px" height="310px">
+    </a>
   </div>
-  
 </div>
 

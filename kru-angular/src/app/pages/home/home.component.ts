@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { News } from 'src/app/features/news/interfaces/news.interface';
+import { NewsService } from 'src/app/features/news/services/news.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -6,19 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  showMenuRight: boolean = true
-  cars = [
-    {
-      txt: 'https://live.staticflickr.com/65535/51410449848_68df1609a9_o.png',
-    },
-    {
-      txt: 'https://live.staticflickr.com/65535/51410449848_68df1609a9_o.png',
-    }
-  ]
+  showMenuRight: boolean = true;
+  news!: News[];
+  left!: News[];
+  path: String = "";
 
-  constructor() {}
+  constructor(private newsService: NewsService) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.path = environment.apiUrl;
+    this.news = await this.newsService.find({}).toPromise();
+    this.left = this.news.filter( x => x.slide === 'left');
+    this.news = this.news.filter( x => x.slide === 'right');
   }
 
 }

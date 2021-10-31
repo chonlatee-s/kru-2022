@@ -8,10 +8,13 @@
     <div class="flex" *ngIf="!checkDone">
       <i class="pi pi-clock box-clock"></i><span class="time">{{ M }} : {{ S }}</span>
     </div>
+
     <div class="flex box-result flex-grow-1 justify-content-between"  *ngIf="checkDone">
-      <div class="flex"> <span>{{ score }} / {{ exams.length }} คะแนน</span> </div>
       <div class="flex">
-        <i class="pi pi-list box-icon" pTooltip="ดูทั้งหมด" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeViewList()"></i> 
+        <i class="pi pi-check-square box-icon"></i> <span style="font-size: 16px; margin-top: 4px; margin-left: 5px;"> สรุปคะแนน {{ score }} เต็ม {{ exams.length }}</span> 
+      </div>
+      <div class="flex">
+        <i class="pi pi-list box-icon" style="margin-right: 5px;" pTooltip="ดูทั้งหมด" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeViewList()"></i> 
         <i class="pi pi-table box-icon" pTooltip="ดูทีละข้อ" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeViewOne()"></i>
       </div>
     </div>
@@ -84,9 +87,9 @@
 
 
   <!-- สรุปผล -->
-
-  <div class="flex flex-grow-1" *ngIf="showList">
+  <div class="flex flex-grow-1 mt-5" *ngIf="showList">
     <div style="width:100%">
+      <p-divider></p-divider>
       <p-table [value]="exams" styleClass="p-datatable-sm" responsiveLayout="scroll">
         <ng-template pTemplate="body" let-exam let-i="rowIndex">
             <tr class="txt-result">
@@ -126,7 +129,12 @@
                         <i class="pi pi-times"></i>
                       </div>
                     </ng-template>
-                    <a href="{{ exam.ref }}" target="_blank" *ngIf="exam.ref !== '' ">อ้างอิง</a>
+                    <div *ngIf="exam.ref !== ''; else elseBlock2">
+                      <a href="{{ exam.ref }}" target="_blank">อ้างอิง</a>
+                    </div>
+                    <ng-template #elseBlock2>
+                      <del>อ้างอิง</del>
+                    </ng-template>
                   </div>
                 </td>
             </tr>

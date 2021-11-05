@@ -75,6 +75,16 @@ export class UserService {
   async updateScore(uuId: string, score: number) {
     const d = new Date();
     const YMD = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-    this.userRepository.update({ uuId: uuId }, { score: score, updateAt: YMD });
+    await this.userRepository.update(
+      { uuId: uuId },
+      { score: score, updateAt: YMD },
+    );
+  }
+
+  async updateMajor(data: any) {
+    await this.userRepository.update(
+      { uuId: data.uuId },
+      { majorId: data.majorId },
+    );
   }
 }

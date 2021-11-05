@@ -22,7 +22,8 @@ const routes: Routes = [
       { path: 'course', loadChildren: () => import('./pages/course/course.module').then(m => m.CourseModule) },
       { path: 'predict', loadChildren: () => import('./pages/predict/predict.module').then(m => m.PredictModule) },
       { path: 'forum', loadChildren: () => import('./pages/forum/forum.module').then(m => m.ForumModule) },
-      { path: 'information', loadChildren: () => import('./pages/information/information.module').then(m => m.InformationModule) }
+      { path: 'information', loadChildren: () => import('./pages/information/information.module').then(m => m.InformationModule) },
+      { path: 'profile', loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule) }
     ]
   },
   { path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },

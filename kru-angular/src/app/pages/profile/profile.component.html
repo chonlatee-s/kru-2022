@@ -1,0 +1,23 @@
+<div class="flex flex-column align-items-center mt-4" *ngIf="majors">
+  <div class="flex"><span class="txt-topic-major">เป็นกำลังใจให้นะ</span></div>
+  <div class="flex mt-2 mr-2 ml-2">
+    <span class="txt-detail">{{ userProfile.fullname }}</span>
+  </div>
+
+  <div class="flex flex-grow-1 mt-5 mr-2 ml-2">
+    <p-dropdown 
+      placeholder="เลือกกลุ่มสาขาที่จะสมัครสอบ"
+      [options]="majors"
+      [filter] = "true"
+      [(ngModel)]="selectedMajor" 
+      optionLabel="major"
+  ></p-dropdown>
+  </div>
+
+  <div class="flex mt-4 mb-2">
+    <button (click)="save()" pButton pRipple type="button" label="บันทึกข้อมูล" class="btn-save p-button-rounded"></button>
+  </div> 
+
+</div>
+
+<p-messages></p-messages>

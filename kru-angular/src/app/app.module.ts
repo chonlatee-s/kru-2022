@@ -26,6 +26,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './core/interceptors/token-interceptor.service';
 
 import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,7 @@ import { ConfirmationService } from 'primeng/api';
     ButtonModule,
     
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {
@@ -73,7 +74,9 @@ import { ConfirmationService } from 'primeng/api';
       useClass: TokenInterceptorService,
       multi: true
     },
-    ConfirmationService
+    ConfirmationService,
+    MessageService
+
   ],
   bootstrap: [AppComponent],
 })

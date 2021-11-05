@@ -22,9 +22,11 @@
         <i class="pi pi-user icon"></i>
         <span class="txt-menu">{{ userProfile.fullname }}</span>
       </div>
-      <div class="flex mt-3">
-        <i class="pi pi-ticket icon"></i>
-        <span class="txt-menu"> วิชาเอก {{ userProfile.major }} </span>
+      <div class="flex mt-3" (click)="listMenu()">
+        <a routerLink="/profile">
+          <i class="pi pi-ticket icon"></i>
+          <span class="txt-menu">วิชาเอก {{ userProfile.major }}</span>
+        </a>
       </div>
     </div>
     <ng-template #elseBlock>

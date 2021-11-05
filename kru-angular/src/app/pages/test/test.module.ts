@@ -14,6 +14,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SidebarModule } from 'primeng/sidebar';
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
+import { AvatarModule } from 'primeng/avatar';
 @NgModule({
   declarations: [
     TestComponent,
@@ -30,7 +31,8 @@ import { TableModule } from 'primeng/table';
     ProgressSpinnerModule,
     SidebarModule,
     DialogModule,
-    TableModule
+    TableModule,
+    AvatarModule
   ]
 })
 export class TestModule { }

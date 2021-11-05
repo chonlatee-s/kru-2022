@@ -12,10 +12,6 @@ export class ProfileService extends BaseService<unknown, unknown>{
     protected http: HttpClient
   ) { super(http, '/user') }
 
-  async getMajor() {
-    return await this.http.get<any>(`${this.endpoint}`).toPromise();
-  }
-
   async myprofile(uuId: string) {
     return await this.http.get<any>(`${this.endpoint}/myprofile/${uuId}`).toPromise();
   }

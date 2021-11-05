@@ -32,8 +32,9 @@ export class ProfileComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.userProfile = await this.authService.getProfile();
+    this.updateMajor = await this.profileService.myprofile(this.userProfile.uuId);
     this.majors = await this.registerService.getMajor();
-    this.selectedMajor = this.majors.filter( val => val.major === this.userProfile.major)[0];
+    this.selectedMajor = this.majors.filter( val => val.id === this.updateMajor.majorId)[0];
   }
 
   async save() {

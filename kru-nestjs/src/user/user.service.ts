@@ -87,4 +87,21 @@ export class UserService {
       { majorId: data.majorId },
     );
   }
+
+  async myProfile(uuId: string) {
+    const userStats = await this.userRepository
+      .createQueryBuilder('user')
+      .select(['user.email', 'user.fullname', 'user.profile', 'user.score'])
+      .where('user.uuId = :uuId', { uuId: uuId })
+      .leftJoinAndSelect('user.major', 'major')
+      .getOne();
+
+    return {
+      fullname: userStats.fullname,
+      profile: userStats.profile,
+      score: userStats.score,
+      majorId: userStats.major.id,
+      major: userStats.major.major,
+    };
+  }
 }

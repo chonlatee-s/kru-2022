@@ -10,7 +10,6 @@ import { StatsService } from 'src/app/features/stats/services/stats.service';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
-  showMenuRight: boolean = true;
   avg: number = 100;
 
   userProfile!: UserProfile;

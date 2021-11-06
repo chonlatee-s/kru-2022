@@ -11,7 +11,10 @@
         <div class="box-result-all">
           <div class="flex flex-column mb-1 justify-content-center">
             <div class="flex justify-content-center mb-1"><p-avatar image="{{ userProfile.profile }}" shape="circle" size="xlarge"></p-avatar></div>
-            <div class="flex justify-content-center"><span class="fullname">{{ userProfile.fullname }}</span></div>
+            <div class="flex justify-content-center">
+              <span class="fullname">{{ userProfile.fullname.substr(0, 30) }} </span>
+              <span class="fullname" *ngIf="userProfile.fullname.length >=30 ">...</span>
+            </div>
           </div>
           <div class="flex justify-content-center">
             <span style="font-size: 48px; font-weight: 300;">{{ score }}/{{ exams.length }}</span> 

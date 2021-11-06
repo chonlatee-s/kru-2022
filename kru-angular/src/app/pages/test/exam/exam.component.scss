@@ -4,14 +4,14 @@
 .time {
   font-size: 16px;
   margin-top: 4px;
-  color: #E27272;
+  color: #B7996C;
   border-radius: 5px;
 }
 .box-clock {
-  background-color:#FFEAEB;
+  background-color:#fff1dd;
   padding: 5px;
   font-size: 12px;
-  color: #E27272;
+  color: #B7996C;
   margin: 5px 5px 5px 0px;
   border-radius: 5px;
 }
@@ -24,7 +24,7 @@
 ::ng-deep .p-progressbar .p-progressbar-value {
   border: 0 none;
   margin: 0;
-  background: #E27272;
+  background: #B7996C;
 }
 .box-question {
   background-color: #fff;
@@ -52,7 +52,7 @@
   font-weight: 300;
   padding-left: 15px;
   padding-right: 15px;
-  color:#E27272;
+  color:#B7996C;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -102,17 +102,7 @@
 }
 
 .activeAnswer {
-  color: #E27272;
-}
-
-.box-icon {
-  cursor: pointer;
-  background-color:#EBF3FF;
-  padding: 5px;
-  font-size: 12px;
-  color: #789CCE;
-  margin: 5px 0px 5px 0px;
-  border-radius: 5px;
+  color: #B7996C;
 }
 
 .box-icon-disabled {
@@ -129,27 +119,16 @@
   margin-right: 10px;
 }
 
-.box-result {
-  color: #789CCE;
-  padding: 10px;
-  font-size: 24px;
-  font-weight: 500;
-}
 .txt-result {
   font-size: 14px;
   font-weight: 300;
 }
 .txt-result-answer {
-  color: #E27272;
+  color: #B7996C;
   font-size: 14px;
   font-weight: 300;
 }
-.view {
-  cursor: pointer;
-  margin-left: 10px;
-  margin-top: 3.5px;
-  padding: 5px;
-}
+
 .img-exam {
   border: 1px solid rgb(255, 255, 255);
   border-radius: 20px;
@@ -158,33 +137,27 @@
   border: 1px solid rgb(255, 255, 255);
   border-radius: 15px;
 }
-.box-score {
-  padding: 5px 20px 5px 20px;
-  color: #789CCE;
-  background-color: #EBF3FF;
-  border: 1px solid #EBF3FF;
-}
 
 .fullname {
   font-size: 12px;
   font-weight: 400;
-  color: #E27272;
+  color: #B7996C;
 }
 
 .box-result-all {
   padding: 15px 60px 5px 60px;
-  color: #E27272;
-  background-color: #FFEAEB;
-  border: 1px solid #FFEAEB;
+  color: #B7996C;
+  background-color: #fff1dd;
+  border: 1px solid #fff1dd;
   border-radius: 20px;
 }
 
 .box-icon-result {
   cursor: pointer;
-  background-color:#FFEAEB;
+  background-color:#fff1dd;
   padding: 5px;
   font-size: 12px;
-  color: #E27272;
+  color: #B7996C;
   margin: 5px 0px 5px 0px;
   border-radius: 5px;
 }

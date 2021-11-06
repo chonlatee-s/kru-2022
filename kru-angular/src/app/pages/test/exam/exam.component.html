@@ -13,7 +13,7 @@
             <div class="flex justify-content-center mb-1"><p-avatar image="{{ userProfile.profile }}" shape="circle" size="xlarge"></p-avatar></div>
             <div class="flex justify-content-center"><span class="fullname">{{ userProfile.fullname }}</span></div>
           </div>
-          <div class="flex mb-2 justify-content-center">
+          <div class="flex justify-content-center">
             <span style="font-size: 48px; font-weight: 300;">{{ score }}/{{ exams.length }}</span> 
           </div>
         </div>
@@ -34,7 +34,7 @@
           </div>
           <div class="flex" *ngIf="displayChangeQuestion; else elseBlock">
             <span pTooltip="เปลี่ยนคำถาม" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeQuestion(exams[arr].num)">
-              <i class="pi pi-sort-alt box-icon"></i>
+              <i class="pi pi-sort-alt box-icon-result"></i>
             </span>
           </div>
           <ng-template #elseBlock>
@@ -43,7 +43,8 @@
             </span>
           </ng-template>
         </div>
-        <p-progressBar [value]="progress" [showValue]="false" [style]="{'height': '8px'}" *ngIf="!checkDone"></p-progressBar>
+
+        <p-progressBar [value]="progress" [showValue]="false" [style]="{'height': '8px', 'margin-bottom':'10px'}" *ngIf="!checkDone"></p-progressBar>
 
         <div class="flex flex-column box-question">
           <div class="flex flex-column md:flex-row mb-3 question">

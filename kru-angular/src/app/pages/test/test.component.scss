@@ -34,14 +34,14 @@
 
 .menu-box2 {
   border-radius: 15px;
-  background-color: #EBF3FF;
+  background-color: #fff1dd;
   text-align: center;
   width: 300px;
   margin: 5px;
 }
 .txt-box2 {
   font-weight: 200;
-  color: #789CCE;
+  color: #B7996C;
   font-size: 16px;
   padding: 10px;
   text-align: center;
@@ -49,19 +49,19 @@
 .btn2 {
   font-family: 'Sarabun';
   font-size: 21px;
-  color: #789CCE;
+  color: #B7996C;
   margin-bottom: 30px;
-  background: #EBF3FF;
-  border: 1px solid #789CCE;
+  background: #fff1dd;
+  border: 1px solid #B7996C;
 }
 
 ::ng-deep .menu-box2 .p-button:enabled:hover {
-  color: #EBF3FF !important;
-  background: #789CCE !important;
-  border: 1px solid #789CCE !important;
+  color: #fff1dd !important;
+  background: #B7996C !important;
+  border: 1px solid #B7996C !important;
 }
 ::ng-deep .menu-box2 .p-button:focus {
-  color: #EBF3FF;
-  background-color: #789CCE;
-  border: 1px solid #789CCE !important;
+  color: #fff1dd;
+  background-color: #B7996C;
+  border: 1px solid #B7996C !important;
 }

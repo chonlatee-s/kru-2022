@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { Exam } from 'src/app/features/test/interfaces/exam.service';
@@ -35,6 +35,7 @@ export class ExamComponent implements OnInit {
     private authService: AuthService,
     private testService: TestService,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -118,6 +119,9 @@ export class ExamComponent implements OnInit {
   }
   changeViewOne() {
     this.showList = false;
+  }
+  directTostats() {
+    this.router.navigate(['/stats'])
   }
 
   Timer() {

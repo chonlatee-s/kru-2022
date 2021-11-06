@@ -167,31 +167,31 @@
 
 .fullname {
   font-size: 12px;
-  font-weight: 300;
-  color: #222;
+  font-weight: 400;
+  color: #E27272;
 }
 
 .box-result-all {
-  padding: 15px;
-  color: #222;
-  background-color: #EEEEEE;
-  border: 1px solid #EEEEEE;
+  padding: 15px 60px 5px 60px;
+  color: #E27272;
+  background-color: #FFEAEB;
+  border: 1px solid #FFEAEB;
   border-radius: 20px;
 }
 
 .box-icon-result {
   cursor: pointer;
-  background-color:#dbdbdb;
+  background-color:#FFEAEB;
   padding: 5px;
   font-size: 12px;
-  color: #222;
+  color: #E27272;
   margin: 5px 0px 5px 0px;
   border-radius: 5px;
 }
 
 .box-list-result {
   text-align: center;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 300;
   background-color: #EEEEEE;
   padding: 15px;

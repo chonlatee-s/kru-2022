@@ -3,28 +3,25 @@
 </div>
 
 <div class="container" *ngIf="exams">
-  <div class="flex flex-row mt-4 mb-3 justify-content-between">
+  <div class="flex flex-row mt-3 mb-3 justify-content-between">
 
     <div class="flex" *ngIf="!checkDone">
       <i class="pi pi-clock box-clock"></i><span class="time">{{ M }} : {{ S }}</span>
     </div>
 
-    <div class="flex flex-column flex-grow-1" *ngIf="checkDone">
-      <div class="flex flex-column mb-5 justify-content-center">
+    <div class="flex flex-column flex-grow-1 justify-content-center box-result-all mb-2" *ngIf="checkDone">
+      <div class="flex flex-column mb-1 justify-content-center">
         <div class="flex justify-content-center mb-1"><p-avatar image="{{ userProfile.profile }}" shape="circle" size="xlarge"></p-avatar></div>
         <div class="flex justify-content-center"><span class="fullname">{{ userProfile.fullname }}</span></div>
       </div>
-      <div class="flex box-result justify-content-between">
-        <div class="flex">
-          <i class="pi pi-check-square box-icon"></i> <span style="font-size: 16px; margin-top: 4px; margin-left: 5px;"> สรุปคะแนน {{ score }} เต็ม {{ exams.length }}</span> 
-        </div>
-        <div class="flex">
-          <i class="pi pi-list box-icon" style="margin-right: 5px;" pTooltip="ดูทั้งหมด" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeViewList()"></i> 
-          <i class="pi pi-table box-icon" pTooltip="ดูทีละข้อ" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeViewOne()"></i>
-        </div>
+      <div class="flex mb-2 justify-content-center">
+        <span style="font-size: 24px; margin-top: 4px; margin-left: 5px;">สรุป {{ score }} / {{ exams.length }} คะแนน</span> 
+      </div>
+      <div class="flex justify-content-center">
+        <i class="pi pi-list box-icon-result" style="margin-right: 5px;" pTooltip="ดูทั้งหมด" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeViewList()"></i> 
+        <i class="pi pi-table box-icon-result" pTooltip="ดูทีละข้อ" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeViewOne()"></i>
       </div>
     </div>
-
 
     <div class="flex" *ngIf="displayChangeQuestion; else elseBlock">
       <span pTooltip="เปลี่ยนคำถาม" tooltipPosition="top" tooltipStyleClass="tooltip" (click)="changeQuestion(exams[arr].num)">
@@ -94,15 +91,15 @@
 
 
   <!-- สรุปผล -->
-  <div class="flex flex-grow-1 mt-5" *ngIf="showList">
+  <div class="flex flex-column flex-grow-1 mt-5" *ngIf="showList">
+    <div class="flex box-list-result justify-content-center"><span>รายการข้อสอบ</span></div>
     <div style="width:100%">
-      <p-divider></p-divider>
       <p-table [value]="exams" styleClass="p-datatable-sm" responsiveLayout="scroll">
         <ng-template pTemplate="body" let-exam let-i="rowIndex">
             <tr class="txt-result">
                 <td>
                   <div class="flex mb-2 mt-2" *ngIf="exam.img !=='' ">
-                    <img src="{{ path }}/course/img/{{ exam.img }}" alt="img" width="150">
+                    <img src="{{ path }}/course/img/{{ exam.img }}" alt="img" width="150" class="img-exam-sm">
                   </div>
                   <div class="flex mb-1">
                     ข้อ {{ i+1 }}. {{ exam.question }}

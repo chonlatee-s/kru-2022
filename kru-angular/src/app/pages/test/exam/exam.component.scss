@@ -5,19 +5,21 @@
   font-size: 16px;
   margin-top: 4px;
   color: #E27272;
+  border-radius: 5px;
 }
 .box-clock {
   background-color:#FFEAEB;
   padding: 5px;
   font-size: 12px;
   color: #E27272;
-  margin: 5px 5px 5px 0px 
+  margin: 5px 5px 5px 0px;
+  border-radius: 5px;
 }
 ::ng-deep .p-progressbar {
   border: 0 none;
   height: 1.5rem;
   background: #dee2e6;
-  border-radius: 0px; 
+  border-radius: 5px; 
 }
 ::ng-deep .p-progressbar .p-progressbar-value {
   border: 0 none;
@@ -32,6 +34,8 @@
   font-weight: 300;
   background-color: #EEEEEE;
   padding: 15px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 .choice {
   background-color: #fff;
@@ -40,6 +44,7 @@
   padding-left: 15px;
   padding-right: 15px;
   cursor: pointer;
+  border-radius: 5px;
 }
 .choice:hover {
   background-color: #fff;
@@ -49,6 +54,7 @@
   padding-right: 15px;
   color:#E27272;
   cursor: pointer;
+  border-radius: 5px;
 }
 .txt-mode {
   font-size: 10px;
@@ -105,7 +111,8 @@
   padding: 5px;
   font-size: 12px;
   color: #789CCE;
-  margin: 5px 0px 5px 0px 
+  margin: 5px 0px 5px 0px;
+  border-radius: 5px;
 }
 
 .box-icon-disabled {
@@ -113,7 +120,8 @@
   padding: 5px;
   font-size: 12px;
   color: #999999;
-  margin: 5px 0px 5px 0px
+  margin: 5px 0px 5px 0px;
+  border-radius: 5px;
 }
 
 .icon-check {
@@ -143,9 +151,13 @@
   padding: 5px;
 }
 .img-exam {
-  border: 4px solid rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 20px;
 }
-
+.img-exam-sm {
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 15px;
+}
 .box-score {
   padding: 5px 20px 5px 20px;
   color: #789CCE;
@@ -154,7 +166,35 @@
 }
 
 .fullname {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 300;
   color: #222;
+}
+
+.box-result-all {
+  padding: 15px;
+  color: #222;
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE;
+  border-radius: 20px;
+}
+
+.box-icon-result {
+  cursor: pointer;
+  background-color:#dbdbdb;
+  padding: 5px;
+  font-size: 12px;
+  color: #222;
+  margin: 5px 0px 5px 0px;
+  border-radius: 5px;
+}
+
+.box-list-result {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  background-color: #EEEEEE;
+  padding: 15px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }

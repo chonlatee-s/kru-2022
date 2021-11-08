@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { FnService } from 'src/app/features/fn/services/fn.service';
@@ -38,7 +38,8 @@ export class MajorComponent implements OnInit {
     private forumService: ForumService,
     private authService: AuthService,
     private fnService: FnService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -61,17 +62,21 @@ export class MajorComponent implements OnInit {
   }
 
   async sendData() {
-    this.data = {
-      topic: this.msg,
-      uuId: this.userProfile.uuId
-    }
+    try {
+      this.data = {
+        topic: this.msg,
+        uuId: this.userProfile.uuId
+      }
 
-    if(this.msg !== '') {
-      await this.forumService.create(this.data).toPromise();
-      this.display = false;
-      this.forums = await this.forumService.find({}).toPromise();
+      if(this.msg !== '') {
+        await this.forumService.create(this.data).toPromise();
+        this.display = false;
+        this.forums = await this.forumService.find({}).toPromise();
+      }
+      this.resetMsg();
+    } catch (err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
     }
-    this.resetMsg();
   }
 
   converseDate(D: string) {
@@ -95,18 +100,26 @@ export class MajorComponent implements OnInit {
   }
 
   async acceptDelete() {
-    await this.forumService.remove(this.activeItem.uuId).toPromise();
-    this.forums = await this.forumService.find({}).toPromise();
+    try {
+      await this.forumService.remove(this.activeItem.uuId).toPromise();
+      this.forums = await this.forumService.find({}).toPromise();
+    } catch (err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
+    }
   }
   
   async sendDataEdit() {
-    this.dataEdit = { topic: this.msgEdit };
-    if(this.msgEdit !== '') {
-      await this.forumService.update(this.activeItem.uuId, this.dataEdit).toPromise();
-      this.displayEdit = false;
-      this.forums = await this.forumService.find({}).toPromise();
+    try {
+      this.dataEdit = { topic: this.msgEdit };
+      if(this.msgEdit !== '') {
+        await this.forumService.update(this.activeItem.uuId, this.dataEdit).toPromise();
+        this.displayEdit = false;
+        this.forums = await this.forumService.find({}).toPromise();
+      }
+      this.resetMsg();
+    } catch (err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
     }
-    this.resetMsg();
   }
 
 

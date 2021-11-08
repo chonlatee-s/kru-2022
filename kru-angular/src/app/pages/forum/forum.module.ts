@@ -13,6 +13,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { FormsModule } from '@angular/forms';
 import { MenuModule } from 'primeng/menu';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MessagesModule } from 'primeng/messages';
 @NgModule({
   declarations: [
     MajorComponent,
@@ -30,6 +31,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     FormsModule,
     MenuModule,
     ConfirmDialogModule,
+    MessagesModule
   ],
 
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { Exam } from 'src/app/features/test/interfaces/exam.service';
@@ -35,16 +36,22 @@ export class ExamComponent implements OnInit {
     private authService: AuthService,
     private testService: TestService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.path = environment.apiUrl;
-    this.userProfile = await this.authService.getProfile();
-    this.type = this.route.snapshot.params.type;
-    this.exams = await this.testService.getExam(this.type);
-    this.M = this.exams.length - 1; // ลบหนึ่งเพราะมีอีก 59 วินาที
-    this.Timer();
+    try {
+      this.path = environment.apiUrl;
+      this.userProfile = await this.authService.getProfile();
+      this.type = this.route.snapshot.params.type;
+      this.exams = await this.testService.getExam(this.type);
+      this.M = this.exams.length - 1; // ลบหนึ่งเพราะมีอีก 59 วินาที
+      this.Timer();
+    } catch(err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
+    }
+
   }
 
   ngOnDestroy() {
@@ -91,35 +98,46 @@ export class ExamComponent implements OnInit {
   }
 
   async checkScore() {
-    const toDB = {
-      uuId: this.userProfile.uuId,
-      exams: this.exams,
-      type: this.type
+    try {
+      const toDB = {
+        uuId: this.userProfile.uuId,
+        exams: this.exams,
+        type: this.type
+      }
+      const data = await this.testService.checkScore(toDB);
+      this.exams = data.exams;
+      //reset
+      this.arr = 0;
+      this.nextBtn = true;
+      this.backBtn = false;
+      this.sendAnswerBtn = false;
+      this.score = data.sum;
+      this.displayChangeQuestion = false;
+      this.checkDone = true;
+      this.showList = true;
+    } catch(err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
     }
-    const data = await this.testService.checkScore(toDB);
-    this.exams = data.exams;
-    //reset
-    this.arr = 0;
-    this.nextBtn = true;
-    this.backBtn = false;
-    this.sendAnswerBtn = false;
-    this.score = data.sum;
-    this.displayChangeQuestion = false;
-    this.checkDone = true;
-    this.showList = true;
   }
+
   async changeQuestion(num: number) {
-    const data = await this.testService.changeQuestion(num);
-    this.exams.splice(this.arr, 1, data[0]);
-    this.displayChangeQuestion = false;
+    try {
+      const data = await this.testService.changeQuestion(num);
+      this.exams.splice(this.arr, 1, data[0]);
+      this.displayChangeQuestion = false;
+    } catch(err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
+    }
   }
 
   changeViewList() {
     this.showList = true;
   }
+
   changeViewOne() {
     this.showList = false;
   }
+
   directTostats() {
     this.router.navigate(['/stats'])
   }

@@ -5,6 +5,7 @@ import { DownloadRoutingModule } from './download-routing.module';
 import { DownloadComponent } from './download.component';
 import { TableModule } from 'primeng/table';
 import { CompetitorsTopModule } from 'src/app/shared/layout-main/competitors-top/competitors-top.module';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CompetitorsTopModule } from 'src/app/shared/layout-main/competitors-top
     CommonModule,
     DownloadRoutingModule,
     TableModule,
-    CompetitorsTopModule
+    CompetitorsTopModule,
+    MessagesModule
   ]
 })
 export class DownloadModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { FnService } from 'src/app/features/fn/services/fn.service';
 import { Job } from 'src/app/features/job/interfaces/job.interface';
 import { JobService } from 'src/app/features/job/services/job.service';
@@ -17,11 +18,16 @@ export class JobComponent implements OnInit {
 
   constructor(
     private jobService: JobService,
-    private fnService: FnService
+    private fnService: FnService,
+    private messageService: MessageService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.jobs = await this.jobService.find({}).toPromise();
+    try {
+      this.jobs = await this.jobService.find({}).toPromise();
+    } catch(err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
+    }
   }
 
   converseDate(D: string) {

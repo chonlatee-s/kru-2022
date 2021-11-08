@@ -15,7 +15,7 @@
   </div>
 
   <div class="flex txt-topic-comment ml-7 mr-7">  {{ forum.topic }} </div>
-  <div class="flex txt-date ml-7 mt-2"><i class="pi pi-calendar icon-date"></i>  {{ converseDate(forum.updateAt) | date: "dd/MM/yy" }} </div>
+  <div class="flex txt-date ml-7 mt-2"><i class="pi pi-calendar icon-date"></i>  {{ converseDate(forum.updateAt) }} </div>
   <p-divider></p-divider>
 
 
@@ -36,7 +36,7 @@
                       </div>
                     </div>
                     <div class="flex txt-comment ml-6 mr-6"> {{ detail.answer }} </div>
-                    <div class="flex txt-date ml-6 mt-2"><i class="pi pi-calendar icon-date"></i> {{ converseDate(detail.updateAt) | date: "dd/MM/yy" }} </div>
+                    <div class="flex txt-date ml-6 mt-2"><i class="pi pi-calendar icon-date"></i> {{ converseDate(detail.updateAt) }} </div>
                   </div>
                 </td>
 
@@ -108,3 +108,4 @@
     </div>
   </div>
 </p-sidebar>
+<p-messages></p-messages>

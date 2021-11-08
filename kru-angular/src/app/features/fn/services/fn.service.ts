@@ -10,11 +10,11 @@ export class FnService{
 
   converseDate(D: string) {
     const date = new Date(D).toISOString().split('T')[0];
-    const day = date.split('-')[1];
-    const month = date.split('-')[2];
+    const day = date.split('-')[2];
+    const month = Number(date.split('-')[1]);
     const year = Number(date.split('-')[0]);
 
-    return `${day}-${month}-${year+543}`;
+    return `${day}/${month}/${year+543}`;
   }
 
 }

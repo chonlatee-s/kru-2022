@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Download } from 'src/app/features/download/interfaces/download.interface';
 import { DownloadService } from 'src/app/features/download/services/download.service';
 @Component({
@@ -13,10 +14,17 @@ export class DownloadComponent implements OnInit {
   first = 0;
   rows = 5;
 
-  constructor(private downloadService: DownloadService) { }
+  constructor(
+    private downloadService: DownloadService,
+    private messageService: MessageService
+  ) { }
 
   async ngOnInit(): Promise<void> {
-    this.downloads = await this.downloadService.find({}).toPromise();
+    try {
+      this.downloads = await this.downloadService.find({}).toPromise();
+    } catch(err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
+    }
   }
 
   next() {

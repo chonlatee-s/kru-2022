@@ -15,6 +15,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { AvatarModule } from 'primeng/avatar';
+import { MessagesModule } from 'primeng/messages';
 @NgModule({
   declarations: [
     TestComponent,
@@ -32,7 +33,8 @@ import { AvatarModule } from 'primeng/avatar';
     SidebarModule,
     DialogModule,
     TableModule,
-    AvatarModule
+    AvatarModule,
+    MessagesModule
   ]
 })
 export class TestModule { }

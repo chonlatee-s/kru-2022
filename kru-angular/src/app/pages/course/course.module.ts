@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ChipModule } from 'primeng/chip';
     FormsModule,
     CardModule,
     ButtonModule,
-    ChipModule
+    ChipModule,
+    MessagesModule
   ]
 })
 export class CourseModule { }

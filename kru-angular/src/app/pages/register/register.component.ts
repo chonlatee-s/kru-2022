@@ -23,11 +23,15 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private registerService: RegisterService,
-    private router: Router
+    private messageService: MessageService
   ) { }
 
   async ngOnInit() {
-    this.majors = await this.registerService.getMajor();
+    try {
+      this.majors = await this.registerService.getMajor();
+    } catch(err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
+    }
   }
 
   async signInWithGoogle() {
@@ -49,17 +53,20 @@ export class RegisterComponent implements OnInit {
   }
 
   register(option: string) {
-
-    if (option === 'skip') {
-      this.profile.majorId = 1; // ไม่ระบุสาขา
-      this.authService.register(this.profile);
-    }
-    else {
-      if (this.selectedMajor === undefined) this.alertMessage = true;
-      else {
-        this.profile.majorId = this.selectedMajor.id;
+    try {
+      if (option === 'skip') {
+        this.profile.majorId = 1; // ไม่ระบุสาขา
         this.authService.register(this.profile);
       }
+      else {
+        if (this.selectedMajor === undefined) this.alertMessage = true;
+        else {
+          this.profile.majorId = this.selectedMajor.id;
+          this.authService.register(this.profile);
+        }
+      }
+    } catch(err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
     }
 
   }

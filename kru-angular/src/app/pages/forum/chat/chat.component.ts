@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { DetailEdit } from 'src/app/features/detail/interfaces/detail-edit.interface';
@@ -38,12 +38,17 @@ export class ChatComponent implements OnInit {
     private detailService: DetailService,
     private fnService: FnService,
     private route: ActivatedRoute,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.forum = await this.forumService.findById(this.route.snapshot.params.id).toPromise();
-    this.userProfile = await this.authService.getProfile();
+    try {
+      this.forum = await this.forumService.findById(this.route.snapshot.params.id).toPromise();
+      this.userProfile = await this.authService.getProfile();
+    } catch (err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
+    }
 
     const checckUserProfile = Object.getOwnPropertyNames(this.userProfile).length;
     if (checckUserProfile !== 0) this.isLogin = true;
@@ -65,18 +70,22 @@ export class ChatComponent implements OnInit {
   }
   
   async sendData() {
-    this.data = {
-      answer: this.msg,
-      forumuuId: this.route.snapshot.params.id,
-      uuId: this.userProfile.uuId
-    }
+    try {
+      this.data = {
+        answer: this.msg,
+        forumuuId: this.route.snapshot.params.id,
+        uuId: this.userProfile.uuId
+      }
 
-    if(this.msg !== '') {
-      await this.detailService.create(this.data).toPromise();
-      this.display = false;
-      this.forum = await this.forumService.findById(this.route.snapshot.params.id).toPromise();
+      if(this.msg !== '') {
+        await this.detailService.create(this.data).toPromise();
+        this.display = false;
+        this.forum = await this.forumService.findById(this.route.snapshot.params.id).toPromise();
+      }
+      this.resetMsg();
+    } catch (err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
     }
-    this.resetMsg();
   }
 
   converseDate(D: string) {
@@ -100,18 +109,26 @@ export class ChatComponent implements OnInit {
   }
 
   async acceptDelete() {
-    await this.detailService.remove(this.activeItem.uuId).toPromise();
-    this.forum = await this.forumService.findById(this.route.snapshot.params.id).toPromise();
+    try {
+      await this.detailService.remove(this.activeItem.uuId).toPromise();
+      this.forum = await this.forumService.findById(this.route.snapshot.params.id).toPromise();
+    } catch (err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
+    }
   }
 
   async sendDataEdit() {
-    this.dataEdit = { answer: this.msgEdit };
-    if(this.msgEdit !== '') {
-      await this.detailService.update(this.activeItem.uuId, this.dataEdit).toPromise();
-      this.displayEdit = false;
-      this.forum = await this.forumService.findById(this.route.snapshot.params.id).toPromise();
+    try {
+      this.dataEdit = { answer: this.msgEdit };
+      if(this.msgEdit !== '') {
+        await this.detailService.update(this.activeItem.uuId, this.dataEdit).toPromise();
+        this.displayEdit = false;
+        this.forum = await this.forumService.findById(this.route.snapshot.params.id).toPromise();
+      }
+      this.resetMsg();
+    } catch (err) {
+      this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
     }
-    this.resetMsg();
   }
 
 }

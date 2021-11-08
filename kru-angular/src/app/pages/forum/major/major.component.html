@@ -30,7 +30,7 @@
                         <div class="txt-topic"><a routerLink="/forum/chat/{{forum.uuId}}"> {{ forum.topic }} </a></div>
                       </div>
                       <div class="flex">
-                        <div class="date"> <i class="pi pi-calendar icon-date"></i> {{ converseDate(forum.updateAt) | date: "dd/MM/yy" }} </div>
+                        <div class="date"> <i class="pi pi-calendar icon-date"></i> {{ converseDate(forum.updateAt) }} </div>
                       </div>
                     </div>
                   </div>
@@ -122,3 +122,4 @@
     </div>
   </div>
 </p-sidebar>
+<p-messages></p-messages>

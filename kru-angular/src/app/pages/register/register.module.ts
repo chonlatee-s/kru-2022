@@ -9,6 +9,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarModule } from 'primeng/avatar';
 import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
 @NgModule({
   declarations: [
     RegisterComponent
@@ -22,7 +23,8 @@ import { MessageModule } from 'primeng/message';
     FormsModule,
     ReactiveFormsModule,
     AvatarModule,
-    MessageModule
+    MessageModule,
+    MessagesModule
   ]
 })
 export class RegisterModule { }

@@ -5,6 +5,7 @@ import { JobRoutingModule } from './job-routing.module';
 import { JobComponent } from './job.component';
 import { TableModule } from 'primeng/table';
 import { CompetitorsTopModule } from 'src/app/shared/layout-main/competitors-top/competitors-top.module';
+import { MessagesModule } from 'primeng/messages';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CompetitorsTopModule } from 'src/app/shared/layout-main/competitors-top
     CommonModule,
     JobRoutingModule,
     TableModule,
-    CompetitorsTopModule
+    CompetitorsTopModule,
+    MessagesModule
   ]
 })
 export class JobModule { }

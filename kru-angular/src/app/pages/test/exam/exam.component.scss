@@ -171,3 +171,19 @@
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
 }
+
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background: rgb(58, 144, 170); /* Just to visualize the extent */
+  z-index: 2;
+}
+.screen-txt-count {
+  font-size: 350px;
+  color: #EEEEEE;
+  font-weight: 500;
+}

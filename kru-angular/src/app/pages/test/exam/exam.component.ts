@@ -13,6 +13,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./exam.component.scss']
 })
 export class ExamComponent implements OnInit {
+  countNumber: number = 3;
+  screenDisplay: boolean = true;
   path: string = "";
   type: string = "";
   userProfile!: UserProfile;
@@ -47,11 +49,22 @@ export class ExamComponent implements OnInit {
       this.type = this.route.snapshot.params.type;
       this.exams = await this.testService.getExam(this.type);
       this.M = this.exams.length - 1; // ลบหนึ่งเพราะมีอีก 59 วินาที
-      this.Timer();
+
+      this.countFn();
     } catch(err) {
       this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
     }
+  }
 
+  countFn() {
+    let time = setInterval(()=>{
+      if (this.countNumber === 1) {
+        clearInterval(time);
+        this.screenDisplay = false;
+        this.Timer();
+      }
+      else this.countNumber--;
+    }, 1000);
   }
 
   ngOnDestroy() {
@@ -155,7 +168,5 @@ export class ExamComponent implements OnInit {
         }
       }
     }, 1000);
-    
-
   }
 }

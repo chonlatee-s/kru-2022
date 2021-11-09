@@ -2,6 +2,10 @@
   <p-progressSpinner></p-progressSpinner>
 </div>
 
+<div class="flex screen justify-content-center" *ngIf="screenDisplay">
+  <div class="flex align-items-center screen-txt-count"> {{ countNumber }} </div>
+</div>
+
 <div class="container" *ngIf="exams">
   <div class="flex md:flex-row md:mt-0 mt-4 flex-column justify-content-center">
 

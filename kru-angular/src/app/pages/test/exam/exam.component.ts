@@ -25,7 +25,7 @@ export class ExamComponent implements OnInit {
   nextBtn: boolean = true;
   backBtn: boolean = false;
   sendAnswerBtn: boolean = false;
-  displayChangeQuestion: boolean = true;
+  btnChangeQuestion: boolean = true;
   score: number = 0;
   checkDone: boolean = false;
   showList: boolean = false;
@@ -33,6 +33,7 @@ export class ExamComponent implements OnInit {
   M: number = 0;
   S: number = 59;
   progress = 0;
+  displaySkeleton: boolean = false;
 
   constructor( 
     private authService: AuthService,
@@ -125,7 +126,7 @@ export class ExamComponent implements OnInit {
       this.backBtn = false;
       this.sendAnswerBtn = false;
       this.score = data.sum;
-      this.displayChangeQuestion = false;
+      this.btnChangeQuestion = false;
       this.checkDone = true;
       this.showList = true;
     } catch(err) {
@@ -135,9 +136,11 @@ export class ExamComponent implements OnInit {
 
   async changeQuestion(num: number) {
     try {
+      this.displaySkeleton = true;
       const data = await this.testService.changeQuestion(num);
       this.exams.splice(this.arr, 1, data[0]);
-      this.displayChangeQuestion = false;
+      this.btnChangeQuestion = false;
+      setTimeout(() => { this.displaySkeleton = false; }, 3500);
     } catch(err) {
       this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
     }

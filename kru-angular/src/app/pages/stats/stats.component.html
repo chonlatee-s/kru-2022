@@ -14,7 +14,7 @@
         <ng-template pTemplate="body" let-stats let-i="rowIndex">
             <tr>
                 <td style="width: 10%"> {{ i+1 }} </td>
-                <td> {{ converseDate(stats.createAt) | date: "dd/MM/yy" }}</td>
+                <td> {{ converseDate(stats.createAt)}}</td>
                 <td style="text-align: right; padding-right: 50px;"> {{ stats.score }} คะแนน</td>
             </tr>
         </ng-template>

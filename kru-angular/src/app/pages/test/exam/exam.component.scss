@@ -29,17 +29,9 @@
 .box-question {
   background-color: #fff;
 }
-.question {
-  font-size: 14px;
-  font-weight: 300;
-  background-color: #EEEEEE;
-  padding: 15px;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-}
 .choice {
   background-color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   padding-left: 15px;
   padding-right: 15px;
@@ -48,7 +40,7 @@
 }
 .choice:hover {
   background-color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   padding-left: 15px;
   padding-right: 15px;
@@ -162,11 +154,22 @@
   border-radius: 5px;
 }
 
+.question {
+  font-size: 16px;
+  font-weight: 400;
+  color:#B7996C;
+  background-color: #fff7eb;
+  padding: 15px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
 .box-list-result {
+  font-size: 16px;
+  font-weight: 400;
+  color:#B7996C;
   text-align: center;
-  font-size: 15px;
-  font-weight: 300;
-  background-color: #EEEEEE;
+  background-color: #fff7eb;
   padding: 15px;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;

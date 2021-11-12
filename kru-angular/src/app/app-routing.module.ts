@@ -27,7 +27,8 @@ const routes: Routes = [
     ]
   },
   { path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
-  { path: 'upload', loadChildren: () => import('./pages/upload-img/upload-img.module').then(m => m.UploadImgModule) }
+  { path: 'upload', loadChildren: () => import('./pages/upload-img/upload-img.module').then(m => m.UploadImgModule) },
+  { path: '**', loadChildren: () => import('./pages/error/error.module').then(m => m.ErrorModule) }
 ];
 
 @NgModule({

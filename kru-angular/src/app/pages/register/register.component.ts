@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Profile } from 'src/app/features/auth/interfaces/profile.interface';
+import { UserProfile } from 'src/app/features/auth/interfaces/user-profile';
 import { AuthService } from 'src/app/features/auth/services/auth.service';
 import { Major } from 'src/app/features/register/interfaces/major.interface';
 import { RegisterService } from 'src/app/features/register/services/register.service';
@@ -14,21 +15,29 @@ import { RegisterService } from 'src/app/features/register/services/register.ser
 })
 export class RegisterComponent implements OnInit {
   profile!: Profile;
-  step1: boolean = true;
+  step1: boolean = false;
   step2: boolean = false;
   majors!: Major[];
   selectedMajor!: Major;
   alertMessage: boolean = false;
 
+  userProfile!: UserProfile;
+
   constructor(
     private authService: AuthService,
     private registerService: RegisterService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
     try {
+      this.userProfile = await this.authService.getProfile();
+      const checckUserProfile = Object.getOwnPropertyNames(this.userProfile).length;
+      if (checckUserProfile !== 0) this.router.navigate(['/home']);
+
       this.majors = await this.registerService.getMajor();
+      this.step1 = true;
     } catch(err) {
       this.messageService.add({severity:'error', summary:'พบข้อผิดพลาด', detail:'กรุณาลองใหม่อีกครั้ง'});
     }
